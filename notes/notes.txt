@@ -1,0 +1,425 @@
+TABLE
+first pointer: x2373D (05 C0) 24005
+last pointer: x2387F (A3 E4) 264A3
+count: 20*8 + 2 = 162
+x18000 + C005 = 24005
+
+first text : x24C4C
+$84:CC4C
+
+x26c64
+
+			PTR-START	PTR-END		DATA-START	DATA-END	type	count
+Table 1		2028D		209DF		209e7		218B9		MENU	117
+Table 2		218D9		21AD7		21AD9		236b0				256
+Table 3		236F5		2387F		23881		264A3				198
+
+x100000		60	101010
+x108000		61
+x110000
+x118000		63
+
+
+
+TABLE 2		2005D	204C5		218B9		22A81
+
+
+DATA RANGE		
+
+209e7 (e7 89)
+20a20 (20 8a) - 218b9	(b9 98)
+|--#2----20a99 (99 8a)
+|--------21492 (92 94)	x207F1
+
+
+21AD9 (d99a) - 236b0 (b0 b6)
+|--#2----21ae5 (e5 9a = 218da)
+
+218d9 d9 9a
+218db e5 9a
+21ad7 b0 b6
+
+x209e7 (e7 99)
+x20a20 (20 8a) 		206cd ?
+x20a99 (99 8a)		2029b
+x20aa6 (a6 8a)		202a3		ok
+21
+
+x21492		F0 79 61 FE 61 61 63 FF
+	pointer x207F1 (92 94)
+
+x20cd3 (d3 8c)		20393		ok
+	
+
+55 1d 58 1d	
+
+SUBROUTINES
+
+#### MOVE CHARACTER LOADING ####
+
+USEFUL BREAKPOINTS
+00C51A
+81C53D
+
+BANK CALCULATION FOR JUMP:
+x000000 = 40
+x100000 = 60
+Address/8000 + x40
+
+Original	(Normal Character)
+$81/C51D B9 00 00    LDA $0000,y[$84:CC4C]   A:0003 X:0000 Y:CC4C P:envmxdIZc
+$81/C520 29 FF 00    AND #$00FF              A:6285 X:0000 Y:CC4D P:envmxdIzC
+
+			(Special Character, FB xx)
+$81/C085 B9 00 00    LDA $0000,y[$84:CC50]   A:00FB X:0004 Y:CC50 P:envmxdIZC
+$81/C088 29 FF 00    AND #$00FF              A:0201 X:0004 Y:CC50 P:envmxdIzC
+
+			(End of Line, FF)
+$81/C57A B9 01 00    LDA $0001,y[$84:0C97]   A:000A X:000A Y:0C96 P:envmxdIzC
+$81/C57D 29 FF 00    AND #$00FF              A:0000 X:000A Y:0C96 P:envmxdIZC
+			
+			(Menu Texts)
+$81/BACE B9 00 00    LDA $0000,y[$84:9492]   A:0002 X:0544 Y:9492 P:envmxdIzC
+$81/BAD1 29 FF 00    AND #$00FF              A:79F0 X:0544 Y:9492 P:envmxdIzC
+
+		B9 00 00 29 FF 00
+		B9 01 00 29 FF 00
+
+Changes
+C51D	22 00 00 60 EA EA
+C085	22 00 00 60 EA EA
+C570	22 00 00 60 EA EA
+C57A	22 20 00 60 EA EA
+BACE	22 40 00 60 EA EA
+
+$81/C51D 22 00 00 60 JSL $600000[$60:0000]
+$81/C085 22 00 00 60 JSL $600000[$60:0000]
+$81/C570 22 00 00 60 JSL $600000[$60:0000]
+$81/C57A 22 20 00 60 JSL $600000[$60:0000]
+
+x100000		84 00 A0 60 00 84 02 A4 00 A7 00 E2 80 29 FF 00 6B 6B
+x100020		C8 84 00 A0 60 00 84 02 A4 00 A7 00 E2 80 29 FF 00 6B 6B
+
+
+
+x24c4c
+x104c4c
+
+IN HEX EDITOR : FBBC0
+IN HEX EMULATOR : 9FFBC0
+
+EMUL		EDITOR
+808000		000000
+818000		008000
+828000		010000
+8B8000		058000
+
+
+
+JAPANESE CHARS
+
+60	あ
+61	い
+62
+63
+64
+
+01	{SPACE}
+BD	?
+FE	{NL}
+FF	{EL}
+
+02	0
+03	1
+04	2
+05	3
+06	4
+07	5
+
+TEXT COLOR
+FB 00	{WHITE}
+FB 01	{GREEN}
+FB 02	{RED}
+FB 03	{BLUE}
+
+NAME SCREEN
+
+60 61 62 63 64  86 87 88 89 8A
+65 66 67 68 69
+
+ようこそ = Welcome (85 62 69 6E)
+ドカポン = Dokapon (55 15 5F 3D)
+
+ADRESSES
+
+x24C4C		First text
+85 62 69 6E 01 FB 01 55 15 5F 3D B6 36 3D 55 FB 00
+24C4C-18000 = CC4C (CC 4C)
+4c4d
+4d4c
+
+x2480D		Second text
+きろくを
+66 8A 67 8C
+2480D-18000=C80D (in file: 0d c8)
+
+#### MENUS ####
+
+Texts  P-Value		P-Offset
+20A20 (20 8A)		x2029b
+
+20A99 (99 8A)		
+21013 (13 90)		x204D1		OK
+21029 (29 90)		x204E5
+21481 (81 94)		x207F1		OK
+
+218A9 (A9 98)		x204B7
+218B9 (B9 98)		x204C5
+
+はい
+いいえ		
+First menu (Yes/No)
+x21481 (92 94)
+
+x21492		F0 79 61 FE 61 61 63 FF
+	pointer x207F1 (92 94)
+
+74 05 05 06 00 92 94
+|  |  |  |	|----------
+|  |  |  |-------------Height (# of line*2 + 2)
+|  |  |----------------Width (# of char + 2)
+|  |-------------------Y
+|----------------------X
+
+(Origin is top left)	
+	
+	
+x2149A
+	(94 9A)
+
+x25488		First Kanji 週
+週だと そちらの
+25 F0 9C 73 01 6E 70
+FF F0 FD 08 12 F1 25 F0 9C 73 01 6E
+
+$81/C51D B9 00 00    LDA $0000,y[$84:CC4C]   A:0003 X:0000 Y:CC4C
+$81/C51D B9 00 00    LDA $0000,y[$84:C80D]   A:0003 X:0000 Y:C80D P:envmxdIZc
+
+$81/C1F3
+
+LOADING CHARACTER SPRITES
+breakpoints:
+81C51D
+80A8F2
+81C69E
+81C6A0
+81C461
+
+Traces A from 81C51D to 81C461
+
+x58800 - x5A000		
+
+Character 0
+in VRAM		top half	x20		ff ff ff ff ff f3 ff ed ff ed ff de ff de ff de
+			bot half	x120	ff de ff de ff de ff de ff ed ff ed ff f3 ff ff
+
+								ff ff ff ff ff fb ff fb ff e3 ff fb ff fb ff fb
+								ff fb ff fb ff fb ff fb ff fb ff fb ff fb ff ff
+
+11101111
+00 28 04 
+E6			11100110
+EF FF 		0	1110111111111111
+FF 			1
+FF 			1
+F0 01		0	1111000000000001
+00 12		0
+F3			1
+FF 			1
+ED 			1
+52 			01010010
+10 01 		0			ff ed ff
+DE 			1
+30 01		0	0011000000000001
+20 20		0	ff de ff de ff ff ff ff ff
+FB			1
+10 01 		0	0001000000000001
+E3 			1
+30 05 		0
+38 			00111000		ff ff ff ff ff f3 ff ed ff de ff de ff fe ff fd
+00 09		0  
+60 1F		0
+20 1D		0
+FE			1
+FF			1
+FD			1
+F0 0F		0
+20 50		0
+C7 F9 FF F5 30
+
+
+COMPRESSED CHARACTER DATA
+
+x58000 - x5914A
+4422 bytes
+
+My compression : 6818
+
+LZSS
+E5 00 EE FC FF FE FF 03 01 C3 FF 99
+position 3836(11111100) size 14 (11101110)
+1110111011111100
+EE = 11101110
+FC = 11111100
+
+F5 F6 
+11110101 11110110
+
+010111111111	0110
+
+CHARACTER ?
+bottom half of ?
+58900 - 58920
+top half of ?	58800 58820
+
+								8
+58000	00 28 04 E6 EF FF FF FF F0 01 00 12 F3 FF ED 52
+58010	10 01 DE 30 01 20 20 FB 10 01 E3 30 05 38 00 09
+58020	60 1F 20 1D FE FF FD F0 0F 20 50 C7 F9 FF F5 30
+58030	01 20 45 20 60 E0 FF A1 EF 30 01 00 43 40 0F 40
+
+60=あ
+58015	58016	58018 58019	5801A 5801E
+
+1
+5801B 5801C 5801E
+5801F 58020 58021 58022 58023 58024 58025 58026
+
+TESTING CHARACTER DRAWING
+x24C4D	03 04 05 06 07
+IG:12345
+FF:
+58000	nothing
+58001	breaks all
+58002	breaks all
+58003	breaks all
+58004	breaks border/background
+58005	ff
+58006	ff
+58007	ff
+58008	breaks background
+58009	breaks background
+5800a	breaks background
+5800b	breaks 2 3 + many hira & kata
+5800c	breaks 2 3 5 + many hira & kata
+5800d	00 breaks 2 3 4 5
+5800e	breaks 2 3 4 5
+5800f	break all
+
+58010	breaks all (shift X1234 over 12345)
+58011	breaks 2 3 4 5 + 
+58012	erases bits of 2 3 5 + 
+58013	breaks all (shift X1234 over 12345)
+58014	adds strokes 2 3 4 5 + 
+58015	breaks all
+58016	80/40 adds top 2, bot 1 to 1 , adds strokes 1 2 3 4 5 +
+58017	00 white out 1 2 
+58018	breaks all
+58019	adds strokes 1 2 3 4 + 
+5801a	00 stroke out 1 (complement of 58017) except 2 rows top, 1 bot
+5801b	breaks all
+5801c	adds strokes 1
+5801d	breaks all
+5801e	breaks all
+5801f	adds strokes 1 2 3 4 (00 strokes)
+
+58017	FB	11111011	represents the vertical line for #1
+5801A	E3	11100011	represents the horizontal line (5) for #1
+1 = blue
+0 = white
+
+
+5800C	ff (f3)		#0	#2	#3
+5800E	ff (ed)		#0	#2	#3
+58012	ff (de)		#0	#2	#3
+58017	ff (fb)		#1	#2
+5801a	ff (e3)		#1
+5801c	05
+5801f	09
+
+58024	ff (fe)		#2	#3
+58026	ff (fd)		#2	#3
+5802C	ff (f9)		#4
+
+58038	ff (ef)		#2	#4
+58041	ff (df)		#2
+58048	ff (c0)		#2
+
+58091	ff (f7)		#2
+580A3	ff (dd)		#4
+
+10 01 FF 30 01 20 20 FF 10 01 FF 30 05 38 00 09 
+60 1F 20 1D FF FF FF F0 0F 20 50 C7 FF FF FF 30 
+01 20 45 20 60 FF FF A1 FF 30 01 00 43 40 0F 40 
+3F FF 10 01 FF 42 30 7F FF 10 49 20 4B 20 01 20 
+90 E1 50 7B 00 00 85 00 89 A0 6F 40 8F 20 2B 60 
+2D 40 8F 80 C4 DF 81 FF 00 80 FF 00 01 9F 60 02
+
+FULLY TESTED - ERASER FF/-0
+58600
+58610
+58620
+
+11111111	FF
+11111111	FF
+11111011	FB
+11111011	FB
+11100011	E3
+11111011	FB
+11111011	FB
+11111011	FB
+
+00000X00
+00000X00
+00000X00
+00000X00
+00000X00
+00000X00
+00000X00
+00000000
+
+DECOMPRESSION
+
+Code								VRAM
+33 44 55 52 00 00 66				33 44 55 55 55 66
+33 44 55 52 10 00 66				33 44 55 55 55 55 66
+33 44 55 52 20 00 66				33 44 55 55 55 55 55 66
+33 44 55 52 A0 00 66				33 44 55 55 55 55 55 55 55 55 55 55 55 55 55 66
+
+Repeat
+First byte (first 4 bits) = repeat (0 = 2)
+A0=10100000 1010=10
+
+33 44 55 52 00 01 66				33 44 55 44 55 66
+33 44 55 52 00 02 66				33 44 55 33 44 66
+
+33 44 55 52 30 01 66				22 33 44 55 44 55 44 55 44 66
+
+x30 = 00110000 = 3 (3+2=5)
+x01 = 00000001 = 1
+
+A1 EF 30 01 00 43 40 0F 40 3F DF	e0 ff ef ff ef ff ef ff e3 00 00 00 00 11 22 11
+									22 33 44 55 66 00 df
+									
+11110111
+f7 e0 ff ef 30 01 11 22 33 44
+
+repetition = 4		data 1 repeat 3
+AA					d AA r 1
+AABB 				d AABB r 2
+
+99 FF FA 20
+xFA = 11111010		size 1111
+x20 = 00100000		position 101000100000
+
+00100000 00000001
