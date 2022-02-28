@@ -23,8 +23,13 @@
       "menu": true
     },
     {
-      "id": 3,
+      "id": 2,
       "pointers": [
+        {
+          "start": "218D9",
+          "end": "21AD7",
+          "shift": "18000"
+        },
         {
           "start": "236F5",
           "end": "2387F",
@@ -37,7 +42,8 @@
     }
   ],
   "translations-files": [
-    "translations/Table 1.txt"
+    "translations/Table 1.txt",
+    "translations/Table 2.txt"
   ],
   "code-patches": [
     {
@@ -51,15 +57,24 @@
       "desc": "Loads normal characters"
     },
     {
-      "code": "C8 84 00 A0 63 00 84 02 A4 00 A7 00 E2 80 29 FF 00 6B",
+      "code": "C8 84 00 A0 63 00 84 02 A4 00 88 A7 00 E2 80 29 FF 00 6B",
       "offset": "100020",
       "desc": "Loads end of line characters"
     },
     {
       "code": "84 00 A0 61 00 84 02 A4 00 A7 00 E2 80 29 FF 00 6B",
       "offset": "100040",
-      "desc": "Loading menu texts",
-      "debug": true
+      "desc": "Loading menu texts"
+    },
+    {
+      "code": "C8 84 00 A0 61 00 84 02 A4 00 88 A7 00 E2 80 29 0F 00 6B",
+      "offset": "100060",
+      "desc": "Loading menu texts / Replaces : B9 01 00 29 0F 00"
+    },
+    {
+      "code": "C8 84 00 A0 61 00 84 02 A4 00 88 A7 00 E2 80 29 F0 00 6B",
+      "offset": "100080",
+      "desc": "Loading menu texts / Replaces : B9 01 00 29 F0 00"
     },
     {
       "code": "22 00 00 60 EA EA",
@@ -84,8 +99,22 @@
     {
       "code": "22 40 00 60 EA EA",
       "offset": "BACE",
-      "desc": "Jump to the menu loading",
-      "debug": true
+      "desc": "Jump to the menu loading"
+    },
+    {
+      "code": "22 40 00 60 EA EA",
+      "offset": "BB65",
+      "desc": "Jump to the menu loading"
+    },
+    {
+      "code": "22 60 00 60 EA EA",
+      "offset": "BB6D",
+      "desc": "Jump to the menu loading"
+    },
+    {
+      "code": "22 80 00 60 EA EA",
+      "offset": "BB78",
+      "desc": "Jump to the menu loading"
     }
   ],
   "input-patches": [

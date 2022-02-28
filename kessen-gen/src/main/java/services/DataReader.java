@@ -166,6 +166,8 @@ public class DataReader {
             }
             if (menuData != null) {
                 newP.setMenuData(menuData);
+            } else {
+                newP.setMenuData(p.getMenuData());
             }
             newP.setOffset(offset);
             newP.setOffsetData(newDataStart);

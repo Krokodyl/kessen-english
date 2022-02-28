@@ -58,8 +58,8 @@ public class Kessen {
 
         List<PointerTable> tables = JsonLoader.loadTables();
         for (PointerTable table:tables) {
-            if (table.getId()==1) {
-                //new TablePrinter().generateTranslationFile(table, data, japanese);
+            if (table.getId()==2) {
+                new TablePrinter().generateTranslationFile(table, data, japanese);
                 //new TablePrinter().generateMenuTable(data, japanese);
             }
         }

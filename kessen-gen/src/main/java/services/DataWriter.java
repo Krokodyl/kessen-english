@@ -33,7 +33,7 @@ public class DataWriter {
             } else {
 
                 data[offset+6] = (byte) (value % 256);
-                data[offset+7 + 1] = (byte) (value / 256);
+                data[offset+7] = (byte) (value / 256);
                 for (String s : p.getData()) {
                     int a = Integer.parseInt(s.substring(0, 2), 16);
                     data[offsetData] = (byte) a;

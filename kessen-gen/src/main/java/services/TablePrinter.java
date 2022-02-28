@@ -70,7 +70,7 @@ public class TablePrinter {
 
                 System.out.println(TRANSLATION_KEY_DATA+"="+bytesToHex(bytes));
                 System.out.println(TRANSLATION_KEY_JPN +"="+jpn);
-                System.out.println(TRANSLATION_KEY_ENG+"="+toHexString(b)+toHexString(a)+"{EL}");
+                System.out.println(TRANSLATION_KEY_ENG+"=");
                 System.out.println();
 
 

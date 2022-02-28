@@ -9,7 +9,7 @@ public class Constants {
     public static byte MODE_FB_BYTE = (byte) Integer.parseInt("FB",16);
     public static byte MODE_FD_BYTE = (byte) Integer.parseInt("FD",16);
 
-    public static String NEW_LINE_CHARACTER_HEXA = "0030";
+    public static String NEW_LINE_CHARACTER_HEXA = "FE";
 
     public static int LENGTH_ARMOR_NAMES = 7;
     public static int LENGTH_WEAPON_NAMES = 7;
