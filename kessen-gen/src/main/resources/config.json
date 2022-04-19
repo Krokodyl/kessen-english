@@ -1,6 +1,6 @@
 {
   "config": {
-    "rom-input" : "../roms/Kessen! Work Rom Extended.sfc",
+    "rom-input" : "../roms/Kessen! Dokapon Oukoku IV - Densetsu no Yuusha-tachi (Japan) - extended.sfc",
     "rom-output" : "../roms/Kessen! English.sfc",
     "bps-patch-output": "../roms/Kessen! English.bps",
     "file.jap" : "tables/table-japanese.txt",
@@ -52,69 +52,91 @@
       "desc": "Compressed code for the character sprites. Uses a LZ variant."
     },
     {
-      "code": "84 00 A0 63 00 84 02 A4 00 A7 00 E2 80 29 FF 00 6B",
+      "code": "84 00 A0 A3 00 84 02 A4 00 A7 00 E2 80 29 FF 00 6B",
       "offset": "100000",
       "desc": "Loads normal characters"
     },
     {
-      "code": "C8 84 00 A0 63 00 84 02 A4 00 88 A7 00 E2 80 29 FF 00 6B",
+      "code": "C8 84 00 A0 A3 00 84 02 A4 00 88 A7 00 E2 80 29 FF 00 6B",
       "offset": "100020",
       "desc": "Loads end of line characters"
     },
     {
-      "code": "84 00 A0 61 00 84 02 A4 00 A7 00 E2 80 29 FF 00 6B",
+      "code": "84 00 A0 A1 00 84 02 A4 00 A7 00 E2 80 29 FF 00 6B",
       "offset": "100040",
       "desc": "Loading menu texts"
     },
     {
-      "code": "C8 84 00 A0 61 00 84 02 A4 00 88 A7 00 E2 80 29 0F 00 6B",
+      "code": "C8 84 00 A0 A1 00 84 02 A4 00 88 A7 00 E2 80 29 0F 00 6B",
       "offset": "100060",
       "desc": "Loading menu texts / Replaces : B9 01 00 29 0F 00"
     },
     {
-      "code": "C8 84 00 A0 61 00 84 02 A4 00 88 A7 00 E2 80 29 F0 00 6B",
+      "code": "C8 84 00 A0 A1 00 84 02 A4 00 88 A7 00 E2 80 29 F0 00 6B",
       "offset": "100080",
       "desc": "Loading menu texts / Replaces : B9 01 00 29 F0 00"
     },
     {
-      "code": "22 00 00 60 EA EA",
+      "code": "84 00 A0 A3 00 84 02 A4 00 A7 00 29 FF 00 85 0C C8 84 00 A7 00 29 0F 00 3A 85 10 A7 00 29 F0 00 88 6B",
+      "offset": "1000A0",
+      "desc": "Loading variables with FD"
+    },
+
+    {
+      "code": "22 00 80 A0 EA EA",
+      "old": "22 00 00 60 EA EA",
       "offset": "C51D",
       "desc": "Jump to normal characters loading"
     },
     {
-      "code": "22 00 00 60 EA EA",
+      "code": "22 00 80 A0 EA EA",
+      "old": "22 00 00 60 EA EA",
       "offset": "C085",
       "desc": "Jump to special characters loading"
     },
     {
-      "code": "22 00 00 60 EA EA",
+      "code": "22 00 80 A0 EA EA",
+      "old": "22 00 00 60 EA EA",
       "offset": "C570",
       "desc": "Jump to normal characters loading"
     },
     {
-      "code": "22 20 00 60 EA EA",
+      "code": "22 20 80 A0 EA EA",
+      "old": "22 20 00 60 EA EA",
       "offset": "C57A",
       "desc": "Jump to the End of Line (FF) loading"
     },
     {
-      "code": "22 40 00 60 EA EA",
+      "code": "22 40 80 A0 EA EA",
+      "old": "22 40 00 60 EA EA",
       "offset": "BACE",
-      "desc": "Jump to the menu loading"
+      "desc": "Jump to the menu loading",
+      "debug": false
     },
     {
-      "code": "22 40 00 60 EA EA",
+      "code": "22 40 80 A0 EA EA",
+      "old": "22 40 00 60 EA EA",
       "offset": "BB65",
-      "desc": "Jump to the menu loading"
+      "desc": "Jump to the menu loading",
+      "debug": false
     },
     {
-      "code": "22 60 00 60 EA EA",
+      "code": "22 60 80 A0 EA EA",
       "offset": "BB6D",
-      "desc": "Jump to the menu loading"
+      "desc": "Jump to the menu loading",
+      "debug": false
     },
     {
-      "code": "22 80 00 60 EA EA",
+      "code": "22 80 80 A0 EA EA",
       "offset": "BB78",
-      "desc": "Jump to the menu loading"
+      "desc": "Jump to the menu loading",
+      "debug": false
+    },
+    {
+      "code": "22 A0 80 A0 4C 11 C6",
+      "offset": "C5FA",
+      "desc": "Jump to the variable loading",
+      "debug": false
     }
   ],
   "input-patches": [
@@ -134,13 +156,23 @@
       "offset": "43e8b",
       "latin": "0 1 2 3 4 bf bf bf bf bf 00 00 5 6 7 8 9 bf bf bf bf bf 00 fe a b c d e A B C D E 00 00 f g h i j F G H I J 00 fd k l m n o K L M N O 00 00 p q r s t P Q R S T 00 00 u v w x y U V W X Y 00 00 z bf bf bf bf Z bf bf bf bf 00 00 bf bf bf bf bf bf bf bf bf bf 00 ff ! ? : . ' bf bf bf bf bf 00 00 / ( ) [ ] bf bf bf bf bf 00 fe + - % bf bf bf bf bf bf bf 00 00 bf bf bf bf bf bf bf bf bf bf 00 fd bf bf bf bf bf bf bf bf bf bf 00 00 bf bf bf bf bf bf bf bf bf bf 00 00 bf bf bf bf bf bf bf bf bf bf 00 ff bf bf bf bf bf bf bf bf bf bf 00 ff bf bf bf bf bf bf",
       "type": "INPUT_LETTERS_SAVED",
-      "debug": false
+      "debug": true
     },
     {
       "latin": "P 94 4f a0 l 94 51 a0 a 94 53 a0 y 94 55 a0 e 94 57 a0 r 94 59 a0 bf 00",
       "offset": "19c22",
       "type": "PLAYER",
-      "debug": false
+      "debug": true
+    },
+    {
+      "offset": "2B660",
+      "latin": "0 1 2 3 4 01 01 01 01 01 5 6 7 8 9 01 01 01 01 01 ( ) ! ? # 01 01 01 01 01 [ ] - _ * 01 01 01 01 01 < > ' + = 01 01 01 01 01 / \\ : . % 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01",
+      "type": "INPUT_LETTERS_SAVED"
+    },
+    {
+      "offset": "2B6B5",
+      "latin": "0 1 2 3 4 01 01 01 01 01 5 6 7 8 9 01 01 01 01 01 A B C D E a b c d e F G H I J f g h i j K L M N O k l m n o P Q R S T p q r s t U V W X Y u v w x y Z 01 01 01 01 z 01 01 01 01",
+      "type": "INPUT_LETTERS_SAVED"
     }
   ],
   "latin": [
@@ -485,8 +517,12 @@
       "code":"51"
     },
     {
-      "value":"53=_",
+      "value":"\\",
       "code":"52"
+    },
+    {
+      "value":"_",
+      "code":"53"
     },
     {
       "value":"{O-QUOTE}",

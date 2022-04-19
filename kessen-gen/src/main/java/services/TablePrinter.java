@@ -118,10 +118,12 @@ public class TablePrinter {
                         fdBytes[1] = b;
                         res+= "{"+toHexString(MODE_FD_BYTE)+" "+bytesToHex(fdBytes).trim()+"}";
                         currentMode = previousMode;
+                        fdBytes=null;
                     }
                 }
                 else {
                     String s = japanese.getJapanese(currentMode, b);
+                    if (s==null) s="{"+toHexString(b)+"}";
                     res += s;
                 }
                 if (currentMode==CharType.MODE_FB) {

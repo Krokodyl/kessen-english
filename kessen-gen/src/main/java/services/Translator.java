@@ -25,6 +25,8 @@ public class Translator {
 
     private LatinLoader latinLoader;
 
+    boolean replaceMissingTranslationWithValue = true;
+
     public Translator(LatinLoader latinLoader) {
         this.latinLoader = latinLoader;
     }
@@ -99,7 +101,16 @@ public class Translator {
                 return eng.split(" ");
             }
         }
-        return null;
+        /*
+        Missing translation
+         */
+        if (replaceMissingTranslationWithValue) {
+            String translation = Integer.toHexString(p.getValue());
+            translation += "{EL}";
+            String eng = getCodesFromEnglish(translation);
+            eng = Utils.toHexString(MODE_F0_BYTE) + " " + eng;
+            return eng.split(" ");
+        } else return null;
     }
 
     public String getEnglish(PointerData p) {

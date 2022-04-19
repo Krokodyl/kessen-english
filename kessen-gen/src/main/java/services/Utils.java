@@ -128,4 +128,11 @@ public class Utils {
         }
         return s;
     }
+
+    public static String getColorAsHex(int rgb) {
+        int blue = rgb & 0xff;
+        int green = (rgb & 0xff00) >> 8;
+        int red = (rgb & 0xff0000) >> 16;
+        return toHexString(red,2)+toHexString(green,2)+toHexString(blue,2);
+    }
 }

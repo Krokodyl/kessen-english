@@ -3,17 +3,17 @@ package services;
 import characters.JapaneseChar;
 import entities.Config;
 import entities.Dictionnary;
+import entities.InputPatch;
 import entities.PointerTable;
+import enums.PaletteGame;
+import enums.PaletteIntro;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static services.Constants.*;
 import static services.Utils.toHexString;
 
 public class Kessen {
@@ -25,7 +25,7 @@ public class Kessen {
     public static boolean REVERSE_FLAG_BITS = false;
     public static boolean FLIP_FLAG_BITS = false;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         LatinLoader latinLoader = new LatinLoader();
         Translator translator = new Translator(latinLoader);
@@ -36,6 +36,12 @@ public class Kessen {
         System.out.println("rom-input="+config.getRomInput());
         System.out.println("rom-output="+config.getRomOutput());
         System.out.println("bps-patch-output="+config.getBpsPatchOutput());
+
+        boolean test = false;
+        if (test) {
+            testFontImageReader();
+            return;
+        }
 
         try {
             data = Files.readAllBytes(new File(config.getRomInput()).toPath());
@@ -58,10 +64,13 @@ public class Kessen {
 
         List<PointerTable> tables = JsonLoader.loadTables();
         for (PointerTable table:tables) {
-            if (table.getId()==2) {
+            System.out.println(String.format("---------------- Table %s ---------------------",table.getId()));
+            if (table.isMenu()) {
+                new TablePrinter().generateMenuTable(data, japanese);
+            } else {
                 new TablePrinter().generateTranslationFile(table, data, japanese);
-                //new TablePrinter().generateMenuTable(data, japanese);
             }
+        System.out.println("--------------------------------------");
         }
 
         for (String s:JsonLoader.loadTranslationFiles()) {
@@ -82,6 +91,13 @@ public class Kessen {
 
         for (PointerTable table:tables) {
             DataWriter.writeEnglish(table, data);
+        }
+
+        for (InputPatch ip:JsonLoader.loadInputPatches()) {
+            if (!ip.isDebug()) {
+                ip.generateCode(latinLoader.getLatinChars());
+                ip.writePatch(data);
+            }
         }
 
         /*for (InputPatch ip:JsonLoader.loadInputPatches()) {
@@ -170,9 +186,22 @@ public class Kessen {
         }
     }
 
-    private static String testFontImageReader() {
+    private static String testFontImageReader() throws IOException {
         FontImageReader fontImageReader = new FontImageReader();
-        return fontImageReader.loadFontImage("../font/vram-latin.png");
+        String image = "D:/git/dokapon-english/sprites/town-names/english-sprite.png";
+        String output = "D:/git/dokapon-english/sprites/town-names/sprite-uncompressed.data";
+        //image = "../font/vram-latin.png";
+
+        String s = fontImageReader.loadFontImage4bpp(image, new PaletteGame());
+        byte[] bytes = fontImageReader.getBytes();
+
+        try (FileOutputStream fos = new FileOutputStream(output)) {
+            fos.write(bytes);
+            fos.close();
+            //There is no more need for this line since you had created the instance of "fos" inside the try. And this will automatically close the OutputStream
+        }
+
+        return s;
     }
 
 

@@ -29,6 +29,20 @@ public class Decompressor {
         System.arraycopy(data, start, input, 0, end-start);
     }
 
+    public static void main(String[] args) {
+        String hex = "00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF " +
+        "F8 FF 80 FF 80 FF 80 FF 80 FF 80 FF 80 FF 80 FF " +
+        "01";
+        String[] split = hex.split(" ");
+        byte[] data = new byte[split.length];
+        int k = 0;
+        for (String s:split) {
+            int i = Integer.parseInt(s, 16);
+            data[k++] = (byte) (i & 0xFF);
+        }
+        new Decompressor(data, 0, data.length).decomp();
+    }
+
     public void parseInput() {
         int index = 0;
 

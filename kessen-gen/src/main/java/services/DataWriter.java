@@ -18,7 +18,7 @@ public class DataWriter {
         for (PointerData p : table.getDataEng()) {
 
             int offset = p.getOffset();
-            int value = p.getValue();
+            int value = p.getValue() + Integer.parseInt("8000",16);
             int offsetData = p.getOffsetData();
             String[] menuData = p.getMenuData();
 
