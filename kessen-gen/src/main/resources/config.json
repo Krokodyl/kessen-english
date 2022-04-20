@@ -81,8 +81,50 @@
       "offset": "1000A0",
       "desc": "Loading variables with FD"
     },
+
+
+
     {
-      "code": "8B C2 10 E2 20 A9 A0 48 AB C2 30 AF A6 02 00 C9 01 00 F0 08 B9 30 81 29 FF 00 AB 6B B9 80 81 29 FF 00 AB 6B",
+      "code": "22 E0 80 A0 EA EA",
+      "offset": "2ACF9",
+      "desc": "Jump to the human/cpu storing",
+      "debug": true
+    },
+    {
+      "code": "85 80 A5 00 18 69 05 00 6B",
+      "offset": "1000E0",
+      "desc": "Human/cpu storing (human)",
+      "debug": true
+    },
+    {
+      "code": "22 F0 80 A0 EA",
+      "offset": "2ACED",
+      "desc": "Jump to the human/cpu storing",
+      "debug": true
+    },
+    {
+      "code": "85 80 7A 5A B9 24 AD 6B",
+      "offset": "1000F0",
+      "desc": "Human/cpu storing (cpu)",
+      "debug": true
+    },
+    {
+      "code": "22 D0 80 A0",
+      "offset": "2AE81",
+      "desc": "Human/cpu storing (cpu)",
+      "debug": false
+    },
+    {
+      "code": "85 50 95 86 C9 00 6B",
+      "offset": "1000D0",
+      "desc": "Human/cpu storing (cpu)",
+      "debug": false
+    },
+
+
+
+    {
+      "code": "8B C2 10 E2 20 A9 A0 48 AB C2 30 AF 50 00 00 C9 01 00 F0 08 B9 30 81 29 FF 00 AB 6B B9 80 81 29 FF 00 AB 6B",
       "offset": "100100",
       "desc": "Loading class names"
     },

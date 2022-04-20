@@ -517,3 +517,46 @@ fighter		よわい	Weak	df86
 bard		つよい				e000
 mage		ふつう				dfc6
 knight		メチャづよ			e040
+
+Store current selection human/cpu to $80
+
+Code for human (x2acf9)
+$85/ACF9 A5 00       LDA $00    [$00:0000]   A:0000 X:0220 Y:0006 P:envmxdIZc
+$85/ACFB 18          CLC                     A:0007 X:0220 Y:0006 P:envmxdIzc
+$85/ACFC 69 05 00    ADC #$0005              A:0007 X:0220 Y:0006 P:envmxdIzc
+
+Jump to $A0/80E0 (x1000E0)		22 E0 80 A0 EA EA
+Subroutine						85 80 A5 00 18 69 05 00 6B
+
+Code for computer (x2aced)
+$85/ACED 7A          PLY                     A:0001 X:0220 Y:0006 P:envmxdIzc
+$85/ACEE 5A          PHY                     A:0001 X:0220 Y:0000 P:envmxdIZc
+$85/ACEF B9 24 AD    LDA $AD24,y[$85:AD24]   A:0001 X:0220 Y:0000 P:envmxdIZc
+
+Jump to $A0/80F0 (x1000F0)		22 F0 80 A0 EA
+Subroutine						85 80 7A 5A B9 24 AD 6B
+
+Test x2ae81
+22 D0 80 A0
+85 80 95 86 C9 00 6B
+
+Human
+$85/AE81 95 86       STA $86,x  [$00:02A6]   A:C600 X:0220 Y:000C P:envMxdIzc
+$85/AE83 C9 00       CMP #$00                A:C600 X:0220 Y:000C P:envMxdIzc
+$85/AE85 F0 09       BEQ $09    [$AE90]      A:C600 X:0220 Y:000C P:envMxdIZC
+$85/AE90 A9 01       LDA #$01                A:C600 X:0220 Y:000C P:envMxdIZC
+$85/AE92 8D 20 1C    STA $1C20  [$80:1C20]   A:C601 X:0220 Y:000C P:envMxdIzC
+$85/AE95 22 9B B5 81 JSL $81B59B[$81:B59B]   A:C601 X:0220 Y:000C P:envMxdIzC
+$85/AE99 60          RTS                     A:0080 X:0000 Y:0005 P:eNvMxdIzC
+
+CPU
+$85/AE81 95 86       STA $86,x  [$00:02A6]   A:C701 X:0220 Y:000C P:envMxdIzc
+$85/AE83 C9 00       CMP #$00                A:C701 X:0220 Y:000C P:envMxdIzc
+$85/AE85 F0 09       BEQ $09    [$AE90]      A:C701 X:0220 Y:000C P:envMxdIzC
+$85/AE87 AD 43 1E    LDA $1E43  [$80:1E43]   A:C701 X:0220 Y:000C P:envMxdIzC
+$85/AE8A 20 0A AE    JSR $AE0A  [$85:AE0A]   A:C703 X:0220 Y:000C P:envMxdIzC
+$85/AE8D EE 43 1E    INC $1E43  [$80:1E43]   A:C703 X:0220 Y:000C P:envMxdIzC
+$85/AE90 A9 01       LDA #$01                A:C703 X:0220 Y:000C P:envMxdIzC
+$85/AE92 8D 20 1C    STA $1C20  [$80:1C20]   A:C701 X:0220 Y:000C P:envMxdIzC
+$85/AE95 22 9B B5 81 JSL $81B59B[$81:B59B]   A:C701 X:0220 Y:000C P:envMxdIzC
+$85/AE99 60          RTS                     A:0080 X:0000 Y:0005 P:eNvMxdIzC
