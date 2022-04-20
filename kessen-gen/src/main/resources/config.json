@@ -81,6 +81,33 @@
       "offset": "1000A0",
       "desc": "Loading variables with FD"
     },
+    {
+      "code": "8B C2 10 E2 20 A9 A0 48 AB C2 30 AF A6 02 00 C9 01 00 F0 08 B9 30 81 29 FF 00 AB 6B B9 80 81 29 FF 00 AB 6B",
+      "offset": "100100",
+      "desc": "Loading class names"
+    },
+    {
+      "code": "15 32 30 31 3d 2e 3b 01 01 01 01 01 01 1c 2a 30 2e 01 01 01 01 01 01 01 11 2a 3b 2d 01 01 01 01 01 01 01 01 1a 37 32 30 31 3d 01 01 01 01 01 01",
+      "offset": "100130",
+      "desc": "Class names for human"
+    },
+    {
+      "code": "15 32 30 31 3d 2e 3b 01 14 2a 3c 42 01 01 01 1c 2a 30 2e 01 01 01 1d 38 3b 36 2a 35 11 2a 3b 2d 01 01 01 17 2a 3b 2d 01 01 01 1a 37 32 30 31 3d 01 12 3b 2a 43 42 01 01",
+      "offset": "100180",
+      "desc": "Class names for computer"
+    },
+    {
+      "code": "10 01 10 03 2C 01 2C 03",
+      "eng": "10 02 12 04 2C 02 2C 04",
+      "offset": "2AD24",
+      "desc": "Class name positions",
+      "debug": false
+    },
+    {
+      "code": "A0 01 01 94 68 A0 12 1f 94 6A A0 24 0d",
+      "offset": "2AE0B",
+      "desc": "Computer name"
+    },
 
     {
       "code": "22 00 80 A0 EA EA",
@@ -137,6 +164,11 @@
       "offset": "C5FA",
       "desc": "Jump to the variable loading",
       "debug": false
+    },
+    {
+      "code": "A9 07 00 48 A4 00 22 00 81 A0 EA EA",
+      "offset": "2ACA8",
+      "desc": "Set class name length + Jump to the class name loading"
     }
   ],
   "input-patches": [
@@ -696,6 +728,11 @@
     },
     {
       "value":"-",
+      "code":"0d",
+      "type":"MODE_F0"
+    },
+    {
+      "value":"ー",
       "code":"0d",
       "type":"MODE_F0"
     },

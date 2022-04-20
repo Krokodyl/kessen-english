@@ -55,6 +55,8 @@ public class Kessen {
         List<JapaneseChar> japaneseChars = JsonLoader.loadJapanese();
         Dictionnary japanese = new Dictionnary(japaneseChars);
 
+
+
         //JsonLoader.generateJsonJapanese(config.getFileDicoJap());
         //JsonLoader.generateJsonLatin(config.getFileDicoLatin());
 
@@ -104,6 +106,20 @@ public class Kessen {
             ip.generateCode(latinLoader.getLatinChars());
             if (!ip.isDebug()) ip.writePatch(data);
         }*/
+
+        String jpn = "ファイター バード メイジ ナイト";
+        System.out.println("JPN="+jpn);
+        System.out.print("CODE=");
+        for (char c : jpn.toCharArray()) {
+            String japaneseCharFromJapanese = japanese.getJapaneseCharFromJapanese(c + "");
+            System.out.print(japaneseCharFromJapanese+" ");
+        }
+        System.out.println();
+
+        String eng = "Easy   Normal   Hard   Crazy";
+        System.out.println("ENG="+eng);
+        System.out.print("CODE="+translator.getCodesFromEnglish(eng));
+        System.out.println();
 
         System.out.println("Saving rom-output...");
         DataWriter.saveData(config.getRomOutput(), data);

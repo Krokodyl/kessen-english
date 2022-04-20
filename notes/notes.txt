@@ -248,8 +248,8 @@ x21492		F0 79 61 FE 61 61 63 FF
 |  |  |  |	|----------
 |  |  |  |-------------Height (# of line*2 + 2)
 |  |  |----------------Width (# of char + 2)
-|  |-------------------Y
-|----------------------X
+|  |-------------------Y (# of char * 4)
+|----------------------X (# of char * 2)
 
 (Origin is top left)	
 	
@@ -494,3 +494,26 @@ x20 = 00100000		position 101000100000
 
 ########### NAME INPUT ###########
 x2B6B5	Values for screen 1
+
+########### CLASS SELECTION ###########
+x2AD2C		84Ad2c
+$85/ACAE B9 2C AD    LDA $AD2C,y[$85:AD2C]   A:0005 X:0114 Y:0000 P:envmxdIZc
+$85/ACB1 29 FF 00    AND #$00FF              A:1515 X:0114 Y:0000 P:envmxdIzc
+$85/ACB4 85 08       STA $08    [$00:0008]   A:0015 X:0114 Y:0000 P:envmxdIzc
+
+ファイター	fighter		2B 3E 11 1F 0D 01 
+バード		bard		56 0D 55 01 
+メイジ		mage		31 11 4D 01 
+ナイト		knight		24 11 23 01
+
+Exclamations
+Fighter		ウリァ		Uri~a			Hurray
+Bard		フツ (Futsu) フㇱ		Fu / Fushi
+Mage		ヒァ一		Hey				Hi
+Knight		オ一		O ichi
+
+CPU
+fighter		よわい	Weak	df86
+bard		つよい				e000
+mage		ふつう				dfc6
+knight		メチャづよ			e040

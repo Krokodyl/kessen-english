@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static services.Utils.toHexString;
+
 public class Dictionnary {
 
     Map<CharType, Map<Byte, String>> japaneseDictionnaries = new HashMap<>();
@@ -24,5 +26,18 @@ public class Dictionnary {
 
     public String getJapanese(CharType mode, byte value) {
         return japaneseDictionnaries.get(mode).get(value);
+    }
+
+    public String getJapaneseCharFromJapanese(String s){
+        for (Map.Entry<Byte, String> entry : japaneseDictionnaries.get(CharType.MODE_F0).entrySet()) {
+            if (entry.getValue().equals(s)) return toHexString(entry.getKey());
+        }
+        for (Map.Entry<Byte, String> entry : japaneseDictionnaries.get(CharType.MODE_F1).entrySet()) {
+            if (entry.getValue().equals(s)) return toHexString(entry.getKey());
+        }
+        for (Map.Entry<Byte, String> entry : japaneseDictionnaries.get(CharType.MODE_FB).entrySet()) {
+            if (entry.getValue().equals(s)) return toHexString(entry.getKey());
+        }
+        return "";
     }
 }

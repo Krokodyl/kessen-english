@@ -137,7 +137,7 @@ public class Translator {
         return null;
     }
 
-    private String getCodesFromEnglish(String eng) {
+    public String getCodesFromEnglish(String eng) {
         String res = "";
         boolean skip = false;
         String skipped = "";
