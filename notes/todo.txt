@@ -1,0 +1,6 @@
+Check translation D4E4
+6のクリスタル	6crystal
+かいふくざい		potion
+
+Washi
+ワシ	わし	儂
