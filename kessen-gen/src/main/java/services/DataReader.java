@@ -5,10 +5,13 @@ import entities.PointerData;
 import entities.PointerRange;
 import entities.PointerTable;
 import entities.Translation;
+import enums.PointerOption;
+import enums.PointerRangeType;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -59,52 +62,227 @@ public class DataReader {
         return table;
     }
 
-    public static PointerTable readTable(PointerTable table, byte[] data) {
-        for (PointerRange range : table.getRanges()) {
-            if (table.isMenu()) {
-                int i = range.getStart();
-                while (i <= range.getEnd()) {
-                    byte cursor = data[i];
-                    if (cursor == 2 && data[i+5]==0) {
-                        PointerData p = new PointerData();
-                        int a = (data[i+6] & 0xFF);
-                        int b = (data[i+7] & 0xFF);
-                        int value = b * 256 + a;
-                        int offsetData = value + range.getShift();
-                        byte[] bytes = readUntilEndOfLine(data, offsetData);
-                        if (bytes[0]==MODE_F0_BYTE || bytes[0]==MODE_F1_BYTE) {
-                            p.setValue(value);
-                            p.setOffset(i);
-                            p.setOffsetData(offsetData);
-                            //String[] readData = readPointerData(value, data);
-                            p.setData(bytesToHex(bytes).trim().split(" "));
-                            String[] menuData = new String[6];
-                            menuData[0] = toHexString(data[i]);
-                            menuData[1] = toHexString(data[i+1]);
-                            menuData[2] = toHexString(data[i+2]);
-                            menuData[3] = toHexString(data[i+3]);
-                            menuData[4] = toHexString(data[i+4]);
-                            menuData[5] = toHexString(data[i+5]);
-                            p.setMenuData(menuData);
-                            table.addPointerDataJap(p);
-                        }
+    public static void generateReferenceFile(PointerTable table, String name, String output) throws IOException {
+        PrintWriter writer = new PrintWriter(output, "UTF-8");
+        System.out.println("Reading table from translation File : "+name);
+        BufferedReader br = new BufferedReader(
+                new InputStreamReader(
+                        Objects.requireNonNull(Translator.class.getClassLoader().getResourceAsStream(name)), StandardCharsets.UTF_8));
+        PointerData p = new PointerData();
+        String line = br.readLine();
+        String jpn = "";
+        String eng = "";
+        while (line != null) {
+            if (line.contains(Constants.TRANSLATION_KEY_VALUE_SEPARATOR)) {
+                String[] split = line.split(Constants.TRANSLATION_KEY_VALUE_SEPARATOR);
+                if (split.length>0) {
+                    if (split[0].equals(TRANSLATION_KEY_JPN)) {
+                        if (split.length>1) jpn = split[1];
                     }
-                    i++;
-                }
-            } else {
-                for (int i = range.getStart(); i <= range.getEnd(); i = i + 2) {
-                    PointerData p = new PointerData();
-                    int a = (data[i] & 0xFF);
-                    int b = (data[i + 1] & 0xFF);
-                    int c = b * 256 + a;
-                    p.setValue(c);
-                    p.setOffset(i);
-                    String[] readData = readPointerData(c + range.getShift(), data);
-                    p.setData(readData);
-                    p.setOffsetData(c + range.getShift());
-                    table.addPointerDataJap(p);
+                    if (split[0].equals(TRANSLATION_KEY_ENG)) {
+                        if (split.length>1) eng = split[1];
+                    }
+                    if (!eng.isEmpty() && !jpn.isEmpty()) {
+                        String[] splitJpn = jpn.split("(?<=\\G.{8})");
+                        String[] splitEng = eng.split("(?<=\\G.{8})");
+                        for (int k=0;k<splitJpn.length;k++) {
+                            writer.println(splitEng[k]+"="+splitJpn[k]);
+                        }
+                        eng="";
+                        jpn="";
+                    }
                 }
             }
+            line = br.readLine();
+        }
+        writer.close();
+    }
+    
+    public static void generateDualLetters(String name) throws IOException {
+        System.out.println("generateDualLetters from File : "+name);
+        BufferedReader br = new BufferedReader(
+                new InputStreamReader(
+                        Objects.requireNonNull(Translator.class.getClassLoader().getResourceAsStream(name)), StandardCharsets.UTF_8));
+        PointerData p = new PointerData();
+        String line = br.readLine();
+        String jpn = "";
+        String eng = "";
+        List<String> chars = new ArrayList<>();
+        while (line != null) {
+            if (!line.isEmpty()) {
+                String[] split = line.split("(?<=\\G.{8})");
+                String left = split[0];
+                String right = split[1];
+                for (int k=0;k<left.length();k++) {
+                    String s = left.charAt(k)+right.charAt(k)+"";
+                    if (!chars.contains(s)) chars.add(s); 
+                }
+            }
+            line = br.readLine();
+        }
+        System.out.println("Double chars : "+chars.size());
+    }
+
+    private static List<PointerData> readValues(PointerRange range, byte[] data) {
+        List<PointerData> pointers = new ArrayList<>();
+        if (range.getType()== PointerRangeType.COUNTER) {
+            int i = range.getStart();
+            while (i <= range.getEnd()) {
+                byte counter = data[i++];
+                while (counter-->0) {
+                    PointerData p = new PointerData();
+                    int offset = i;
+                    int a = (data[i++] & 0xFF);
+                    int b = (data[i++] & 0xFF);
+                    int value = b * 256 + a;
+                    p.setValue(value);
+                    p.setOffset(offset);
+                    int offsetData = value + range.getShift();
+                    p.setOffsetData(offsetData);
+                    pointers.add(p);
+                }
+            }
+        }
+        else if (range.getType()==PointerRangeType.MENU) {
+            int i = range.getStart();
+            while (i <= range.getEnd()) {
+                byte cursor = data[i];
+                if (cursor == 2 && data[i+5]==0) {
+                    PointerData p = new PointerData();
+                    int a = (data[i+6] & 0xFF);
+                    int b = (data[i+7] & 0xFF);
+                    int value = b * 256 + a;
+                    p.setValue(value);
+                    p.setOffset(i+6);
+                    p.setOffsetMenuData(i);
+                    int offsetData = value + range.getShift();
+                    byte[] bytes = readUntilEndOfLine(data, offsetData);
+                    
+                        p.setOffsetData(offsetData);
+                        //String[] readData = readPointerData(value, data);
+                        p.setData(bytesToHex(bytes).trim().split(" "));
+                        pointers.add(p);
+                    
+                    i=i+8;
+                } else
+                i++;
+            }
+        }
+        else {
+            int i = range.getStart();
+            while (i <= range.getEnd()) {
+                PointerData p = new PointerData();
+                int offset = i;
+                int a = (data[i++] & 0xFF);
+                int b = (data[i++] & 0xFF);
+                int value = b * 256 + a;
+                p.setValue(value);
+                p.setOffset(offset);
+                int offsetData = value + range.getShift();
+                p.setOffsetData(offsetData);
+                pointers.add(p);
+            }
+        }
+        return pointers;
+    }
+    
+    public static void readData(PointerRange range, List<PointerData> pointers, byte[] data) {
+        for (PointerData p : pointers) {
+            int offsetData = p.getOffsetData();
+            int offsetMenuData = p.getOffsetMenuData();
+
+            /*int offsetData = p.getValue() + range.getShift();
+            p.setOffsetData(offsetData);*/
+            byte[] bytes;
+            
+            if (range.getShift()==0) {
+                bytes = readUntil(data, offsetData, END_OF_LINE_6C_CHARACTER_BYTE);
+            } else bytes = readUntilEndOfLine(data, offsetData);
+            p.setData(bytesToHex(bytes).trim().split(" "));
+            if (range.getType()==PointerRangeType.MENU) {
+                String[] menuData = new String[6];
+                menuData[0] = toHexString(data[offsetMenuData]);
+                menuData[1] = toHexString(data[offsetMenuData+1]);
+                menuData[2] = toHexString(data[offsetMenuData+2]);
+                menuData[3] = toHexString(data[offsetMenuData+3]);
+                menuData[4] = toHexString(data[offsetMenuData+4]);
+                menuData[5] = toHexString(data[offsetMenuData+5]);
+                p.setMenuData(menuData);
+            }
+        }
+
+    }
+    
+    public static PointerTable readTable(PointerTable table, byte[] data) {
+        for (PointerRange range : table.getRanges()) {
+            
+            /*
+            Read values
+             */
+            List<PointerData> pointers;
+            List<PointerData> pointerData = readValues(range, data);
+            
+            /*
+            Read data
+             */
+            readData(range, pointerData, data);
+            
+            /*
+            Add pointers
+             */
+            for (PointerData pointerDatum : pointerData) {
+                if (
+                        (
+                       pointerDatum.getData()[0].equals("F0") ||
+                               pointerDatum.getData()[0].equals("F1")||
+                               pointerDatum.getData()[0].equals("FE")
+                        ) || range.getShift()==0) {
+                    table.addPointerDataJap(pointerDatum);
+                    if (verbose) System.out.println(pointerDatum);
+                }
+                
+            }
+
+            
+            
+            
+             /*else {
+                if (!table.isStopAtNextPointer()) {
+                    for (int i = range.getStart(); i <= range.getEnd(); i = i + 2) {
+                        PointerData p = new PointerData();
+                        int a = (data[i] & 0xFF);
+                        int b = (data[i + 1] & 0xFF);
+                        int c = b * 256 + a;
+                        p.setValue(c);
+                        p.setOffset(i);
+                        String[] readData = readPointerData(c + range.getShift(), data);
+                        p.setData(readData);
+                        p.setOffsetData(c + range.getShift());
+                        table.addPointerDataJap(p);
+                    }
+                } else {
+                    int previousOffset = 0;
+                    for (int i = range.getEnd()+1; i >= range.getStart(); i = i - 2) {
+                        PointerData p = new PointerData();
+                        int a = (data[i] & 0xFF);
+                        int b = (data[i + 1] & 0xFF);
+                        int c = b * 256 + a;
+                        p.setValue(c);
+                        p.setOffset(i);
+                        String[] readData = null;
+                        if (previousOffset==0) {
+                            readData = readPointerData0(c + range.getShift(), data);
+                        } else {
+                            readData = readPointerData(c + range.getShift(), data, previousOffset);
+                        }
+                        p.setData(readData);
+                        p.setOffsetData(c + range.getShift());
+                        table.addPointerDataJap(p);
+                        previousOffset = i;
+                    }
+                }
+
+            }*/
         }
         return table;
     }
@@ -125,6 +303,38 @@ public class DataReader {
         return res.toArray(new String[0]);
     }
 
+    public static String[] readPointerData0(int offset, byte[] data) {
+        boolean end = false;
+        List<String> res = new ArrayList<String>();
+        int i = offset;
+        while (!end) {
+            int a = (data[i] & 0xFF);
+            String s = Utils.toHexString(a);
+            if (s.equals(END_OF_LINE_00_CHARACTER_BYTE)) {
+                end = true;
+            }
+            res.add(s);
+            i = i + 1;
+        }
+        return res.toArray(new String[0]);
+    }
+
+    public static String[] readPointerData(int offset, byte[] data, int stopOffset) {
+        boolean end = false;
+        List<String> res = new ArrayList<String>();
+        int i = offset;
+        while (!end) {
+            int a = (data[i] & 0xFF);
+            String s = Utils.toHexString(a);
+            if (i >= stopOffset) {
+                end = true;
+            }
+            res.add(s);
+            i = i + 1;
+        }
+        return res.toArray(new String[0]);
+    }
+
     public static byte[] readUntilEndOfLine(byte[] data, int start) {
         int count = 1;
         int offset = start;
@@ -133,6 +343,31 @@ public class DataReader {
         }
         byte[] read = new byte[count];
         offset = start;
+        int k = 0;
+        while (k<read.length) {
+            read[k++] = data[offset++];
+        }
+        return read;
+    }
+
+    public static byte[] readUntil(byte[] data, int start, byte b) {
+        int count = 1;
+        int offset = start;
+        while (data[offset++]!=b) {
+            count++;
+        }
+        byte[] read = new byte[count];
+        offset = start;
+        int k = 0;
+        while (k<read.length) {
+            read[k++] = data[offset++];
+        }
+        return read;
+    }
+
+    public static byte[] readUntilOffset(byte[] data, int start, int end) {
+        int offset = start;
+        byte[] read = new byte[end-start];
         int k = 0;
         while (k<read.length) {
             read[k++] = data[offset++];
@@ -157,7 +392,9 @@ public class DataReader {
 
             PointerData newP = new PointerData();
             newP.setOldPointer(p);
-            String[] translation = translator.getTranslation(p, table.isEvenLength());
+            boolean prefix = true;
+            if (table.isStopAtNextPointer()) prefix = false;
+            String[] translation = translator.getTranslation(p, table.isEvenLength(), false);
             String[] menuData = translator.getMenuData(p);
             if (translation != null && translation.length > 0) {
                 newP.setData(translation);
@@ -170,11 +407,16 @@ public class DataReader {
                 newP.setMenuData(p.getMenuData());
             }
             newP.setOffset(offset);
-            newP.setOffsetData(newDataStart);
-            newP.setOffsetOldMenuData(offsetData);
+            if (!table.getKeepOldPointerValues()) {
+                newP.setOffsetData(newDataStart);
+            } else newP.setOffsetData(offsetData);
+            newP.setOffsetMenuData(p.getOffsetMenuData());
             int oldValue = p.getValue();
             if (!mapValues.containsKey(oldValue)) {
-                int value = newDataStart - newDataShift;
+                int value = newDataStart - newDataShift + Integer.parseInt("8000",16);
+                if (table.getKeepOldPointerValues()) {
+                    value = oldValue;
+                }
                 newP.setValue(value);
                 mapValues.put(oldValue, value);
                 if (newP.getData()==null) {
@@ -183,14 +425,7 @@ public class DataReader {
                 double l = newP.getData().length;
                 tableDataLength += l;
                 int longueur = (int) l;
-                /*if (table.getId() == 4) {
-                    longueur = (int) ((Math.ceil(l / 8)) * 16);
-                    if (longueur % 32 == 16) longueur += 16;
-                }*/
                 newDataStart += longueur;
-                /*if (table.getId() == 5) {
-                    if (offsetData % 16 == 0) offsetData += 2;
-                }*/
             } else {
                 newP.setValue(mapValues.get(oldValue));
             }

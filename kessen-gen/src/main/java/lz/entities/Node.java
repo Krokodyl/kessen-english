@@ -1,8 +1,4 @@
-package compression.tree;
-
-import compression.CompressedByte;
-import compression.DataByte;
-import compression.RepeatByte;
+package lz.entities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +10,7 @@ public class Node {
     int offsetRepeat = -1;
     int repeatLength = 0;
     String data;
+    String pattern;
     Node repeatOf;
     NodeType type = NodeType.UNTREATED;
 
@@ -26,53 +23,123 @@ public class Node {
         this.parent = parent;
     }
 
-    public List<CompressedByte> getCompressedByte() {
+    public List<CompressedByte> getCompressedByte(Header header) {
         List<CompressedByte> cbs = new ArrayList<>();
-        if (left!=null) cbs.addAll(left.getCompressedByte());
-        if (type==NodeType.DATA) cbs.add(new DataByte(Integer.parseInt(data, 16) & 0xFF));
-        else if ((type==NodeType.REPEAT && offsetRepeat==-1) || type==NodeType.UNTREATED) {
+        if (offset==3652) {
+            System.out.println();
+        }
+        if (left!=null) cbs.addAll(left.getCompressedByte(header));
+        if (type== NodeType.DATA) cbs.add(new DataByte(Integer.parseInt(data, 16) & 0xFF));
+        else if ((type== NodeType.REPEAT && (offsetRepeat==-1 || (offset / 2 - offsetRepeat / 2 - 1)>header.getMaxPosition())) || type== NodeType.UNTREATED) {
             for (int i=0;i<data.length();i=i+2) {
                 cbs.add(new DataByte(Integer.parseInt(data.substring(i, i+2), 16) & 0xFF));
             }
-        } else if (type==NodeType.REPEAT) {
-            RepeatByte rb = new RepeatByte(repeatLength-2, offset/2 - offsetRepeat/2 -1);
-            cbs.add(rb);
+        } else if (type== NodeType.REPEAT) {
+            if (repeatLength>header.getMaxSize()) {
+                int o = offset;
+                int l = repeatLength;
+                int position = -1;
+                while (l>0) {
+                    if (l==1) {
+                        cbs.add(new DataByte(Integer.parseInt(data.substring(data.length()-2), 16) & 0xFF));
+                        l--;
+                    }
+                    else {
+                        if (position==-1) position = o / 2 - offsetRepeat / 2 - 1;
+                        RepeatByte rb = new RepeatByte(header, (Math.min(l, header.getMaxSize())), position);
+                        cbs.add(rb);
+                        o = o + Math.min(l, header.getMaxSize());
+                        l = l - header.getMaxSize();
+                    }
+                }
+            }
+            else {
+                RepeatByte rb = new RepeatByte(header, repeatLength, offset / 2 - offsetRepeat / 2 - 1);
+                cbs.add(rb);
+            }
         }
-        if (right!=null) cbs.addAll(right.getCompressedByte());
+        if (right!=null) cbs.addAll(right.getCompressedByte(header));
         return cbs;
     }
 
     public void println() {
         if (left!=null) left.println();
-        System.out.println(offset+" "+data+" "+type+" "+getRepeatLength()+"   "+offsetRepeat);
+        System.out.println(
+                String.format("%-6d",offset)
+                +"\t"+String.format("%-9s",type)
+                +"\t"+getRepeatLength()
+                +"\t"+offsetRepeat
+                        +"\t"+String.format("%-16s",data)
+                        +"\t"+String.format("%-16s",pattern)
+        );
         if (right!=null) right.println();
     }
 
     public void split(String pattern) {
-        if (offset==929) {
+        if (pattern.equals("7EFF")) {
+            System.out.println();
+        }
+        if (offset==1834) {
             System.out.println();
         }
         int index = data.indexOf(pattern);
         while (index>=0 && index%2!=0) index = data.indexOf(pattern, index + 1);
         if (index>=0) {
+            int i = index + pattern.length();
+            while (data.indexOf(pattern, i) == i) {
+                i = data.indexOf(pattern, i) + pattern.length();
+            }
             String leftData = data.substring(0, index);
-            String rightData = data.substring(index+pattern.length());
+            String rightData = data.substring(i);
+            String middleData = data.substring(index, i);
+            //System.out.println("middleData="+middleData);
             setType(NodeType.REPEAT);
-            setRepeatLength(pattern.length()/2);
+            setRepeatLength((middleData.length()-pattern.length())/2);
+            if (middleData.equals(pattern)) setRepeatLength(pattern.length()/2);
+            setPattern(pattern);
             if (!leftData.isEmpty()) {
-                left = new Node(leftData, this);
+                // Insert new node left
+                Node newleft = new Node(leftData, this);
+                newleft.setOffset(offset);
+                if (left!=null) {
+                    left.setParent(newleft);
+                }
+                newleft.setLeft(left);
+                left = newleft;
+                setOffset(offset+leftData.length());
             }
             if (!rightData.isEmpty()) {
-                right = new Node(rightData, this);
+                // Insert new node right
+                Node newright = new Node(rightData, this);
+                newright.setOffset(offset);
+                if (right!=null) {
+                    right.setParent(newright);
+                }
+                newright.setRight(right);
+                right = newright;
+                right.setOffset(offset+middleData.length());
             }
-            data = pattern;
+            if (i>index+pattern.length()) {
+                Node newFutureDataNode = new Node(pattern, this);
+                newFutureDataNode.setOffset(offset);
+                newFutureDataNode.setType(NodeType.REPEAT);
+                if (left!=null) {
+                    left.setParent(newFutureDataNode);
+                }
+                newFutureDataNode.setLeft(left);
+                newFutureDataNode.setRepeatLength(0);
+                left = newFutureDataNode;
+                setOffset(offset+pattern.length());
+                data = data.substring(index+pattern.length(), i);
+            } else {
+                data = data.substring(index, i);
+            }
+            //setRepeatLength(((middleData.length()-pattern.length())/pattern.length())+1);
             if (left != null) {
-                left.setOffset(offset);
                 left.split(pattern);
             }
-            offset += index;
+            //offset += index;
             if (right!=null) {
-                right.setOffset(offset+pattern.length());
                 right.split(pattern);
             }
         } else {
@@ -83,7 +150,7 @@ public class Node {
 
     public List<Node> getUntreatedNodes() {
         List<Node> nodes = new ArrayList<>();
-        if (type==NodeType.UNTREATED) nodes.add(this);
+        if (type== NodeType.UNTREATED) nodes.add(this);
         if (left!=null) nodes.addAll(left.getUntreatedNodes());
         if (right!=null) nodes.addAll(right.getUntreatedNodes());
         return nodes;
@@ -102,18 +169,20 @@ public class Node {
     }
 
     public Map<String, Integer> updateRepeat(Map<String, Integer> patternOffset) {
-
+        if (offset==288) {
+            System.out.println();
+        }
         if (left!=null) patternOffset.putAll(left.updateRepeat(patternOffset));
-        if (type==NodeType.REPEAT) {
-            Integer found = patternOffset.get(data);
+        if (type== NodeType.REPEAT) {
+            Integer found = patternOffset.get(pattern);
             if (found==null) {
-                patternOffset.put(data, offset);
-                if (data.matches("^(.)\\1*$")) {
+                patternOffset.put(pattern, offset);
+                /*if (data.matches("^(.)\\1*$")) {
                     compressRepeatingData();
-                }
+                }*/
             } else {
                 offsetRepeat = found.intValue();
-                patternOffset.put(data, offset);
+                patternOffset.put(pattern, offset);
             }
         }
         if (right!=null) patternOffset.putAll(right.updateRepeat(patternOffset));
@@ -138,15 +207,15 @@ public class Node {
 
     public int getSize() {
         int size = data.length()/2;
-        if (type==NodeType.REPEAT) size = 2;
-        if (type==NodeType.DATA) size = 1;
+        if (type== NodeType.REPEAT) size = 2;
+        if (type== NodeType.DATA) size = 1;
         return size;
     }
 
     public int getTreeSize() {
         int size = data.length()/2;
-        if (type==NodeType.REPEAT) size = 2;
-        if (type==NodeType.DATA) size = 1;
+        if (type== NodeType.REPEAT) size = 2;
+        if (type== NodeType.DATA) size = 1;
         return size + (left!=null?left.getTreeSize():0) + (right!=null?right.getTreeSize():0);
     }
 
@@ -156,6 +225,14 @@ public class Node {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public String getPattern() {
+        return pattern;
+    }
+
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
     }
 
     public Node getLeft() {
@@ -180,6 +257,9 @@ public class Node {
 
     public void setOffset(int offset) {
         this.offset = offset;
+        if (offset==1834) {
+            System.out.println();
+        }
     }
 
     public Node getRepeatOf() {

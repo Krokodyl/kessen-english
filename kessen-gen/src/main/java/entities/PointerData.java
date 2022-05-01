@@ -8,7 +8,7 @@ public class PointerData {
     private int offsetData;
     private PointerData oldPointer;
     private String[] menuData;
-    private int offsetOldMenuData;
+    private int offsetMenuData;
 
     public void setValue(int value) {
         if (this.value>0) System.out.println(this.value+"  ->  "+value);
@@ -60,18 +60,23 @@ public class PointerData {
         return menuData;
     }
 
-    public void setOffsetOldMenuData(int offsetOldMenuData) {
-        this.offsetOldMenuData = offsetOldMenuData;
+    public void setOffsetMenuData(int offsetMenuData) {
+        this.offsetMenuData = offsetMenuData;
     }
 
-    public int getOffsetOldMenuData() {
-        return offsetOldMenuData;
+    public int getOffsetMenuData() {
+        return offsetMenuData;
     }
 
     @Override
     public String toString() {
         String s = "";
         for (String a:data) s = s+a+" ";
-        return "Pointer{" + "offset=" + Integer.toHexString(offset) + ", value=" + Integer.toHexString(value) + ", offsetdata="+Integer.toHexString(offsetData)+", data=" + s + '}';
+        String t = "";
+        if (menuData!=null)
+        for (String a:menuData) t = t+a+" ";
+        return "Pointer{" + "offset=" + Integer.toHexString(offset) + ", value=" + Integer.toHexString(value) + ", offsetdata="+Integer.toHexString(offsetData)+", menudata=" + t + ", data=" + s + '}';
     }
+    
+    
 }

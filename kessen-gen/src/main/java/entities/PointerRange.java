@@ -1,10 +1,13 @@
 package entities;
 
+import enums.PointerRangeType;
+
 public class PointerRange {
 
     private int start;
     private int end;
     private int shift;
+    private PointerRangeType type = PointerRangeType.NORMAL;
 
     public PointerRange(int start, int end, int shift) {
         this.start = start;
@@ -34,5 +37,13 @@ public class PointerRange {
 
     public void setShift(int shift) {
         this.shift = shift;
+    }
+
+    public PointerRangeType getType() {
+        return type;
+    }
+
+    public void setType(PointerRangeType type) {
+        this.type = type;
     }
 }

@@ -18,13 +18,16 @@ public class DataWriter {
         for (PointerData p : table.getDataEng()) {
 
             int offset = p.getOffset();
-            int value = p.getValue() + Integer.parseInt("8000",16);
+            int offsetMenuData = p.getOffsetMenuData();
+            int value = p.getValue();
             int offsetData = p.getOffsetData();
             String[] menuData = p.getMenuData();
 
             if (menuData==null) {
-                data[offset] = (byte) (value % 256);
-                data[offset + 1] = (byte) (value / 256);
+                if (!table.getKeepOldPointerValues()) {
+                    data[offset] = (byte) (value % 256);
+                    data[offset + 1] = (byte) (value / 256);
+                }
                 for (String s : p.getData()) {
                     int a = Integer.parseInt(s.substring(0, 2), 16);
                     data[offsetData] = (byte) a;
@@ -32,8 +35,11 @@ public class DataWriter {
                 }
             } else {
 
-                data[offset+6] = (byte) (value % 256);
-                data[offset+7] = (byte) (value / 256);
+                System.out.println();
+                //if (offset == Integer.parseInt("207f1",16)) {
+                    data[offset] = (byte) (value % 256);
+                    data[offset + 1] = (byte) (value / 256);
+                //}
                 for (String s : p.getData()) {
                     int a = Integer.parseInt(s.substring(0, 2), 16);
                     data[offsetData] = (byte) a;
@@ -42,7 +48,7 @@ public class DataWriter {
                 int menuByte = 0;
                 for (String s : menuData) {
                     int a = Integer.parseInt(s.substring(0, 2), 16);
-                    data[offset+(menuByte++)] = (byte) a;
+                    data[offsetMenuData+(menuByte++)] = (byte) a;
                 }
             }
         }

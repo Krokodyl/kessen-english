@@ -12,9 +12,11 @@ public class PointerTable {
     private int newDataStart;
     private int newDataShift;
     boolean counter = false;
-    boolean menu = false;
+    //boolean menu = false;
     boolean evenLength = false;
+    boolean stopAtNextPointer= false;
     private Overflow overflow;
+    private boolean keepOldPointerValues = false;
 
     public PointerTable(int id) {
         this.id = id;
@@ -64,13 +66,13 @@ public class PointerTable {
         this.counter = counter;
     }
 
-    public boolean isMenu() {
+    /*public boolean isMenu() {
         return menu;
     }
 
     public void setMenu(boolean menu) {
         this.menu = menu;
-    }
+    }*/
 
     public boolean isEvenLength() {
         return evenLength;
@@ -102,5 +104,21 @@ public class PointerTable {
 
     public boolean hasOverflow() {
         return overflow!=null;
+    }
+
+    public boolean isStopAtNextPointer() {
+        return stopAtNextPointer;
+    }
+
+    public void setStopAtNextPointer(boolean stopAtNextPointer) {
+        this.stopAtNextPointer = stopAtNextPointer;
+    }
+
+    public void setKeepOldPointerValues(boolean keepOldPointerValues) {
+        this.keepOldPointerValues = keepOldPointerValues;
+    }
+
+    public boolean getKeepOldPointerValues() {
+        return keepOldPointerValues;
     }
 }

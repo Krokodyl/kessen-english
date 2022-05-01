@@ -1,4 +1,5 @@
-package compression;
+package lz.entities;
+
 
 import services.Utils;
 

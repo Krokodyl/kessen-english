@@ -46,7 +46,9 @@ x108000		61
 x110000
 x118000		63
 
+x2028D
 
+8d 
 
 TABLE 2		2005D	204C5		218B9		22A81
 
@@ -77,6 +79,11 @@ x21492		F0 79 61 FE 61 61 63 FF
 
 x20cd3 (d3 8c)		20393		ok
 	
+
+$81/C517 AC C2 1D    LDY $1DC2  [$84:1DC2]   A:0003 X:0000 Y:02C2 P:envmxdIzc
+$81/C51A A2 00 00    LDX #$0000              A:0003 X:0000 Y:843D P:eNvmxdIzc
+
+
 
 55 1d 58 1d	
 
@@ -244,12 +251,16 @@ x21481 (92 94)
 x21492		F0 79 61 FE 61 61 63 FF
 	pointer x207F1 (92 94)
 
-74 05 05 06 00 92 94
-|  |  |  |	|----------
-|  |  |  |-------------Height (# of line*2 + 2)
-|  |  |----------------Width (# of char + 2)
-|  |-------------------Y (# of char * 4)
-|----------------------X (# of char * 2)
+
+02 X  Y  W  H  00 Pointer
+
+02 74 05 05 06 00 92 94
+|  |  |  |	|  00 Pointer
+|  |  |  |  Height (# of line*2 + 2)
+|  |  |  Width (# of char + 2)
+|  |  Y (# of char * 4)
+|  X (# of char * 2)
+02
 
 (Origin is top left)	
 	
@@ -536,7 +547,7 @@ $85/ACEF B9 24 AD    LDA $AD24,y[$85:AD24]   A:0001 X:0220 Y:0000 P:envmxdIZc
 Jump to $A0/80F0 (x1000F0)		22 F0 80 A0 EA
 Subroutine						85 80 7A 5A B9 24 AD 6B
 
-Test x2ae81
+Test x2AE81
 22 D0 80 A0
 85 80 95 86 C9 00 6B
 
@@ -560,3 +571,116 @@ $85/AE90 A9 01       LDA #$01                A:C703 X:0220 Y:000C P:envMxdIzC
 $85/AE92 8D 20 1C    STA $1C20  [$80:1C20]   A:C701 X:0220 Y:000C P:envMxdIzC
 $85/AE95 22 9B B5 81 JSL $81B59B[$81:B59B]   A:C701 X:0220 Y:000C P:envMxdIzC
 $85/AE99 60          RTS                     A:0080 X:0000 Y:0005 P:eNvMxdIzC
+
+
+
+x2689E = x18000 + E89E		(Wrong : x2689E = x20000 + 689E)
+
+x856BD = x78000 + D6BD
+
+########## ITEM LIST ##########
+x85BAD		03 78 17 37 1C 1F 38 01
+x85BB5		04 78 17 37 1C 1F 38 01		B55B
+
+########## ITEM DESC ##########
+x2689E		F0 AD AE 92 01 03 02 02 F1 1A 1B F0 6C 88 BA 67 6C 87 BB FF
+Potion:		HPが 100回
+x268B2
+x268CB
+
+
+
+########## CITY LIST 
+アーモリ	Āmori
+ホツカ		Hotsuka
+
+########## TOWN DESC ##########
+x21540		FE F1 04 F0 78 39 59 38 8C 60 95 88 75 79 01 FD 01 02 4B 0D 38 55 01 7A 71 85 62 9F 6C FF
+x25541
+
+モンスタ-に支配されています
+Dominated by monster
+0D 32 3D 1C 1F 0D 75 F1 37 38 F0 6A 89 72 61 7E 6C AC E5 1D B9 DC 00 29 FF
+xBFCB
+81:BFCB
+
+x00BFA3	81:BFA3		B7 BF
+x00BFA7	81:BFA7		CA BF
+
+$81/BF50 BD 00 00    LDA $0000,x[$81:BFCA]   A:BFCA X:BFCA Y:2977 P:eNvmxdIzc
+$81/BF53 29 FF 00    AND #$00FF              A:320D X:BFCA Y:2977 P:envmxdIzc
+
+$81/BCFB B9 00 00    LDA $0000,y[$81:BFCB]   A:000D X:0542 Y:BFCB P:envmxdIzc
+$81/BCFE 29 FF 00    AND #$00FF              A:3D32 X:0542 Y:BFCB P:envmxdIzc
+
+pointer table : BF9C-BFA8
+
+Table : ???
+Texts						Pointer					Value
+
+
+
+
+x2149A												9A 94
+x21500												00 95
+x21503												03 95
+x21523												23 95
+x21540		$84:9540		x20821		$84:8821	40 95
+x2155E												5E 95
+
+881B + 6 = 8821
+LDA $0006,x[$84:8821] = 9540
+
+LDA $0001,x[$84:8130]  (X:812F)  = 881B
+84:8130		881B
+
+19311-193EC
+ED 93	x213ED
+FE 95	x215FE
+
+x2081B	1B 88
+
+8d 82	x20d82
+fd 80	x26d80
+
+200BA-2023C
+
+Address		Value		Pointing to
+x19311		ED 93		x213ED
+x213ED
+
+################ TABLES ##################
+x180BE		CE 80	???
+
+19311-193EC		110 values			ED 93 EE 93 F1 93 F6 93 F9 93 FC 93 FF 93
+shift : x10000
+indirect to 193ED-195F0		values with counter
+
+20000-200B9
+shift : x18000
+indirect to 200BA-2023C		values with counter
+
+01 8D 82 	8d01
+01 9D 88 
+01 95 82 
+02 9D 82
+03 25 84
+
+2028D-209E6
+02 CC 01 14 0E 00 E7 89 				x209E7	ok
+02 B0 03 08 06 00 99 8A 				x20a99	ok
+02 80 03 0E 06 00 A6 8A A7 82 43 00 	x20AA6	ok
+02 9C 00 12 12 00 B3 8A B3 82 
+shift : x18000
+
+218D9-21AD8
+
+236F5-23880
+
+264A4-264D5
+
+267E3-2689C
+
+27414-2742D
+
+275A8-275C1

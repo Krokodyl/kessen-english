@@ -1,9 +1,6 @@
-package compression;
+package lz.entities;
 
-import services.Kessen;
 import services.Utils;
-
-import javax.rmi.CORBA.Util;
 
 public class FlagByte extends CompressedByte {
 
@@ -11,14 +8,6 @@ public class FlagByte extends CompressedByte {
 
     public FlagByte(byte value) {
         this.value = value;
-        //System.out.println("FLAG BEFORE "+Utils.toHexString(this.value));
-        if (Kessen.REVERSE_FLAG_BITS) {
-            this.value = (byte) (Utils.reverse(this.value) & 0xFF);
-        }
-        if (Kessen.FLIP_FLAG_BITS) {
-            this.value = (byte) (Utils.complement(this.value) & 0xFF);
-        }
-        //System.out.println("FLAG AFTER "+Utils.toHexString(this.value));
     }
 
     /**

@@ -3,11 +3,15 @@ package services;
 public class Constants {
 
     public static String END_OF_LINE_CHARACTER_HEXA = "FF";
+    public static String END_OF_LINE_00_CHARACTER_HEXA = "00";
     public static byte END_OF_LINE_CHARACTER_BYTE = (byte) Integer.parseInt("FF",16);
+    public static byte END_OF_LINE_00_CHARACTER_BYTE = (byte) Integer.parseInt("00",16);
+    public static byte END_OF_LINE_6C_CHARACTER_BYTE = (byte) Integer.parseInt("6C",16);
     public static byte MODE_F0_BYTE = (byte) Integer.parseInt("F0",16);
     public static byte MODE_F1_BYTE = (byte) Integer.parseInt("F1",16);
     public static byte MODE_FB_BYTE = (byte) Integer.parseInt("FB",16);
     public static byte MODE_FD_BYTE = (byte) Integer.parseInt("FD",16);
+    public static byte MODE_BF_BYTE = (byte) Integer.parseInt("BF",16);
 
     public static String NEW_LINE_CHARACTER_HEXA = "FE";
 

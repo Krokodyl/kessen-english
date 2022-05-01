@@ -1,12 +1,9 @@
 package services;
 
 import characters.JapaneseChar;
-import entities.Config;
-import entities.Dictionnary;
-import entities.InputPatch;
-import entities.PointerTable;
-import enums.PaletteGame;
-import enums.PaletteIntro;
+import entities.*;
+import enums.PaletteText;
+import services.sprites.FontImageReader;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -36,12 +33,9 @@ public class Kessen {
         System.out.println("rom-input="+config.getRomInput());
         System.out.println("rom-output="+config.getRomOutput());
         System.out.println("bps-patch-output="+config.getBpsPatchOutput());
-
-        boolean test = false;
-        if (test) {
-            testFontImageReader();
-            return;
-        }
+        
+        // Call this once whenever the vram-latin.png image is modified.
+        //new FontImageReader().generateSpriteLatinCharacters();
 
         try {
             data = Files.readAllBytes(new File(config.getRomInput()).toPath());
@@ -67,12 +61,15 @@ public class Kessen {
         List<PointerTable> tables = JsonLoader.loadTables();
         for (PointerTable table:tables) {
             System.out.println(String.format("---------------- Table %s ---------------------",table.getId()));
-            if (table.isMenu()) {
+            /*if (table.isMenu()) {
                 new TablePrinter().generateMenuTable(data, japanese);
             } else {
                 new TablePrinter().generateTranslationFile(table, data, japanese);
+            }*/
+            if (table.getId()==3) {
+                DataReader.generateReferenceFile(table, "translations/backup/Table 3.txt", "src/main/resources/tables/references.txt");
             }
-        System.out.println("--------------------------------------");
+            System.out.println("--------------------------------------");
         }
 
         for (String s:JsonLoader.loadTranslationFiles()) {
@@ -85,12 +82,19 @@ public class Kessen {
         translator.setSpecialCharMap(JsonLoader.loadSpecialChars());
 
         for (PointerTable table:tables) {
-            DataReader.readTable(table, data);
+           DataReader.readTable(table, data);
+            //else DataReader.readTableFromTranslationFile(table,"translations/Table 3.txt");
         }
+
+        for (PointerTable table:tables) {
+            new TablePrinter().generateTranslationFile2(table, data, japanese, "src/main/resources/gen/Table "+table.getId()+".txt");
+        }
+        
+        
         for (PointerTable table:tables) {
             DataReader.generateEnglish(translator, table, data);
         }
-
+        
         for (PointerTable table:tables) {
             DataWriter.writeEnglish(table, data);
         }
@@ -107,7 +111,7 @@ public class Kessen {
             if (!ip.isDebug()) ip.writePatch(data);
         }*/
 
-        String jpn = "ファイター バード メイジ ナイト";
+        String jpn = "モンスターに支配されてしま";
         System.out.println("JPN="+jpn);
         System.out.print("CODE=");
         for (char c : jpn.toCharArray()) {
@@ -116,10 +120,19 @@ public class Kessen {
         }
         System.out.println();
 
-        String eng = "Easy   Normal   Hard   Crazy";
+        String eng = "itMP";
         System.out.println("ENG="+eng);
         System.out.print("CODE="+translator.getCodesFromEnglish(eng));
         System.out.println();
+
+        String prefix = "8";
+        for (int k=1;k<=26+1;k++) {
+            String s = Utils.padLeft(Integer.toString(k), '0', 6);
+            System.out.print(prefix+s+" ");
+        }
+        System.out.println();
+
+        DataReader.generateDualLetters("tables/dual-words.txt");
 
         System.out.println("Saving rom-output...");
         DataWriter.saveData(config.getRomOutput(), data);
@@ -204,11 +217,11 @@ public class Kessen {
 
     private static String testFontImageReader() throws IOException {
         FontImageReader fontImageReader = new FontImageReader();
-        String image = "D:/git/dokapon-english/sprites/town-names/english-sprite.png";
-        String output = "D:/git/dokapon-english/sprites/town-names/sprite-uncompressed.data";
+        String image = "src/main/resources/images/vram-latin.png";
+        String output = "src/main/resources/data/sprite-uncompressed.data";
         //image = "../font/vram-latin.png";
 
-        String s = fontImageReader.loadFontImage4bpp(image, new PaletteGame());
+        String s = fontImageReader.loadFontImage2bpp(image, new PaletteText());
         byte[] bytes = fontImageReader.getBytes();
 
         try (FileOutputStream fos = new FileOutputStream(output)) {
@@ -220,106 +233,4 @@ public class Kessen {
         return s;
     }
 
-
-
-    private static void testCompressor() {
-        Compressor compressor = new Compressor();
-        try {
-            compressor.analyzeData();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void testDecompressor() {
-        Decompressor decompressor = new Decompressor(data, Integer.parseInt("58003",16), Integer.parseInt("58003",16)+Integer.parseInt("1147",16));
-
-        String lzssTest = "DF 22 33 88 88 88 00 02 88 88 F7 66 66 66 00 02 55 55 55 55 FD 55 A0 12 44 44 44 44 11".replaceAll(" ","");
-        String lz11Test = "0E 22 AA AA AA 20 02 50 05 30 03 55 3C 55 55 20 02 50 05 30 03 F0 18 33".replaceAll(" ","");
-        String lzxEvb = "09 22 33 88 88 50 01 66 66 30 01 30 55 55 20 01 C0 12 44 44 44 44 00 11";
-        String lzxEvl = "F7 22 33 88 88 26 00 66 66 24 00 CE 55 55 23 00 3D 01 44 44 22 00 11 80 00 00";
-        String lzxEwb = "15 22 33 88 60 00 66 40 00 55 30 00 A0 C0 12 44 20 00 11";
-        String lzxEwl = "EB 22 33 88 17 00 66 15 00 55 14 00 58 3D 01 44 13 00 11 00 00";
-
-
-        // LZX EVB  true true
-        // LZX EVL  true false
-        String compressedTest = lzxEwb;
-        Kessen.REVERSE_FLAG_BITS = true;
-        Kessen.FLIP_FLAG_BITS = true;
-
-
-        compressedTest = compressedTest.replaceAll(" ","");
-        byte[] s = Utils.hexStringToByteArray(compressedTest);
-        decompressor = new Decompressor(s, 0, s.length);
-        System.out.println("TEST");
-        decompressor.decomp();
-        decompressor.printSingleLineOutput();
-    }
-
-    public void bordel() {
-        Decompressor decompressor = new Decompressor(data, Integer.parseInt("58003",16), Integer.parseInt("58003",16)+Integer.parseInt("1147",16));
-
-        Compressor compressor = new Compressor();
-        try {
-            compressor.analyzeData();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        byte[] bytes1 = null;
-        try {
-            byte[] uncompressedData = Files.readAllBytes(new File("../font/uncompressed-latin-bytes.bin").toPath());
-
-            ByteArrayOutputStream compressed = null;
-
-            bytes1 = compressed.toByteArray();
-
-            System.out.println(Utils.bytesToHex(bytes1));
-            System.out.println("count="+bytes1.length);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-
-
-        //byte[] data = Utils.hexStringToByteArray("00000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEDFFFFDEFFDEFFFFFFFFFFFFFBFFFFFBFFFBFF");
-        try {
-            //byte[] uncompressedData = Files.readAllBytes(new File("../font/uncompressed-latin-bytes.bin").toPath());
-            byte[] uncompressedData = Files.readAllBytes(new File("../font/bytes.sfc").toPath());
-            //System.out.println(Utils.bytesToHex(uncompressedData));
-            /*Compressor compressor = new Compressor(uncompressedData);
-            byte[] comp = compressor.comp();
-            String s = Utils.bytesToHex(comp);
-            System.out.println(s);*/
-
-            /*LZSS compressor = new LZSS(new ByteArrayInputStream(uncompressedData));
-            ByteArrayOutputStream compressed = compressor.compress();
-            byte[] bytes1 = compressed.toByteArray();
-            System.out.println(Utils.bytesToHex(bytes1));
-
-            LZSS lzss = new LZSS(new ByteArrayInputStream(bytes1));
-            ByteArrayOutputStream decompressedStream = lzss.uncompress();
-            byte[] byteArray = decompressedStream.toByteArray();
-            System.out.println(Utils.bytesToHex(byteArray));*/
-
-
-            /*decompressor = new Decompressor(bytes1, Integer.parseInt("0",16), bytes1.length);
-            decompressor.decomp();*/
-
-            /*byte[] bytes = Utils.hexStringToByteArray("ff49276d20626c7565ff2064612062612064bd65f5f661610a44f8ff2c40f6ff1c0f050f2c0f520f3b0b0aeeff003e0f650fa90fbb0fa40fcb0ff10fda06");
-            LZSS lzss = new LZSS(new ByteArrayInputStream(bytes));
-            ByteArrayOutputStream decompressedStream = lzss.uncompress();
-            byte[] byteArray = decompressedStream.toByteArray();
-            System.out.println();
-            System.out.println(new String(byteArray));
-
-            decompressor = new Decompressor(bytes, Integer.parseInt("0",16), bytes.length);
-            decompressor.decomp();*/
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

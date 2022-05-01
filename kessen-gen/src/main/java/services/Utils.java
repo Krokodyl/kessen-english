@@ -85,6 +85,14 @@ public class Utils {
         return data;
     }
 
+    public static byte[] hexStringToByteArray(String[] s) {
+        byte[] bytes = new byte[s.length];
+        for (int i = 0; i < s.length; i++) {
+            bytes[i] = (byte) (Integer.parseInt(s[i],16) & 0xFF);
+        }
+        return bytes;
+    }
+
     public static int findArray(int[] largeArray, int[] subArray) {
 
         /* If any of the arrays is empty then not found */

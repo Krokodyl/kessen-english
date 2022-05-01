@@ -33,7 +33,7 @@ public class Dictionnary {
             if (entry.getValue().equals(s)) return toHexString(entry.getKey());
         }
         for (Map.Entry<Byte, String> entry : japaneseDictionnaries.get(CharType.MODE_F1).entrySet()) {
-            if (entry.getValue().equals(s)) return toHexString(entry.getKey());
+            if (entry.getValue().equals(s)) return "F1 "+toHexString(entry.getKey());
         }
         for (Map.Entry<Byte, String> entry : japaneseDictionnaries.get(CharType.MODE_FB).entrySet()) {
             if (entry.getValue().equals(s)) return toHexString(entry.getKey());

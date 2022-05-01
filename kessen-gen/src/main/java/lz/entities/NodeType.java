@@ -1,4 +1,4 @@
-package compression.tree;
+package lz.entities;
 
 public enum NodeType {
 

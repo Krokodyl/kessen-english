@@ -5,15 +5,21 @@ import characters.*;
 import entities.*;
 import enums.CharSide;
 import enums.CharType;
+import enums.PointerOption;
+import enums.PointerRangeType;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.*;
+
+import static services.Utils.bytesToHex;
 
 public class JsonLoader {
 
@@ -123,6 +129,17 @@ public class JsonLoader {
             JSONObject next = (JSONObject) o;
             String code = next.getString("code");
             int offset = Integer.parseInt(next.getString("offset"), 16);
+            if (next.has("file") && next.getBoolean("file")) {
+                try {
+                    System.out.println("Loading code patch "+"src/main/resources/data/output/" + next.getString("offset") + ".data");
+                    byte[] bytes = Files.readAllBytes(new File("src/main/resources/data/output/" + next.getString("offset") + ".data").toPath());
+                    code = bytesToHex(bytes);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                code = next.getString("code");
+            }
             CodePatch codePatch = new CodePatch(code, offset);
             if (next.has("debug")) codePatch.setDebug(next.getBoolean("debug"));
             codePatches.add(codePatch);
@@ -167,16 +184,41 @@ public class JsonLoader {
                         Integer.parseInt(pointerObject.getString("start"),16),
                         Integer.parseInt(pointerObject.getString("end"),16),
                         Integer.parseInt(pointerObject.getString("shift"),16));
+                if (pointerObject.has("type")) {
+                    String type = pointerObject.getString("type");
+                    if (type.equals("COUNTER")) {
+                        range.setType(PointerRangeType.COUNTER);
+                    }
+                    if (type.equals("MENU")) {
+                        range.setType(PointerRangeType.MENU);
+                    }
+                }
+                /*if (pointerObject.has("options")) {
+                    JSONObject options = (JSONObject)pointerObject.get("options");
+                    Map<PointerOption, Object> map = getOptions(options);
+                    range.setOptions(map);
+                    if (options.has("target-options")) {
+                        JSONObject targetOptions = (JSONObject)options.get("target-options");
+                        Map<PointerOption, Object> mapTarget = getOptions(targetOptions);
+                        range.setTargetOptions(mapTarget);
+                    }
+                }*/
                 table.addPointerRange(range);
             }
-            if (next.has("menu")) {
+            /*if (next.has("menu")) {
                 table.setMenu(next.getBoolean("menu"));
-            }
+            }*/
             if (next.has("counter")) {
                 table.setCounter(next.getBoolean("counter"));
             }
             if (next.has("even-length")) {
                 table.setEvenLength(next.getBoolean("even-length"));
+            }
+            if (next.has("stop-at-next-pointer")) {
+                table.setStopAtNextPointer(next.getBoolean("stop-at-next-pointer"));
+            }
+            if (next.has("keep-old-pointer-values")) {
+                table.setKeepOldPointerValues(next.getBoolean("keep-old-pointer-values"));
             }
             if (next.has("overflow")) {
                 JSONObject overflow = next.getJSONObject("overflow");
@@ -186,9 +228,23 @@ public class JsonLoader {
                 ow.setDataShift(overflow.getInt("data-shift"));
                 table.setOverflow(ow);
             }
-            tables.add(table);
+            if (!next.has("skip") || !next.getBoolean("skip")) {
+                tables.add(table);
+            }
+            
         }
         return tables;
+    }
+    
+    private static Map<PointerOption, Object> getOptions(JSONObject options) {
+        Map<PointerOption, Object> map = new HashMap<>();
+        if (options.has("menu"))
+            map.put(PointerOption.MENU, options.getBoolean("menu"));
+        if (options.has("counter"))
+            map.put(PointerOption.COUNTER, options.getBoolean("counter"));
+        if (options.has("indirect"))
+            map.put(PointerOption.INDIRECT, options.getBoolean("indirect"));
+        return map;
     }
 
     public static List<JapaneseChar> loadJapanese() {

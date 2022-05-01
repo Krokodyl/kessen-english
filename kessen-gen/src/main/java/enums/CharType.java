@@ -7,6 +7,7 @@ public enum CharType {
     MODE_F0,
     MODE_F1,
     MODE_FB,
-    MODE_FD
+    MODE_FD,
+    MODE_BF
 
 }

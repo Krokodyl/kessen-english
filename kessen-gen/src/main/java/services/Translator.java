@@ -89,15 +89,19 @@ public class Translator {
     }
 
     public String[] getTranslation(PointerData p, boolean evenLength) {
+        return getTranslation(p, evenLength, true);
+    }
+
+    public String[] getTranslation(PointerData p, boolean evenLength, boolean prefixF0) {
         for (Translation t : translations) {
             String translation = t.getTranslation();
             if (t.getOffsetData() == p.getOffsetData() && translation != null && !translation.isEmpty()) {
-                int dataLength = checkDataLength(translation);
-                if (evenLength && dataLength%2!=0) {
+                //int dataLength = checkDataLength(translation);
+                /*if (evenLength && dataLength%2!=0) {
                     translation+="{EL}";
-                }
+                }*/
                 String eng = getCodesFromEnglish(translation);
-                eng = Utils.toHexString(MODE_F0_BYTE) + " " + eng;
+                if (prefixF0) eng = Utils.toHexString(MODE_F0_BYTE) + " " + eng;
                 return eng.split(" ");
             }
         }

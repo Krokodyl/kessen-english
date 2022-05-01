@@ -1,12 +1,16 @@
-package services;
+package services.sprites;
 
 import enums.FontColor;
 import enums.Palette;
+import enums.PaletteText;
+import lz.entities.Header;
+import services.Utils;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class FontImageReader {
@@ -23,6 +27,37 @@ public class FontImageReader {
 
     public byte[] getBytes() {
         return outputStream.toByteArray();
+    }
+
+    public void generateSpriteLatinCharacters() throws IOException {
+        generateSpriteDataFromImage(
+                "src/main/resources/images/vram-latin.png",
+                "src/main/resources/data/sprite-uncompressed.data",
+                new PaletteText(),
+                2
+        );
+        String uncomp = "src/main/resources/data/sprite-uncompressed.data";
+        String outputFile = "src/main/resources/data/output/58000.data";
+        CompressedSpriteManager compressedSpriteManager = new CompressedSpriteManager(null);
+        compressedSpriteManager.compressFile(uncomp, Header.LATIN_SPRITES_HEADER, outputFile);
+        //compressedSpriteManager.decompressFile(outputFile, "src/main/resources/data/decomp-1B8000.data");
+    }
+
+    private static String generateSpriteDataFromImage(String image, String output, Palette palette, int bpp) throws IOException {
+        System.out.println("Generating Sprite Data from image "+image);
+        FontImageReader fontImageReader = new FontImageReader();
+        String s = "";
+        if (bpp==2) s = fontImageReader.loadFontImage2bpp(image, palette);
+        else s = fontImageReader.loadFontImage4bpp(image, palette);
+        byte[] bytes = fontImageReader.getBytes();
+
+        try (FileOutputStream fos = new FileOutputStream(output)) {
+            fos.write(bytes);
+            fos.close();
+            //There is no more need for this line since you had created the instance of "fos" inside the try. And this will automatically close the OutputStream
+        }
+
+        return s;
     }
 
     public String loadFontImage2bpp(String file, Palette palette) {
@@ -47,7 +82,8 @@ public class FontImageReader {
                             stop = true;
                             break;
                         }
-                        FontColor fontColor = palette.getFontColor(rgb);
+                        String color = Utils.getColorAsHex(rgb).toLowerCase();
+                        FontColor fontColor = palette.getFontColor(color);
                         int mask = fontColor.getMask();
                         mask = mask >> (x-1);
                         encodedLine = encodedLine | mask;
