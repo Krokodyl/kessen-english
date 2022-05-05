@@ -72,12 +72,12 @@ public class DataWriter {
             for (int k=Integer.parseInt("100000", 16);k<fullLength;k++) dummy[k] = 0;
             data = dummy;
         }
-        for (int i=0;i<10;i++) {
+        /*for (int i=0;i<10;i++) {
             int k = Integer.parseInt("100000", 16)+Integer.parseInt("8000", 16)*i;
             for (int j=0;j<Integer.parseInt("8000", 16);j++) {
                 data[k+j] = (byte)(16 + i);
             }
-        }
+        }*/
         return data;
     }
 

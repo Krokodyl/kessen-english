@@ -146,7 +146,7 @@ public class Translator {
         boolean skip = false;
         String skipped = "";
         boolean openQuote = true;
-        checkLineLength(eng.split("\\{NL\\}"));
+        //checkLineLength(eng.split("\\{NL\\}"));
         for (char c : eng.toCharArray()) {
             if (c == '{') {
                 skip = true;

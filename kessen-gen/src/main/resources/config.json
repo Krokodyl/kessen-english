@@ -46,11 +46,6 @@
           "start": "275A8",
           "end": "275C1",
           "shift": "18000"
-        },
-        {
-          "start": "BF9B",
-          "end": "BFA8",
-          "shift": "0"
         }
       ],
       "new-data-start": "108000",
@@ -62,16 +57,22 @@
       "id": 2,
       "pointers": [
         {
-          "start": "20000",
-          "end": "200B9",
-          "shift": "18000",
-          "type": "INDIRECT_LONG"
+          "start": "856A5",
+          "end": "856BC",
+          "shift": "78000",
+          "type": "FIXED_LENGTH"
+        },
+        {
+          "start": "BF9B",
+          "end": "BFA8",
+          "shift": "0"
         }
       ],
       "new-data-start": "118000",
       "new-data-shift": "118000",
-      "desc": "A3 - Breakpoint A38000",
-      "skip": true
+      "desc": "",
+      "stop-at-next-pointer": true,
+      "keep-old-pointer-values": false
     }
   ],
   "tables2": [
@@ -143,7 +144,8 @@
     }
   ],
   "translations-files": [
-    "translations/Table 1.txt"
+    "translations/Table 1.txt",
+    "translations/Table 2.txt"
   ],
   "code-patches": [
     {
@@ -183,9 +185,14 @@
       "desc": "Loading variables with FD"
     },
     {
-      "code": "86 00 A2 A1 00 86 02 A6 00 A7 00 E2 80 29 FF 00 6B",
+      "code": "86 00 A2 A3 00 86 02 A6 00 A7 00 E2 80 29 FF 00 6B",
       "offset": "100200",
       "desc": "Loading with register X"
+    },
+    {
+      "code": "84 00 A0 A3 00 84 02 A4 00 A7 00 E2 80 29 FF 00 6B",
+      "offset": "100220",
+      "desc": "Loading menu texts"
     },
 
 
@@ -330,8 +337,7 @@
       "debug": false
     },
     {
-      "code": "22 40 80 A0 EA EA",
-      "old": "22 40 00 60 EA EA",
+      "code": "22 20 82 A0 EA EA",
       "offset": "BCFB",
       "desc": "Jump to the menu loading",
       "debug": false

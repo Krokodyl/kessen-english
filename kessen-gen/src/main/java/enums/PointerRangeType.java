@@ -4,6 +4,7 @@ public enum PointerRangeType {
     
     NORMAL,
     COUNTER,
-    MENU
+    MENU,
+    FIXED_LENGTH
     
 }

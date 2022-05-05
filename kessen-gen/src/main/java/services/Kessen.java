@@ -66,9 +66,9 @@ public class Kessen {
             } else {
                 new TablePrinter().generateTranslationFile(table, data, japanese);
             }*/
-            if (table.getId()==3) {
+            /*if (table.getId()==3) {
                 DataReader.generateReferenceFile(table, "translations/backup/Table 3.txt", "src/main/resources/tables/references.txt");
-            }
+            }*/
             System.out.println("--------------------------------------");
         }
 

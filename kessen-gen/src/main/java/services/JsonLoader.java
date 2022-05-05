@@ -192,6 +192,11 @@ public class JsonLoader {
                     if (type.equals("MENU")) {
                         range.setType(PointerRangeType.MENU);
                     }
+                    if (type.equals("FIXED_LENGTH")) {
+                        range.setType(PointerRangeType.FIXED_LENGTH);
+                        table.setStopAtNextPointer(true);
+                        table.setKeepOldPointerValues(false);
+                    }
                 }
                 /*if (pointerObject.has("options")) {
                     JSONObject options = (JSONObject)pointerObject.get("options");
@@ -214,12 +219,6 @@ public class JsonLoader {
             if (next.has("even-length")) {
                 table.setEvenLength(next.getBoolean("even-length"));
             }
-            if (next.has("stop-at-next-pointer")) {
-                table.setStopAtNextPointer(next.getBoolean("stop-at-next-pointer"));
-            }
-            if (next.has("keep-old-pointer-values")) {
-                table.setKeepOldPointerValues(next.getBoolean("keep-old-pointer-values"));
-            }
             if (next.has("overflow")) {
                 JSONObject overflow = next.getJSONObject("overflow");
                 Overflow ow = new Overflow();
@@ -231,7 +230,6 @@ public class JsonLoader {
             if (!next.has("skip") || !next.getBoolean("skip")) {
                 tables.add(table);
             }
-            
         }
         return tables;
     }
