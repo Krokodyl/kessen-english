@@ -3,6 +3,7 @@ package services.sprites;
 import enums.FontColor;
 import enums.Palette;
 import enums.PaletteText;
+import enums.PaletteTownSigns;
 import lz.entities.Header;
 import services.Utils;
 
@@ -28,7 +29,7 @@ public class FontImageReader {
     public byte[] getBytes() {
         return outputStream.toByteArray();
     }
-
+    
     public void generateSpriteLatinCharacters() throws IOException {
         generateSpriteDataFromImage(
                 "src/main/resources/images/vram-latin.png",
@@ -41,6 +42,15 @@ public class FontImageReader {
         CompressedSpriteManager compressedSpriteManager = new CompressedSpriteManager(null);
         compressedSpriteManager.compressFile(uncomp, Header.LATIN_SPRITES_HEADER, outputFile);
         //compressedSpriteManager.decompressFile(outputFile, "src/main/resources/data/decomp-1B8000.data");
+    }
+
+    public void generateSpriteTownSigns() throws IOException {
+        generateSpriteDataFromImage(
+                "src/main/resources/images/town-signs.png",
+                "src/main/resources/data/output/FE05E.data",
+                new PaletteTownSigns(),
+                4
+        );
     }
 
     private static String generateSpriteDataFromImage(String image, String output, Palette palette, int bpp) throws IOException {

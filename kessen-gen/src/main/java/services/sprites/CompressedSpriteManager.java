@@ -10,11 +10,9 @@ import services.JsonLoader;
 import services.Kessen;
 import services.Utils;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.nio.file.Files;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,6 +44,7 @@ public class CompressedSpriteManager {
     void compressFile(String input, Header header, String output) throws IOException {
         byte[] data = Files.readAllBytes(new File(input).toPath());
 
+        System.out.println("Time : "+(Kessen.getTime()));
         Compressor compressor = new Compressor(data, header);
         compressor.compress();
         byte[] compressedBytes = compressor.getCompressedBytes();
@@ -54,7 +53,7 @@ public class CompressedSpriteManager {
         System.out.println("Compressed length : "+ compressedBytes.length);
         System.out.println();
         System.out.println("Compressed bytes : "+ Utils.bytesToHex(compressedBytes));
-        //System.out.println("Time : "+(Kessen.getTime()));
+        System.out.println("Time : "+(Kessen.getTime()));
 
         Files.write(new File(output).toPath(), compressedBytes);
     }
@@ -89,6 +88,61 @@ public class CompressedSpriteManager {
         Files.write(new File(outputFile).toPath(), decompressedBytes);
     }
 
+    public void compressMapData() throws IOException {
+        String uncomp = "src/main/resources/data/map-uncompressed.data";
+        String outputFile = "src/main/resources/data/output/110000.data";
+        compressFile(uncomp, Header.MAP_DATA_HEADER, outputFile);
+    }
+
+    public void decompressTilesData(String input, String output) throws IOException {
+        String s = input;
+        int start = Integer.parseInt(s, 16)+3;
+        Decompressor decompressor = new Decompressor(data, start);
+        decompressor.decompressData();
+        byte[] decompressedBytes = decompressor.getDecompressedBytes();
+        System.out.println("From "+Utils.toHexString(start-3,6)+" to "+Utils.toHexString(decompressor.getEnd(),6));
+        System.out.println("Header expected size "+decompressor.getHeader().getDecompressedLength());
+        System.out.println("Decompressed bytes : "+Utils.bytesToHex(decompressedBytes));
+        try (FileOutputStream fos = new FileOutputStream(
+                "src/main/resources/gen/"+s+".data"
+        )) {
+            fos.write(decompressedBytes);
+        }
+    }
+
+    public void compressTilesData() throws IOException {
+        String uncomp = "src/main/resources/data/tiles-uncompressed.data";
+        String outputFile = "src/main/resources/data/output/120000.data";
+        compressFile(uncomp, Header.TILES_DATA_HEADER, outputFile);
+    }
+    
+    public void decompressMapData(String input, String output) throws IOException {
+        String s = input;
+        int start = Integer.parseInt(s, 16)+3;
+        Decompressor decompressor = new Decompressor(data, start);
+        decompressor.decompressData();
+        byte[] decompressedBytes = decompressor.getDecompressedBytes();
+        System.out.println("From "+Utils.toHexString(start-3,6)+" to "+Utils.toHexString(decompressor.getEnd(),6));
+        System.out.println("Header expected size "+decompressor.getHeader().getDecompressedLength());
+        System.out.println("Decompressed bytes : "+Utils.bytesToHex(decompressedBytes));
+        if (decompressor.getHeader().getDecompressedLength()==53764)
+        {
+            byte[] mapData = Arrays.copyOfRange(decompressedBytes, 4, decompressedBytes.length);
+            PrintWriter pw = new PrintWriter(new File("src/main/resources/gen/map.txt"));
+            String[] split = Utils.bytesToHex(mapData).split("(?<=\\G.{960})");
+            for (String s1 : split) {
+                pw.write(s1+"\n");
+                System.out.println(s1);
+            }
+            pw.close();
+        }
+        try (FileOutputStream fos = new FileOutputStream(
+                "src/main/resources/gen/"+s+".data"
+        )) {
+            fos.write(decompressedBytes);
+        }
+    }
+
     private void decompressStuff() throws IOException {
         String[] addresses = new String[]{
                 /*"D4BE4",
@@ -110,7 +164,7 @@ public class CompressedSpriteManager {
                 "100FC4",
                 "101755"*/
 
-                "14EE47"
+                "F8000"
 
                 //"175C9E"
                 //"140AD5"
@@ -131,10 +185,11 @@ public class CompressedSpriteManager {
             System.out.println("From "+Utils.toHexString(start-3,6)+" to "+Utils.toHexString(decompressor.getEnd(),6));
             System.out.println("Header expected size "+decompressor.getHeader().getDecompressedLength());
             System.out.println("Decompressed bytes : "+Utils.bytesToHex(decompressedBytes));
-            if (decompressor.getHeader().getDecompressedLength()==2048)
+            if (decompressor.getHeader().getDecompressedLength()==53764)
             {
-                PrintWriter pw = new PrintWriter(new File("src/main/resources/data/jpn/chapter-start/"+s+".txt"));
-                String[] split = Utils.bytesToHex(decompressedBytes).split("(?<=\\G.{192})");
+                byte[] mapData = Arrays.copyOfRange(decompressedBytes, 4, decompressedBytes.length);
+                PrintWriter pw = new PrintWriter(new File("src/main/resources/gen/map.txt"));
+                String[] split = Utils.bytesToHex(mapData).split("(?<=\\G.{960})");
                 for (String s1 : split) {
                     pw.write(s1+"\n");
                     System.out.println(s1);
@@ -151,14 +206,16 @@ public class CompressedSpriteManager {
             }
             if (decompressor.getHeader().getDecompressedLength()==4608)
             {
-                String[] split = Utils.bytesToHex(decompressedBytes).split("(?<=\\G.{24})");
+                int offset = Integer.parseInt("110",16);
+                String[] split = Utils.bytesToHex(decompressedBytes).split("(?<=\\G.{48})");
                 for (String s1 : split) {
-                    System.out.println(s1);
+                    System.out.println(Integer.toHexString(offset)+" - "+s1);
+                    offset+=16;
                 }
 
             }
             try (FileOutputStream fos = new FileOutputStream(
-                    "src/main/resources/data/jpn/chapter-start/"+s+".data"
+                    "src/main/resources/gen/"+s+".data"
             )) {
                 fos.write(decompressedBytes);
             }

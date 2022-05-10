@@ -75,7 +75,7 @@ public class PointerData {
         String t = "";
         if (menuData!=null)
         for (String a:menuData) t = t+a+" ";
-        return "Pointer{" + "offset=" + Integer.toHexString(offset) + ", value=" + Integer.toHexString(value) + ", offsetdata="+Integer.toHexString(offsetData)+", menudata=" + t + ", data=" + s + '}';
+        return "Pointer{" + "offset=" + Integer.toHexString(offset) + ", value=" + Integer.toHexString(value) + ", offsetdata="+Integer.toHexString(offsetData)+ ", offsetMenudata="+Integer.toHexString(offsetMenuData)+", menudata=" + t + ", data=" + s + '}';
     }
     
     

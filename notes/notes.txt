@@ -649,6 +649,13 @@ Address		Value		Pointing to
 x19311		ED 93		x213ED
 x213ED
 
+######
+Loading chest content
+
+$81/BDE0 B9 00 00    LDA $0000,y[$90:DB15]   A:DB15 X:0C6A Y:DB15 P:eNvmxdIzc
+$81/BDE3 29 FF 00    AND #$00FF              A:0207 X:0C6A Y:DB15 P:envmxdIzc
+
+
 ################ TABLES ##################
 x180BE		CE 80	???
 
@@ -684,3 +691,89 @@ shift : x18000
 27414-2742D
 
 275A8-275C1
+
+
+############## COLORS ##############
+RGB (0,0,14) 00 38
+00000000 00111000
+
+0100 = (1,0,0)
+
+1F00 = 00000000 00011111 (31,0,0)
+2F00 = 00000000 00101111 (15,1,0)
+
+00111101 11101111 3D EF (xEF3D)
+
+Text palette
+xA4278	00 00 BE 7F 00 00 00 1C
+
+############## SPECIAL CODES ##############
+
+{FD 8C 08} = Player name
+
+############## TOWN SIGNS ##############
+
+xFE05E
+9F:605E
+
+xFE0DE
+9F:60DE
+9E:E0DE
+
+チ /chi/
+e8 1e e9 1e
+f8 1e f9 1e
+
+sea tile		0C 02 0C 03 0C 04 0C 05
+02 0c 03 0c
+04 0c 05 0c
+
+MAP DATA
+xC4ED5
+Header		04 D2 05
+
+$81/E70C BC 00 00    LDY $0000,x[$81:EC65]   A:EC00 X:EC65 Y:0458 P:envMxdIzc
+$81/E70F 84 20       STY $20    [$00:0020]   A:EC00 X:EC65 Y:CED5 P:eNvMxdIzc
+$81/E711 BD 02 00    LDA $0002,x[$81:EC67]   A:EC00 X:EC65 Y:CED5 P:eNvMxdIzc
+$81/E714 85 22       STA $22    [$00:0022]   A:EC98 X:EC65 Y:CED5 P:eNvMxdIzc
+...
+$80/A81C A7 20       LDA [$20]  [$98:CED5]   A:EC98 X:EC65 Y:1310 P:envmxdIzc
+$80/A81E E6 20       INC $20    [$00:0020]   A:D204 X:EC65 Y:1310 P:eNvmxdIzc
+
+Move to : x110000
+
+xEC65	D5 CE 98
+xEC65	00 80 A3
+
+
+4x4 TILES DEFINITION
+F8000
+
+...
+$80/A81C A7 20       LDA [$20]  [$9F:8000]   A:E59F X:EC65 Y:0110 P:envmxdIzC
+$80/A81E E6 20       INC $20    [$00:0020]   A:1200 X:EC65 Y:0110 P:envmxdIzC
+
+xEC68	00 80 9F
+
+
+############### COMBAT SCREEN ###############
+OFFENSE
+
+{BUTTON}A 攻撃	  =Attack	F1 12 13
+{BUTTON}B ため      =Focus     6F 81
+{BUTTON}Y ひっさつ    =Strike  7A 91 6A 71		x1A2BE	22 3d 3b 32 34 2e
+{BUTTON}X ビニテイク
+
+{BUTTON}=63
+
+{BUTTON}A 
+{BUTTON}B こうさん    =Give up 
+{BUTTON}Y カウンター   =Counter 
+
+$81/BC96 B9 00 00    LDA $0000,y[$84:8873]   A:8873 X:05C8 Y:8873 P:eNvmxdIzc
+$81/BC99 A8          TAY                     A:1D38 X:05C8 Y:8873 P:envmxdIzc
+...
+$A0/8229 A7 00       LDA [$00]  [$A3:1D38]   A:0080 X:05C8 Y:1D38 P:envmxdIzc
+$A0/822B E2 80       SEP #$80                A:917A X:05C8 Y:1D38 P:eNvmxdIzc
+
+x20873		38 1D

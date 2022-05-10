@@ -50,6 +50,20 @@ public class JsonLoader {
 
         return files;
     }
+    
+    public static List<String> loadReferenceFiles() {
+
+        List<String> files = new ArrayList<>();
+        JSONObject json = new JSONObject(loadJson());
+
+        JSONArray c = json.getJSONArray("reference-files");
+        for (Object o : c) {
+            String next = (String) o;
+            files.add(next);
+        }
+
+        return files;
+    }
 
     public static Config loadConfig() {
 

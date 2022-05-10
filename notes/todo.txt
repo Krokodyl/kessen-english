@@ -4,3 +4,5 @@ Check translation D4E4
 
 Washi
 ワシ	わし	儂
+
+Check Frost effect desc (e594)

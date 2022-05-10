@@ -7,6 +7,7 @@ import entities.PointerTable;
 import entities.Translation;
 import enums.PointerOption;
 import enums.PointerRangeType;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -76,6 +77,9 @@ public class DataReader {
             if (line.contains(Constants.TRANSLATION_KEY_VALUE_SEPARATOR)) {
                 String[] split = line.split(Constants.TRANSLATION_KEY_VALUE_SEPARATOR);
                 if (split.length>0) {
+                    if (split[0].equals(Constants.TRANSLATION_KEY_OFFSET)) {
+                        p.setOffset(Integer.parseInt(split[1], 16));
+                    }
                     if (split[0].equals(TRANSLATION_KEY_JPN)) {
                         if (split.length>1) jpn = split[1];
                     }
@@ -85,6 +89,7 @@ public class DataReader {
                     if (!eng.isEmpty() && !jpn.isEmpty()) {
                         String[] splitJpn = jpn.split("(?<=\\G.{8})");
                         String[] splitEng = eng.split("(?<=\\G.{8})");
+                        if (p.getOffset()>Integer.parseInt("BFA7",16))
                         for (int k=0;k<splitJpn.length;k++) {
                             writer.println(splitEng[k]+"="+splitJpn[k]);
                         }
@@ -462,5 +467,142 @@ public class DataReader {
         System.out.println("EVEN="+mapLegnths.get("EVEN"));
         System.out.println("ODD="+mapLegnths.get("ODD"));*/
         return table;
+    }
+
+    public static void generateTownPairs() {
+        System.out.println();
+        String s = "HokaMoriWateGimiTakiSataKufuBaraChitMagoSamiBageToshNaraManaNonaNikaFuzaWakaKuuiFuzyWittArchEmmySigaKiotLanaOhanHyotAkanLithNemaYamaImanGuciTokuDawaHemeUkohCuoaGasaNagiMamoOitaMizaGosiRyu WihaSapiAgum";
+        String[] split = s.toUpperCase().split("(?<=\\G.{2})");
+        Set<String> set = new HashSet<>(Arrays.asList(split));
+        System.out.println("Pair count : "+set.size());
+
+        int z = 7001;
+        String jpnc = "ホッカ アーモリワイテ ギーミ タキーアサンタガクフマシバラギンチット マグーンサマイタバッチ トーシュナガワ マナシ ノーナンニーガ フザン ワカーシクーイ フギー ジョーカアーチ エミー シガッツキオットラナーンオーハンヒョー ワッカンリット ネマシーオーヤマロシマンマグッチトクシ ガワーカヒーメイウコッチクオカ ガサールナガキンマモットオイッタミザッキゴッシムリュウ ワイハーサパインアグム ";
+
+        Map<String,String> katakanas = new HashMap<String, String>() {{
+            
+            put("ッ", "");
+            put("ー", "");
+            put("ン", "N");//N
+            put("シ", "SI");
+            put("イ", "NI");
+            put("ガ", "KA");
+            put("ワ", "WA");
+            put("カ", "KA");
+            put("ア", "NA");
+            put("マ", "MA");
+            put("ト", "TO");
+            
+            // 5
+            put("ナ", "NA");
+            put("オ", "NO");
+            put("チ", "KI");
+            
+            // 4
+            put("キ", "KI");
+            put("ク", "KU");
+            put("サ", "SA");
+            put("タ", "TA");
+            
+            // 3
+            put("ギ", "GI");
+            put("グ", "GU");
+            put("リ", "RI");
+            put("フ", "FU");
+            put("ミ", "MI");
+            
+            // 2
+            put("ウ", "NU");
+            put("ザ", "ZA");
+            put("ハ", "HA");
+            put("バ", "BA");
+            put("ヒ", "HI");
+            put("ュ", "YU");
+            put("ョ", "YO");
+            put("ラ", "RA");
+            put("モ", "MO");
+            put("ム", "MU");
+            
+            // 1
+            put("エ", "TE");
+            put("コ", "KO");
+            put("ゴ", "GO");
+            put("ジ", "NI");
+            put("ツ", "SU");
+            put("テ", "TE");
+            put("ニ", "NI");
+            put("ネ", "NE");
+            put("ノ", "NO");
+            put("ホ", "HO");
+            put("パ", "PA");
+            put("メ", "ME");
+            put("ヤ", "YA");
+            put("ル", "RU");
+            put("ロ", "RO");
+        }};
+        
+
+
+        String cities = "HokaMoriWateGimiTakiSataKufuBaraChitMagoSamiBageToshNaraManaNonaNikaFuzaWakaKuuiFuzyWittArchEmmySigaKiotLanaOhanHyotAkanLithNemaYamaImanGuciTokuDawaHemeUkohCuoaGasaNagiMamoOitaMizaGosiRyu WihaSapiAgum";
+        split = jpnc.split("(?<=\\G.{4})");
+        //String[] split1 = cities.split("(?<=\\G.{4})");
+        s = "";
+        Set<String> pairs = new HashSet<>();
+        
+        for (int k=0;k<split.length;k++) {
+            String name = split[k];
+            for (Map.Entry<String, String> e : katakanas.entrySet()) {
+                if (!e.getValue().isEmpty() && name.contains(e.getKey())) {
+                    pairs.add(e.getValue());
+                }
+                name = name.replace(e.getKey(),e.getValue());
+            }
+            s+=z;
+            System.out.printf("%s=%s%n", z++, name);
+        }
+        System.out.println(s);
+
+        System.out.println("Pair count : "+pairs.size());
+
+        for (String pair : pairs) {
+            System.out.print(pair+"_");
+        }
+        System.out.println();
+
+
+        Map<Character, Integer> counts = new HashMap<>();
+        for (char c : jpnc.toCharArray()) {
+            if (counts.containsKey(c)) {
+                counts.put(c, counts.get(c)+1);
+            } else counts.put(c,1);
+        }
+        for (Map.Entry<Character, Integer> entry : counts.entrySet()) {
+            System.out.println(entry.getKey() + ":" + entry.getValue().toString());
+        }
+        
+        
+        
+
+    }
+
+    public static void analyzeTownNames(String name) throws IOException {
+        BufferedReader br = new BufferedReader(
+                new InputStreamReader(
+                        Objects.requireNonNull(Translator.class.getClassLoader().getResourceAsStream(name)), StandardCharsets.UTF_8));
+        String line = br.readLine();
+        Set<String> pairs = new HashSet<>();
+        int z = 5000042;
+        while (line != null) {
+            for (String s : line.split("(?<=\\G.{2})")) {
+                pairs.add(s.toUpperCase());
+            }
+            System.out.println((z++)+"=  "+StringUtils.capitalize(line)+" ");
+            line = br.readLine();
+        }
+        System.out.println(pairs.size());
+        for (String pair : pairs) {
+            System.out.println(pair);
+        }
+
     }
 }

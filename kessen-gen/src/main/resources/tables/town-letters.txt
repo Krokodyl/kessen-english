@@ -1,0 +1,35 @@
+18 01	BA
+19 01	BE
+1A 01	BI
+1B 01	BU
+1C 01	DA
+1D 01	DE
+1E 01	DO
+1F 01	GA
+20 01	GI		30 01	NI		40 01	ZU
+21 01	HA		31 01	NO		41 01	ME
+22 01	HE		32 01	RA		42 01	HO
+23 01	HI		33 01	RI
+24 01	JI		34 01	RO
+25 01	KA		35 01	RU
+26 01	KE		36 01	SA
+27 01	KI		37 01	SO
+28 01	KO		38 01	SU
+29 01	KU		39 01	TA
+2A 01	MA		3A 01	TO
+2B 01	MI		3B 01	WA
+2C 01	MO		3C 01	YA
+2D 01	MU		3D 01	YO
+2E 01	NA		3E 01	YU
+2F 01	NE		3F 01	ZE
+
++x140	to go down one line
+
+CHURCHES
+kokoro	heart
+midori	green
+yugata	evening
+kinoko	shroom
+hotaru	firefly
+nezumi	mouse
+suzume	swallow

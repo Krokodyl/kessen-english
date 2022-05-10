@@ -1,0 +1,8 @@
+B00001=Castle
+B00002=Kokoro
+B00003=Midori
+B00004=Yugata
+B00005=Nezumi
+B00006=Suzume
+B00007=Kinoko
+B00008=Hotaru

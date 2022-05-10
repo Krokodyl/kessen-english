@@ -35,7 +35,7 @@ public class DataWriter {
                 }
             } else {
 
-                System.out.println();
+                //System.out.println();
                 //if (offset == Integer.parseInt("207f1",16)) {
                     data[offset] = (byte) (value % 256);
                     data[offset + 1] = (byte) (value / 256);

@@ -1,0 +1,9 @@
+C000001=Human  
+C000002=Easy   
+C000003=Normal 
+C000004=Hard   
+C000005=Crazy  
+C000006=Fighter
+C000007=Mage   
+C000008=Bard   
+C000009=Knight 

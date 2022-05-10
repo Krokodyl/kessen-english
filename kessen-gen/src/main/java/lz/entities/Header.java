@@ -15,6 +15,16 @@ public class Header {
             (byte) Integer.parseInt("28", 16),
             (byte) Integer.parseInt("04", 16),
             false);
+    public static Header MAP_DATA_HEADER = new Header(
+            (byte) Integer.parseInt("04", 16),
+            (byte) Integer.parseInt("D2", 16),
+            (byte) Integer.parseInt("05", 16),
+            false);
+    public static Header TILES_DATA_HEADER = new Header(
+            (byte) Integer.parseInt("00", 16),
+            (byte) Integer.parseInt("12", 16),
+            (byte) Integer.parseInt("06", 16),
+            false);
 
     public Header(byte decompressedLengthLowByte, byte decompressedLengthHighByte, byte repeatLengthBits) {
         this.decompressedLengthLowByte = decompressedLengthLowByte;

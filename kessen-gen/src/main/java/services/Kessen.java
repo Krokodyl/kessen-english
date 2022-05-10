@@ -3,6 +3,7 @@ package services;
 import characters.JapaneseChar;
 import entities.*;
 import enums.PaletteText;
+import services.sprites.CompressedSpriteManager;
 import services.sprites.FontImageReader;
 
 import java.io.*;
@@ -36,20 +37,31 @@ public class Kessen {
         
         // Call this once whenever the vram-latin.png image is modified.
         //new FontImageReader().generateSpriteLatinCharacters();
+        //new FontImageReader().generateSpriteTownSigns();
 
+        
         try {
             data = Files.readAllBytes(new File(config.getRomInput()).toPath());
         } catch (IOException ex) {
             Logger.getLogger(Kessen.class.getName()).log(Level.SEVERE, null, ex);
         }
         data = DataWriter.fillDataWithPlaceHolders(data);
+        
+        //new CompressedSpriteManager(data).decompressMapData("C4ED5", "110000");
+        //new CompressedSpriteManager(data).compressMapData();
+        
+        //new CompressedSpriteManager(data).decompressTilesData("F8000", "118000");
+        //new CompressedSpriteManager(data).compressTilesData();
 
+        //DataReader.generateTownPairs();
+        //DataReader.analyzeTownNames("tables/towns.txt");
+        
         DataWriter.writeCodePatches(JsonLoader.loadCodePatches(), data, false);
 
         List<JapaneseChar> japaneseChars = JsonLoader.loadJapanese();
         Dictionnary japanese = new Dictionnary(japaneseChars);
 
-
+        
 
         //JsonLoader.generateJsonJapanese(config.getFileDicoJap());
         //JsonLoader.generateJsonLatin(config.getFileDicoLatin());
@@ -66,15 +78,22 @@ public class Kessen {
             } else {
                 new TablePrinter().generateTranslationFile(table, data, japanese);
             }*/
-            /*if (table.getId()==3) {
-                DataReader.generateReferenceFile(table, "translations/backup/Table 3.txt", "src/main/resources/tables/references.txt");
-            }*/
+            if (table.getId()==2) {
+                //DataReader.generateReferenceFile(table, "translations/Table 2.txt", "src/main/resources/gen/references.txt");
+            }
             System.out.println("--------------------------------------");
         }
 
         for (String s:JsonLoader.loadTranslationFiles()) {
             try {
                 translator.loadTranslationFile(s);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        for (String s:JsonLoader.loadReferenceFiles()) {
+            try {
+                translator.loadReferenceFile(s);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -111,7 +130,7 @@ public class Kessen {
             if (!ip.isDebug()) ip.writePatch(data);
         }*/
 
-        String jpn = "モンスターに支配されてしま";
+        String jpn = "攻撃   ため   ひっさつ";
         System.out.println("JPN="+jpn);
         System.out.print("CODE=");
         for (char c : jpn.toCharArray()) {
@@ -120,7 +139,7 @@ public class Kessen {
         }
         System.out.println();
 
-        String eng = "itMP";
+        String eng = "Strike";
         System.out.println("ENG="+eng);
         System.out.print("CODE="+translator.getCodesFromEnglish(eng));
         System.out.println();
@@ -132,8 +151,14 @@ public class Kessen {
         }
         System.out.println();
 
+        
+        
+
+
         DataReader.generateDualLetters("tables/dual-words.txt");
 
+        System.out.printf("Missing translations: %s\n", translator.missingTranslations);
+        
         System.out.println("Saving rom-output...");
         DataWriter.saveData(config.getRomOutput(), data);
         //System.out.println("Saving bps-patch-output...");
@@ -233,4 +258,7 @@ public class Kessen {
         return s;
     }
 
+    public static String getTime() {
+        return String.valueOf(System.currentTimeMillis()/1000);
+    }
 }

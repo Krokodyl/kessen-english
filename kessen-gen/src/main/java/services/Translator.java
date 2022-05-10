@@ -20,12 +20,15 @@ import static services.Constants.MODE_F0_BYTE;
 public class Translator {
 
     private List<Translation> translations = new ArrayList<>();
+    private Map<String, String> references = new HashMap<>();
 
     private Map<String, SpecialChar> specialCharMap = new HashMap<>();
 
     private LatinLoader latinLoader;
 
     boolean replaceMissingTranslationWithValue = true;
+    
+    int missingTranslations = 0;
 
     public Translator(LatinLoader latinLoader) {
         this.latinLoader = latinLoader;
@@ -88,6 +91,26 @@ public class Translator {
         }
     }
 
+    public void loadReferenceFile(String name) throws IOException {
+        System.out.println("Load Reference File : "+name);
+        BufferedReader br = new BufferedReader(
+                new InputStreamReader(
+                        Objects.requireNonNull(Translator.class.getClassLoader().getResourceAsStream(name)), StandardCharsets.UTF_8));
+        String line = br.readLine();
+        
+        while (line != null) {
+            if (line.contains(Constants.TRANSLATION_KEY_VALUE_SEPARATOR)) {
+                String[] split = line.split(Constants.TRANSLATION_KEY_VALUE_SEPARATOR);
+                if (split.length>0) {
+                    String key = split[0];
+                    String value = split[1];
+                    references.put(key,value);
+                }
+            }
+            line = br.readLine();
+        }
+    }
+
     public String[] getTranslation(PointerData p, boolean evenLength) {
         return getTranslation(p, evenLength, true);
     }
@@ -96,10 +119,9 @@ public class Translator {
         for (Translation t : translations) {
             String translation = t.getTranslation();
             if (t.getOffsetData() == p.getOffsetData() && translation != null && !translation.isEmpty()) {
-                //int dataLength = checkDataLength(translation);
-                /*if (evenLength && dataLength%2!=0) {
-                    translation+="{EL}";
-                }*/
+                for (Map.Entry<String, String> e : references.entrySet()) {
+                    translation = translation.replaceAll(e.getKey(), e.getValue());
+                }
                 String eng = getCodesFromEnglish(translation);
                 if (prefixF0) eng = Utils.toHexString(MODE_F0_BYTE) + " " + eng;
                 return eng.split(" ");
@@ -109,6 +131,7 @@ public class Translator {
         Missing translation
          */
         if (replaceMissingTranslationWithValue) {
+            missingTranslations++;
             String translation = Integer.toHexString(p.getValue());
             translation += "{EL}";
             String eng = getCodesFromEnglish(translation);
@@ -130,7 +153,7 @@ public class Translator {
 
     public String[] getMenuData(PointerData p) {
         for (Translation t : translations) {
-            if (t.getOffsetData() == p.getOffsetData() && t.getTranslation() != null && !t.getTranslation().isEmpty()) {
+            if (t.getOffset() == p.getOffset() && t.getTranslation() != null && !t.getTranslation().isEmpty()) {
                 String menuData = t.getMenuData();
                 if (menuData == null) {
                     return null;
