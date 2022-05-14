@@ -154,8 +154,13 @@ public class JsonLoader {
             } else {
                 code = next.getString("code");
             }
+            if (code.contains("$")) {
+                code = code.replaceAll("\\$0","90");
+                code = code.replaceAll("\\$1","92");
+            }
             CodePatch codePatch = new CodePatch(code, offset);
             if (next.has("debug")) codePatch.setDebug(next.getBoolean("debug"));
+            
             codePatches.add(codePatch);
         }
         return codePatches;

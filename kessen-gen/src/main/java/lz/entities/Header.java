@@ -25,6 +25,26 @@ public class Header {
             (byte) Integer.parseInt("12", 16),
             (byte) Integer.parseInt("06", 16),
             false);
+    public static Header BATTLE_CARDS_SPRITES_HEADER = new Header(
+            (byte) Integer.parseInt("00", 16),
+            (byte) Integer.parseInt("10", 16),
+            (byte) Integer.parseInt("06", 16),
+            false);
+    public static Header FREE_TOWN_SPRITES_HEADER = new Header(
+            (byte) Integer.parseInt("00", 16),
+            (byte) Integer.parseInt("20", 16),
+            (byte) Integer.parseInt("07", 16),
+            false);
+    public static Header SCORE_SCREEN_DATA_HEADER = new Header(
+            (byte) Integer.parseInt("00", 16),
+            (byte) Integer.parseInt("07", 16),
+            (byte) Integer.parseInt("06", 16),
+            false);
+    public static Header SCORE_SCREEN_SPRITE_HEADER = new Header(
+            (byte) Integer.parseInt("00", 16),
+            (byte) Integer.parseInt("20", 16),
+            (byte) Integer.parseInt("07", 16),
+            false);
 
     public Header(byte decompressedLengthLowByte, byte decompressedLengthHighByte, byte repeatLengthBits) {
         this.decompressedLengthLowByte = decompressedLengthLowByte;

@@ -75,74 +75,6 @@
       "keep-old-pointer-values": false
     }
   ],
-  "tables2": [
-    {
-      "id": 1,
-      "pointers": [
-        {
-          "start": "2028D",
-          "end": "209DF",
-          "shift": "18000",
-          "options": {
-            "menu": true
-          }
-        },
-        {
-          "start": "200BA",
-          "end": "2023C",
-          "shift": "18000",
-          "options": {
-            "counter": true,
-            "indirect": true,
-            "target-options": {
-              "menu": true
-            }
-          }
-        }
-      ],
-      "new-data-start": "108000",
-      "new-data-shift": "108000",
-      "desc": "Bank A1 - Breakpoint A18000"
-    },
-    {
-      "id": 2,
-      "pointers": [
-        {
-          "start": "218D9",
-          "end": "21AD7",
-          "shift": "18000"
-        },
-        {
-          "start": "236F5",
-          "end": "2387F",
-          "shift": "18000"
-        },
-        {
-          "start": "267E3",
-          "end": "2689C",
-          "shift": "18000"
-        }
-      ],
-      "new-data-start": "118000",
-      "new-data-shift": "118000",
-      "desc": "Bank A3 - Breakpoint A38000"
-    },
-    {
-      "id": 3,
-      "pointers": [
-        {
-          "start": "856A5",
-          "end": "856BC",
-          "shift": "78000"
-        }
-      ],
-      "new-data-start": "856A5",
-      "new-data-shift": "78000",
-      "desc": "",
-      "stop-at-next-pointer": true,
-      "keep-old-pointer-values": true
-    }
-  ],
   "translations-files": [
     "translations/Table 1.txt",
     "translations/Table 2.txt"
@@ -162,12 +94,6 @@
     "references/12 - players.txt"
   ],
   "code-patches": [
-    {
-      "code": "00",
-      "offset": "58000",
-      "desc": "Compressed code for the character sprites. Uses a LZ variant.",
-      "file": true
-    },
     {
       "code": "00",
       "offset": "FE05E",
@@ -200,83 +126,108 @@
     
     
     {
-      "code": "84 00 A0 A1 00 84 02 A4 00 A7 00 E2 80 29 FF 00 6B",
+      "code": "84 $0 A0 A1 00 84 $1 A4 $0 A7 $0 E2 80 29 FF 00 6B",
       "offset": "100000",
       "desc": "Loads normal characters"
     },
     {
-      "code": "C8 84 00 A0 A1 00 84 02 A4 00 88 A7 00 E2 80 29 FF 00 6B",
+      "code": "C8 84 $0 A0 A1 00 84 $1 A4 $0 88 A7 $0 E2 80 29 FF 00 6B",
       "offset": "100020",
       "desc": "Loads end of line characters"
     },
     {
-      "code": "84 00 A0 A1 00 84 02 A4 00 A7 00 E2 80 29 FF 00 6B",
+      "code": "84 $0 A0 A1 00 84 $1 A4 $0 A7 $0 E2 80 29 FF 00 6B",
       "offset": "100040",
       "desc": "Loading menu texts"
     },
     {
-      "code": "C8 84 00 A0 A1 00 84 02 A4 00 88 A7 00 E2 80 29 0F 00 6B",
+      "code": "C8 84 $0 A0 A1 00 84 $1 A4 $0 88 A7 $0 E2 80 29 0F 00 6B",
       "offset": "100060",
       "desc": "Loading menu texts / Replaces : B9 01 00 29 0F 00"
     },
     {
-      "code": "C8 84 00 A0 A1 00 84 02 A4 00 88 A7 00 E2 80 29 F0 00 6B",
+      "code": "C8 84 $0 A0 A1 00 84 $1 A4 $0 88 A7 $0 E2 80 29 F0 00 6B",
       "offset": "100080",
       "desc": "Loading menu texts / Replaces : B9 01 00 29 F0 00"
     },
     {
-      "code": "84 00 A0 A1 00 84 02 A4 00 A7 00 29 FF 00 85 0C C8 84 00 A7 00 29 0F 00 3A 85 10 A7 00 29 F0 00 88 6B",
+      "code": "84 $0 A0 A1 00 84 $1 A4 $0 A7 $0 29 FF 00 85 0C C8 84 $0 A7 $0 29 0F 00 3A 85 10 A7 $0 29 F0 00 88 6B",
       "offset": "1000A0",
       "desc": "Loading variables with FD"
     },
     {
-      "code": "86 00 A2 A3 00 86 02 A6 00 A7 00 E2 80 29 FF 00 6B",
+      "code": "86 $0 A2 A3 00 86 $1 A6 $0 A7 $0 E2 80 29 FF 00 6B",
       "offset": "100200",
       "desc": "Loading with register X"
     },
     {
-      "code": "84 00 A0 A3 00 84 02 A4 00 A7 00 E2 80 29 FF 00 6B",
+      "code": "84 $0 A0 A3 00 84 $1 A4 $0 A7 $0 E2 80 29 FF 00 6B",
       "offset": "100220",
       "desc": "Loading menu texts in Bank A3"
     },
+    {
+      "code": "86 $0 A2 A3 00 86 $1 A6 $0 A7 $0 E2 80 C9 01 6B",
+      "replaces": "BD 00 00 C9 01",
+      "offset": "100240",
+      "desc": "LDA with register X and CMP #$01"
+    },
+    {
+      "code": "86 $0 A2 A3 00 86 $1 A6 $0 A7 $0 E2 80 99 40 1D 6B",
+      "replaces": "BD 00 00 99 30 1D",
+      "offset": "100260",
+      "desc": "LDA with register X and STA $1D40"
+    },
+    {
+      "code": "84 $0 A0 A3 00 84 $1 A4 $0 A7 $0 E2 80 C9 01 6B",
+      "replaces": "B9 00 00 C9 01",
+      "offset": "100280",
+      "desc": "LDA with register Y and CMP #$01"
+    },
+    {
+      "code": "84 $0 A0 A3 00 84 $1 A4 $0 A7 $0 E2 80 9D 60 1D 6B",
+      "replaces": "B9 00 00 99 45 1D",
+      "offset": "1002A0",
+      "desc": "LDA with register Y and STA $1D60"
+    },
+    {
+      "code": "84 50 84 $0 A0 A3 00 84 $1 A4 $0 A7 $0 8D 79 1D C8 C8 84 $0 A7 $0 8D 7B 1D C8 C8 84 $0 A7 $0 8D 7D 1D C8 C8 84 $0 A7 $0 8D 7F 1D A4 50 6B",
+      "replaces": " ",
+      "offset": "100300",
+      "desc": "Enemy name loading"
+    },
+    
 
 
 
     {
       "code": "22 E0 80 A0 EA EA",
       "offset": "2ACF9",
-      "desc": "Jump to the human/cpu storing",
-      "debug": true
+      "desc": "Jump to the human/cpu storing"
     },
     {
       "code": "85 80 A5 00 18 69 05 00 6B",
       "offset": "1000E0",
-      "desc": "Human/cpu storing (human)",
-      "debug": true
+      "desc": "Human/cpu storing (human)"
     },
     {
       "code": "22 F0 80 A0 EA",
       "offset": "2ACED",
-      "desc": "Jump to the human/cpu storing",
-      "debug": true
+      "desc": "Jump to the human/cpu storing"
     },
     {
       "code": "85 80 7A 5A B9 24 AD 6B",
       "offset": "1000F0",
-      "desc": "Human/cpu storing (cpu)",
-      "debug": true
+      "desc": "Human/cpu storing (cpu)"
     },
     {
       "code": "22 D0 80 A0",
       "offset": "2AE81",
-      "desc": "Human/cpu storing (cpu)",
-      "debug": false
+      "desc": "Human/cpu storing (cpu)"
     },
     {
       "code": "85 50 95 86 C9 00 6B",
       "offset": "1000D0",
-      "desc": "Human/cpu storing (cpu)",
-      "debug": false
+      "desc": "Human/cpu storing (cpu)"
     },
 
 
@@ -300,8 +251,7 @@
       "code": "10 01 10 03 2C 01 2C 03",
       "eng": "10 02 12 04 2C 02 2C 04",
       "offset": "2AD24",
-      "desc": "Class name positions",
-      "debug": false
+      "desc": "Class name positions"
     },
     {
       "code": "A0 01 01 94 68 A0 12 1f 94 6A A0 24 0d",
@@ -313,61 +263,52 @@
       "code": "22 00 80 A0 EA EA",
       "old": "22 00 00 60 EA EA",
       "offset": "C51D",
-      "desc": "Jump to normal characters loading",
-      "debug": false
+      "desc": "Jump to normal characters loading"
     },
     {
       "code": "22 00 80 A0 EA EA",
       "old": "22 00 00 60 EA EA",
       "offset": "C085",
-      "desc": "Jump to special characters loading",
-      "debug": false
+      "desc": "Jump to special characters loading"
     },
     {
       "code": "22 00 80 A0 EA EA",
       "old": "22 00 00 60 EA EA",
       "offset": "C570",
-      "desc": "Jump to normal characters loading",
-      "debug": false
+      "desc": "Jump to normal characters loading"
     },
     {
       "code": "22 20 80 A0 EA EA",
       "old": "22 20 00 60 EA EA",
       "offset": "C57A",
-      "desc": "Jump to the End of Line (FF) loading",
-      "debug": false
+      "desc": "Jump to the End of Line (FF) loading"
     },
     {
       "code": "22 40 80 A0 EA EA",
       "old": "22 40 00 60 EA EA",
       "offset": "BACE",
-      "desc": "Jump to the menu loading",
-      "debug": false
+      "desc": "Jump to the menu loading"
     },
     {
       "code": "22 40 80 A0 EA EA",
       "old": "22 40 00 60 EA EA",
       "offset": "BB65",
-      "desc": "Jump to the menu loading",
-      "debug": false
+      "desc": "Jump to the menu loading"
     },
     {
       "code": "22 60 80 A0 EA EA",
       "offset": "BB6D",
-      "desc": "Jump to the menu loading",
-      "debug": false
+      "desc": "Jump to the menu loading"
     },
     {
       "code": "22 80 80 A0 EA EA",
       "offset": "BB78",
-      "desc": "Jump to the menu loading",
-      "debug": false
+      "desc": "Jump to the menu loading"
     },
     {
       "code": "22 A0 80 A0 4C 11 C6",
       "offset": "C5FA",
-      "desc": "Jump to the variable loading",
-      "debug": false
+      "desc": "Jump to the variable loading"
     },
     {
       "code": "A9 07 00 48 A4 00 22 00 81 A0 EA EA",
@@ -378,17 +319,17 @@
     {
       "code": "22 00 82 A0 EA EA",
       "offset": "BF50",
-      "desc": "Jump to the menu loading with register X",
-      "debug": false
+      "desc": "Jump to the menu loading with register X"
     },
     {
       "code": "22 20 82 A0 EA EA",
+      "original-code": "B9 00 00 29 FF 00",
       "offset": "BCFB",
-      "desc": "Jump to the menu loading",
-      "debug": false
+      "desc": "Jump to the menu loading"
     },
     {
       "code": "22 20 82 A0 EA EA",
+      "original-code": "B9 00 00 29 FF 00",
       "offset": "BDE0",
       "desc": "Jump to the text loading from A3"
     },
@@ -397,10 +338,150 @@
       "code": "00 00 BE 7F EF 3D 00 1C",
       "offset": "840C5",
       "desc": "Add grey to the text palette (ef 3d)",
-      "debug": false
+      "debug": true
+    },
+    {
+      "code": "00 00 EC 41 99 7F 00 1C 00 38 DE 4B 14 02 00 1C 00 00 F5 3F E0 01 00 1C 00 00 00 00 61 61 7B 1B 00 00 1F 63 13 00 00 1C",
+      "offset": "A4290",
+      "desc": "Palettes for buttons"
+    },
+    
+
+    {
+      "code": "22 40 82 A0 EA",
+      "original-code": "BD 00 00 C9 01",
+      "offset": "1A22D",
+      "desc": "Jump to the text loading from A3"
+    },
+    {
+      "code": "22 60 82 A0 EA EA",
+      "original-code": "BD 00 00 99 30 1D",
+      "offset": "1A239",
+      "desc": "Jump to the text loading from A3"
+    },
+    {
+      "code": "22 80 82 A0 EA",
+      "original-code": "B9 00 00 C9 01",
+      "offset": "1A278",
+      "desc": "Jump to the text loading from A3"
+    },
+    {
+      "code": "22 A0 82 A0 EA EA",
+      "original-code": "B9 00 00 99 45 1D",
+      "offset": "1A284",
+      "desc": "Jump to the text loading from A3"
+    },
+
+    {
+      "code": "A9 A0 8D FD 1F A9 00 8D FC 1F C2 20 A2 00 85 A0 30 1D A9 3F 00 22 FA 1F 00",
+      "offset": "1A188",
+      "desc": ""
+    },
+    {
+      "code": "30 1D 38 1D 48 1D 40 1D",
+      "offset": "2086F",
+      "desc": "Offense Pointers to Attack / Focus / Strike / Special skill"
+    },
+    {
+      "code": "10 3d 3d 2a 2c 34 01 01 15 38 2c 3e 3c 01 01 01 00 00 00 00 00 00 00 00 22 3d 3b 32 34 2e 01 01 13 2e 2f 2e 37 2d 01 01 14 3c 2c 2a 39 2e 01 01 00 00 00 00 00 00 00 00 12 38 3e 37 3d 2e 3b 01",
+      "offset": "100500",
+      "desc": ""
+    },
+    {
+      "code": "50 1D 58 1D 68 1D 60 1D",
+      "offset": "20881",
+      "desc": ""
+    },
+    {
+      "code": "60 1D",
+      "offset": "1A253",
+      "desc": ""
+    },
+    {
+      "code": "40 1D",
+      "offset": "1A208",
+      "desc": ""
+    },
+
+
+    {
+      "code": "22 00 83 A0 4C 00 C6",
+      "offset": "1C5E8",
+      "desc": "Jump to enemy name loading"
+    },
+
+
+
+    {
+      "code": "00",
+      "offset": "130000",
+      "desc": "Latin sprite",
+      "file": true
+    },
+    {
+      "code": "A0 A6 00 84 22 A0 00 80 84 20",
+      "offset": "299D",
+      "desc": "Latin sprite loading"
+    },
+
+
+
+    {
+      "code": "00",
+      "offset": "128000",
+      "desc": "Battle cards sprite",
+      "file": true,
+      "feature": "BATTLE-CARDS"
+    },
+    {
+      "code": "A0 A5 00 84 22 A0 00 80 84 20",
+      "offset": "1D365",
+      "desc": "Battle cards sprite",
+      "feature": "BATTLE-CARDS"
+    },
+
+
+    {
+      "code": "00",
+      "offset": "129500",
+      "desc": "Uncompressed data for the free town sprites.",
+      "file": true,
+      "feature": "FREETOWN"
+    },
+    {
+      "code": "A0 A5 00 84 22 A0 00 95 84 20",
+      "offset": "303AE",
+      "desc": "Address loading for the free town sprites",
+      "feature": "FREETOWN"
+    },
+
+
+    {
+      "code": "00",
+      "offset": "12A000",
+      "desc": "Compressed data for the score screen data",
+      "file": true,
+      "feature": "SCORE-SCREEN"
+    },
+    {
+      "code": "00",
+      "offset": "12B000",
+      "desc": "Compressed data for the score screen sprite",
+      "file": true,
+      "feature": "SCORE-SCREEN"
+    },
+    {
+      "code": "A0 A5 00 84 22 A0 00 A0 84 20",
+      "offset": "2B863",
+      "desc": "Address loading for the score screen data.",
+      "feature": "SCORE-SCREEN"
+    },
+    {
+      "code": "A0 A5 00 84 22 A0 00 B0 84 20",
+      "offset": "2B84B",
+      "desc": "Address loading for the score screen sprite",
+      "feature": "SCORE-SCREEN"
     }
-    
-    
   ],
   "input-patches": [
     {
@@ -454,6 +535,22 @@
     {
       "value": "{CB}",
       "code": "FB 03"
+    },
+    {
+      "value": "{C2Y}",
+      "code": "FB 04"
+    },
+    {
+      "value": "{C2G}",
+      "code": "FB 05"
+    },
+    {
+      "value": "{C2B}",
+      "code": "FB 03"
+    },
+    {
+      "value": "{C2R}",
+      "code": "FB 07"
     },
     {
       "value":" ",
@@ -886,6 +983,38 @@
     {
       "value":"{TRIANGLE}",
       "code":"6e"
+    },
+    {
+      "value":"{BUT-A1}",
+      "code":"70"
+    },
+    {
+      "value":"{BUT-A2}",
+      "code":"71"
+    },
+    {
+      "value":"{BUT-B1}",
+      "code":"72"
+    },
+    {
+      "value":"{BUT-B2}",
+      "code":"73"
+    },
+    {
+      "value":"{BUT-X1}",
+      "code":"74"
+    },
+    {
+      "value":"{BUT-X2}",
+      "code":"75"
+    },
+    {
+      "value":"{BUT-Y1}",
+      "code":"76"
+    },
+    {
+      "value":"{BUT-Y2}",
+      "code":"77"
     }
   ],
   "japanese": [

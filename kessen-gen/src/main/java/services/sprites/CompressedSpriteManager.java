@@ -115,6 +115,12 @@ public class CompressedSpriteManager {
         String outputFile = "src/main/resources/data/output/120000.data";
         compressFile(uncomp, Header.TILES_DATA_HEADER, outputFile);
     }
+
+    public void compressScoreScreenData() throws IOException {
+        String uncomp = "src/main/resources/data/score-screen-uncompressed.data";
+        String outputFile = "src/main/resources/data/output/12A000.data";
+        compressFile(uncomp, Header.SCORE_SCREEN_DATA_HEADER, outputFile);
+    }
     
     public void decompressMapData(String input, String output) throws IOException {
         String s = input;
@@ -164,7 +170,7 @@ public class CompressedSpriteManager {
                 "100FC4",
                 "101755"*/
 
-                "F8000"
+                "3A0AA"
 
                 //"175C9E"
                 //"140AD5"

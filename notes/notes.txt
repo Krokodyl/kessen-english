@@ -707,6 +707,26 @@ RGB (0,0,14) 00 38
 Text palette
 xA4278	00 00 BE 7F 00 00 00 1C
 
+xA4290	00 00 EC 41 99 7F 00 1C		blue
+xA4498	00 00 FF 4B 14 02 00 1C		yellow
+xA44A0	FF 03 F4 3B E0 01 00 1C		green
+xA44A8	A0 44 8A 7E 61 61 00 1C		selected menu
+xA44B0	20 01 BF 56 13 00 00 1C		red
+
+94:44A0
+
+		00 00 EC 41 99 7F 00 1C 
+		00 38 DE 4B 14 02 00 1C 
+		00 00 F5 3F E0 01 00 1C 
+		00 00 99 7F 61 61 00 1C 
+		00 00 1F 63 13 00 00 1C
+
+xA4290	ORIGINAL 
+00 00 EC 41 99 7F 00 1C 00 38 DE 4B 14 02 00 00 00 00 F5 3F E0 01 00 00 00 00 00 00 61 61 7B 1B 00 00 1F 63 13 00 00 00
+00 00 99 7F EC 41 00 1C 00 38 DE 4B 14 02 00 1C 00 00 F5 3F E0 01 00 1C 00 00 00 00 61 61 7B 1B 00 00 1F 63 13 00 00 1C
+NEW
+
+
 ############## SPECIAL CODES ##############
 
 {FD 8C 08} = Player name
@@ -747,7 +767,7 @@ xEC65	00 80 A3
 
 
 4x4 TILES DEFINITION
-F8000
+xF8000 to xF8C5D
 
 ...
 $80/A81C A7 20       LDA [$20]  [$9F:8000]   A:E59F X:EC65 Y:0110 P:envmxdIzC
@@ -770,6 +790,7 @@ OFFENSE
 {BUTTON}B こうさん    =Give up 
 {BUTTON}Y カウンター   =Counter 
 
+
 $81/BC96 B9 00 00    LDA $0000,y[$84:8873]   A:8873 X:05C8 Y:8873 P:eNvmxdIzc
 $81/BC99 A8          TAY                     A:1D38 X:05C8 Y:8873 P:envmxdIzc
 ...
@@ -777,3 +798,175 @@ $A0/8229 A7 00       LDA [$00]  [$A3:1D38]   A:0080 X:05C8 Y:1D38 P:envmxdIzc
 $A0/822B E2 80       SEP #$80                A:917A X:05C8 Y:1D38 P:eNvmxdIzc
 
 x20873		38 1D
+
+DEFENSE
+
+x20865
+02 80 04 0B 0A 00 19 88 6F 88 29 1D 2E 1D 38 1D 30 1D
+-----------------			
+ menu data
+								
+
+76 6C 80 01 01 01 01 01 7A 91 6A 71 F1 16 17 F0
+00 69 62 6A 8D 2E 2D 16 15 3D 01 00 00 15 12 3D
+1F 0D 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+76 6C 80 01 01 01 01 01 7A 91 6A 71 F1 16 17
+----------------------- ----------- --------
+	Enemy X				  Enemy Y    Hero A
+	
+00 69 62 6A 8D 2E 2D 16 15 3D 01 00 00 15 12 3D
+			   -----------------------
+			     Hero X
+
+F1 16 17	防御
+
+
+Initial Loading (Offense)
+
+$83/A188 A9 83       LDA #$83                A:0080 X:0000 Y:0005 P:eNvMxdIzC
+$83/A18A 8D FD 1F    STA $1FFD  [$80:1FFD]   A:0083 X:0000 Y:0005 P:eNvMxdIzC
+$83/A18D A9 00       LDA #$00                A:0083 X:0000 Y:0005 P:eNvMxdIzC
+$83/A18F 8D FC 1F    STA $1FFC  [$80:1FFC]   A:0000 X:0000 Y:0005 P:envMxdIZC
+$83/A192 C2 20       REP #$20                A:0000 X:0000 Y:0005 P:envMxdIZC
+$83/A194 A2 AF A2    LDX #$A2AF              A:0000 X:0000 Y:0005 P:envmxdIZC
+$83/A197 A0 29 1D    LDY #$1D29              A:0000 X:A2AF Y:0005 P:eNvmxdIzC
+$83/A19A A9 28 00    LDA #$0028              A:0000 X:A2AF Y:1D29 P:envmxdIzC
+$83/A19D 22 FA 1F 00 JSL $001FFA[$00:1FFA]   A:0028 X:A2AF Y:1D29 P:envmxdIzC
+
+x1A188	A9 83 8D FD 1F A9 00 8D FC 1F C2 20 A2 AF A2 A0 29 1D A9 28 00 22 FA 1F 00
+	    A9 A0 8D FD 1F A9 00 8D FC 1F C2 20 A2 00 85 A0 20 1D A9 3F 00 22 FA 1F 00
+		   A0                                  00 85    20       3F
+
+x100500
+10 3d 3d 2a 2c 34 01 01 15 38 2c 3e 3c 01 01 01
+22 3d 3b 32 34 2e 01 01 00 00 00 00 00 00 00 00
+
+x20865	02 80 04 0B 0A 00 19 88 6F 88 29 1D 2E 1D 38 1D 30 1D
+		02 80 04 0B 0A 00 19 88 6F 88 20 1D 28 1D 38 1D 30 1D
+
+DATA x1A2AF (x28 length)
+F1 12 13 F0 00 6F 81 00 00 00 00 00 00 00 00 7A 91 6A 71 F1 16 17 F0 00 69 62 6A 8D 00 00 00 00 00 00 00 00 15 12 3D 1F 0D
+-------- ----------- ----------------------- ----------- -------- ----------------- ----------------------- --------------
+攻撃			ため			placeholder X skill    ひっさつ			防御		こうさん										 カウンター
+
+JPN=マホキカン
+CODE=2E 2D 16 15 3D 
+Defensive Magic
+
+
+{F0}
+{C2R}{BUT-A1}{BUT-A2}{CW}
+{C2Y}{BUT-B1}{BUT-B2}{CW}
+{C2G}{BUT-Y1}{BUT-Y2}{CW}
+{C2B}{BUT-X1}{BUT-X2}{CW}
+{EL}
+
+############### SPRITE BATTLE CARDS ###############
+
+先攻		first attack
+後攻		second attack
+
+xBC140	00 10 06
+
+97:C140
+
+$83/D365 A0 97 00    LDY #$0097              A:0000 X:0220 Y:CA6A P:envMxdIZc
+$83/D368 84 22       STY $22    [$00:0022]   A:0000 X:0220 Y:0097 P:envMxdIzc
+$83/D36A A0 40 C1    LDY #$C140              A:0000 X:0220 Y:0097 P:envMxdIzc
+$83/D36D 84 20       STY $20    [$00:0020]   A:0000 X:0220 Y:C140 P:eNvMxdIzc
+
+$80/A81C A7 20       LDA [$20]  [$97:C140]   A:0000 X:0220 Y:3A6F P:envmxdIzc
+$80/A81E E6 20       INC $20    [$00:0020]   A:1000 X:0220 Y:3A6F P:envmxdIzc
+
+
+New address		x128000		$A5:8000
+New Code
+x1D365		A0 97 00 84 22 A0 40 C1 84 20
+			A0 A5 00 84 22 A0 00 80 84 20
+
+############### SPRITE KANJI/LETTERS ###############
+
+
+58000	8B:0000
+
+$80/A99D A0 8B 00    LDY #$008B              A:A900 X:0000 Y:1DF0 P:envMxdIZc
+$80/A9A0 84 22       STY $22    [$00:0022]   A:A900 X:0000 Y:008B P:envMxdIzc
+$80/A9A2 A0 00 80    LDY #$8000              A:A900 X:0000 Y:008B P:envMxdIzc
+$80/A9A5 84 20       STY $20    [$00:0020]   A:A900 X:0000 Y:8000 P:eNvMxdIzc
+...
+$80/A81C A7 20       LDA [$20]  [$8B:8000]   A:A900 X:0000 Y:3A6F P:envmxdIzc
+$80/A81E E6 20       INC $20    [$00:0020]   A:2800 X:0000 Y:3A6F P:envmxdIzc
+
+x299D	A0 8B 00 84 22 A0 00 80 84 20
+
+x130000		$A6:8000
+
+x299D	A0 A6 00 84 22 A0 00 80 84 20
+
+
+############### SPRITE MAP ###############
+
+xAA60C	00 30 04
+
+$95:A60C
+
+$85/C9C8 A0 95 00    LDY #$0095              A:00FF X:0000 Y:0005 P:eNvMxdIzC
+$85/C9CB 84 22       STY $22    [$00:0022]   A:00FF X:0000 Y:0095 P:envMxdIzC
+$85/C9CD A0 0C A6    LDY #$A60C              A:00FF X:0000 Y:0095 P:envMxdIzC
+$85/C9D0 84 20       STY $20    [$00:0020]   A:00FF X:0000 Y:A60C P:eNvMxdIzC
+...
+$80/A81C A7 20       LDA [$20]  [$95:A60C]   A:00FF X:0000 Y:3A6F P:envmxdIzC
+$80/A81E E6 20       INC $20    [$00:0020]   A:3000 X:0000 Y:3A6F P:envmxdIzC
+
+############### SPRITE SCORE SCREEN ###############
+王座決定まで		あと79週
+Rankings	Week left
+
+王座決定まで		あと79週
+------------  ----XX--
+Weeks remaining:
+
+Sprite
+From x3A5FC to x3ACCE
+x3A5FC		00 20 07
+$87:A5FC
+$85/B84B A0 87 00    LDY #$0087              A:00FF X:00C0 Y:04DE P:eNvMxdIzC
+$85/B84E 84 22       STY $22    [$00:0022]   A:00FF X:00C0 Y:0087 P:envMxdIzC
+$85/B850 A0 FC A5    LDY #$A5FC              A:00FF X:00C0 Y:0087 P:envMxdIzC
+$85/B853 84 20       STY $20    [$00:0020]   A:00FF X:00C0 Y:A5FC P:eNvMxdIzC
+
+x2B84B	A0 87 00 84 22 A0 FC A5 84 20
+
+Order
+3A0AA		00 07 06
+$87:A0AA
+$85/B863 A0 87 00    LDY #$0087              A:5A6F X:00C0 Y:0000 P:envMxdIZC
+$85/B866 84 22       STY $22    [$00:0022]   A:5A6F X:00C0 Y:0087 P:envMxdIzC
+$85/B868 A0 AA A0    LDY #$A0AA              A:5A6F X:00C0 Y:0087 P:envMxdIzC
+$85/B86B 84 20       STY $20    [$00:0020]   A:5A6F X:00C0 Y:A0AA P:eNvMxdIzC
+
+x2B863	A0 87 00 84 22 A0 AA A0 84 20
+		
+x12A000		A5:A000
+		A0 A5 00 84 22 A0 00 A0 84 20
+		
+############### SPRITE FREE TOWN ###############
+03ACCE to 03B15A (48C = 1164)
+
+x3ACCE		00 20 07
+
+祝 村解放
+celebration of village liberation
+
+$87:ACCE
+$86/83AE A0 87 00    LDY #$0087              A:5A6F X:109F Y:0000 P:envMxdIZC
+$86/83B1 84 22       STY $22    [$00:0022]   A:5A6F X:109F Y:0087 P:envMxdIzC
+$86/83B3 A0 CE AC    LDY #$ACCE              A:5A6F X:109F Y:0087 P:envMxdIzC
+$86/83B6 84 20       STY $20    [$00:0020]   A:5A6F X:109F Y:ACCE P:eNvMxdIzC
+
+New address : x129500		A5:9500
+New code 
+x303AE		A0 A5 00 84 22 A0 00 95 84 20
+

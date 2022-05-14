@@ -2,10 +2,11 @@ package services;
 
 import entities.Config;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -62,17 +63,19 @@ public class Utils {
         return (byte) (i & 0xFF);
     }
 
-    public static void main(String[] args) {
-        Config config = JsonLoader.loadConfig();
-        try {
-            byte[] data = Files.readAllBytes(new File(config.getRomInput()).toPath());
-
-
-
-
-        } catch (IOException ex) {
-            Logger.getLogger(Kessen.class.getName()).log(Level.SEVERE, null, ex);
+    public static void main(String[] args) throws IOException {
+        String name = "D:\\git\\kessen-english\\roms\\Kessen! Dokapon Oukoku IV - Densetsu no Yuusha-tachi (Japan) - extended-trace.log";
+        String output = "D:\\git\\kessen-english\\roms\\b.log";
+        PrintWriter writer = new PrintWriter(output, "UTF-8");
+        BufferedReader br = new BufferedReader(new FileReader(name));
+        String line = br.readLine();
+        while(line!=null) {
+            line = line.substring(0,line.length()-16);
+            writer.println(line);
+            writer.flush();
+            line = br.readLine();
         }
+        writer.close();
     }
 
     public static byte[] hexStringToByteArray(String s) {

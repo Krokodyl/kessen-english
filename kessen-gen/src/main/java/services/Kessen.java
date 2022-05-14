@@ -36,9 +36,12 @@ public class Kessen {
         System.out.println("bps-patch-output="+config.getBpsPatchOutput());
         
         // Call this once whenever the vram-latin.png image is modified.
-        //new FontImageReader().generateSpriteLatinCharacters();
-        //new FontImageReader().generateSpriteTownSigns();
-
+        FontImageReader fontImageReader = new FontImageReader();
+        //fontImageReader.generateSpriteLatinCharacters();
+        //fontImageReader.generateSpriteTownSigns();
+        //fontImageReader.generateSpriteBattleCards();
+        //fontImageReader.generateSpriteFreeTown();
+        //fontImageReader.generateSpriteScoreScreen();
         
         try {
             data = Files.readAllBytes(new File(config.getRomInput()).toPath());
@@ -52,6 +55,7 @@ public class Kessen {
         
         //new CompressedSpriteManager(data).decompressTilesData("F8000", "118000");
         //new CompressedSpriteManager(data).compressTilesData();
+        new CompressedSpriteManager(data).compressScoreScreenData();
 
         //DataReader.generateTownPairs();
         //DataReader.analyzeTownNames("tables/towns.txt");
@@ -102,7 +106,6 @@ public class Kessen {
 
         for (PointerTable table:tables) {
            DataReader.readTable(table, data);
-            //else DataReader.readTableFromTranslationFile(table,"translations/Table 3.txt");
         }
 
         for (PointerTable table:tables) {
@@ -130,7 +133,7 @@ public class Kessen {
             if (!ip.isDebug()) ip.writePatch(data);
         }*/
 
-        String jpn = "攻撃   ため   ひっさつ";
+        String jpn = "マホキカン";
         System.out.println("JPN="+jpn);
         System.out.print("CODE=");
         for (char c : jpn.toCharArray()) {
@@ -139,10 +142,17 @@ public class Kessen {
         }
         System.out.println();
 
-        String eng = "Strike";
+        String eng = "Attack  ";
         System.out.println("ENG="+eng);
         System.out.print("CODE="+translator.getCodesFromEnglish(eng));
         System.out.println();
+        System.out.printf("ENG=[%s] CODE=[%s%n","Attack  ",translator.getCodesFromEnglish("Attack  "));
+        System.out.printf("ENG=[%s] CODE=[%s%n","Focus   ",translator.getCodesFromEnglish("Focus   "));
+        System.out.printf("ENG=[%s] CODE=[%s%n","Strike  ",translator.getCodesFromEnglish("Strike  "));
+        System.out.printf("ENG=[%s] CODE=[%s%n","Defend  ",translator.getCodesFromEnglish("Defend  "));
+        System.out.printf("ENG=[%s] CODE=[%s%n","Escape  ",translator.getCodesFromEnglish("Escape  "));
+        System.out.printf("ENG=[%s] CODE=[%s%n","Counter ",translator.getCodesFromEnglish("Counter "));
+        
 
         String prefix = "8";
         for (int k=1;k<=26+1;k++) {

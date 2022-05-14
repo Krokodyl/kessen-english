@@ -1,9 +1,6 @@
 package services.sprites;
 
-import enums.FontColor;
-import enums.Palette;
-import enums.PaletteText;
-import enums.PaletteTownSigns;
+import enums.*;
 import lz.entities.Header;
 import services.Utils;
 
@@ -29,7 +26,7 @@ public class FontImageReader {
     public byte[] getBytes() {
         return outputStream.toByteArray();
     }
-    
+
     public void generateSpriteLatinCharacters() throws IOException {
         generateSpriteDataFromImage(
                 "src/main/resources/images/vram-latin.png",
@@ -38,10 +35,23 @@ public class FontImageReader {
                 2
         );
         String uncomp = "src/main/resources/data/sprite-uncompressed.data";
-        String outputFile = "src/main/resources/data/output/58000.data";
+        String outputFile = "src/main/resources/data/output/130000.data";
         CompressedSpriteManager compressedSpriteManager = new CompressedSpriteManager(null);
-        compressedSpriteManager.compressFile(uncomp, Header.LATIN_SPRITES_HEADER, outputFile);
+        compressedSpriteManager.compressCopyFile(uncomp, Header.LATIN_SPRITES_HEADER, outputFile);
         //compressedSpriteManager.decompressFile(outputFile, "src/main/resources/data/decomp-1B8000.data");
+    }
+
+    public void generateSpriteBattleCards() throws IOException {
+        generateSpriteDataFromImage(
+                "src/main/resources/images/battle-cards.png",
+                "src/main/resources/data/sprite-uncompressed.data",
+                new PaletteBattleCards(),
+                4
+        );
+        String uncomp = "src/main/resources/data/sprite-uncompressed.data";
+        String outputFile = "src/main/resources/data/output/128000.data";
+        CompressedSpriteManager compressedSpriteManager = new CompressedSpriteManager(null);
+        compressedSpriteManager.compressCopyFile(uncomp, Header.BATTLE_CARDS_SPRITES_HEADER, outputFile);
     }
 
     public void generateSpriteTownSigns() throws IOException {
@@ -51,6 +61,32 @@ public class FontImageReader {
                 new PaletteTownSigns(),
                 4
         );
+    }
+
+    public void generateSpriteFreeTown() throws IOException {
+        generateSpriteDataFromImage(
+                "src/main/resources/images/free-town.png",
+                "src/main/resources/data/sprite-uncompressed.data",
+                new PaletteFreeTown(),
+                4
+        );
+        String uncomp = "src/main/resources/data/sprite-uncompressed.data";
+        String outputFile = "src/main/resources/data/output/129500.data";
+        CompressedSpriteManager compressedSpriteManager = new CompressedSpriteManager(null);
+        compressedSpriteManager.compressFile(uncomp, Header.FREE_TOWN_SPRITES_HEADER, outputFile);
+    }
+
+    public void generateSpriteScoreScreen() throws IOException {
+        generateSpriteDataFromImage(
+                "src/main/resources/images/score-screen.png",
+                "src/main/resources/data/sprite-uncompressed.data",
+                new PaletteScoreScreen(),
+                4
+        );
+        String uncomp = "src/main/resources/data/sprite-uncompressed.data";
+        String outputFile = "src/main/resources/data/output/12B000.data";
+        CompressedSpriteManager compressedSpriteManager = new CompressedSpriteManager(null);
+        compressedSpriteManager.compressFile(uncomp, Header.SCORE_SCREEN_SPRITE_HEADER, outputFile);
     }
 
     private static String generateSpriteDataFromImage(String image, String output, Palette palette, int bpp) throws IOException {

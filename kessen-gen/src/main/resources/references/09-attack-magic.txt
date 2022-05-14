@@ -13,7 +13,7 @@
 9000013=Poison 
 9000014=Drain  
 9000015=Steal  
-9000016=Rust        
+9000016=Rust   
 9000017=Charm  
 9000018=War Cry
 9000019=Clone  

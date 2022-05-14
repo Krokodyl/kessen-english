@@ -6,3 +6,7 @@ Washi
 ワシ	わし	儂
 
 Check Frost effect desc (e594)
+
+Silence spell creates a kanji sprite on target
+
+Check CACB
