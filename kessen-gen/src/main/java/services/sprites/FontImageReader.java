@@ -63,6 +63,15 @@ public class FontImageReader {
         );
     }
 
+    public void generateSpriteSilence() throws IOException {
+        generateSpriteDataFromImage(
+                "src/main/resources/images/silence.png",
+                "src/main/resources/data/output/90C2E.data",
+                new PaletteSilence(),
+                4
+        );
+    }
+
     public void generateSpriteFreeTown() throws IOException {
         generateSpriteDataFromImage(
                 "src/main/resources/images/free-town.png",

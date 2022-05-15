@@ -481,7 +481,18 @@
       "offset": "2B84B",
       "desc": "Address loading for the score screen sprite",
       "feature": "SCORE-SCREEN"
+    },
+
+
+
+    {
+      "code": "00",
+      "offset": "90C2E",
+      "desc": "Silence sprite",
+      "file": true,
+      "feature": "SILENCE"
     }
+    
   ],
   "input-patches": [
     {

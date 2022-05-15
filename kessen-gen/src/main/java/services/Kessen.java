@@ -42,6 +42,7 @@ public class Kessen {
         //fontImageReader.generateSpriteBattleCards();
         //fontImageReader.generateSpriteFreeTown();
         //fontImageReader.generateSpriteScoreScreen();
+        fontImageReader.generateSpriteSilence();
         
         try {
             data = Files.readAllBytes(new File(config.getRomInput()).toPath());
@@ -55,7 +56,7 @@ public class Kessen {
         
         //new CompressedSpriteManager(data).decompressTilesData("F8000", "118000");
         //new CompressedSpriteManager(data).compressTilesData();
-        new CompressedSpriteManager(data).compressScoreScreenData();
+        //new CompressedSpriteManager(data).compressScoreScreenData();
 
         //DataReader.generateTownPairs();
         //DataReader.analyzeTownNames("tables/towns.txt");
