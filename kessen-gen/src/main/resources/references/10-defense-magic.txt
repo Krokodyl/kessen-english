@@ -1,11 +1,11 @@
 A000001=Heal   
 A000002=Heal+  
 A000003=Snare  
-A000004=Deflect
+A000004=Repel+ 
 A000005=Repel  
-A000006=Repel+ 
-A000007=Repel  
-A000008=Heal++ 
+A000006=Repel++
+A000007=Deflect
+A000008=Cure   
 A000009=Seal   
 A000010=Seal+  
 A000011=Mirror 

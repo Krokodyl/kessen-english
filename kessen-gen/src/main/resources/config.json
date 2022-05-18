@@ -533,35 +533,48 @@
   "latin": [
     {
       "value": "{CW}",
-      "code": "FB 00"
+      "code": "FB 00",
+      "desc": "Font color white"
     },
     {
       "value": "{CG}",
-      "code": "FB 01"
+      "code": "FB 01",
+      "desc": "Font color green"
     },
     {
       "value": "{CR}",
-      "code": "FB 02"
+      "code": "FB 02",
+      "desc": "Font color red"
     },
     {
       "value": "{CB}",
-      "code": "FB 03"
+      "code": "FB 03",
+      "desc": "Font color blue"
     },
     {
       "value": "{C2Y}",
-      "code": "FB 04"
+      "code": "FB 04",
+      "desc": "Button color yellow"
     },
     {
       "value": "{C2G}",
-      "code": "FB 05"
+      "code": "FB 05",
+      "desc": "Button color green"
     },
     {
       "value": "{C2B}",
-      "code": "FB 03"
+      "code": "FB 03",
+      "desc": "Button color blue"
     },
     {
       "value": "{C2R}",
-      "code": "FB 07"
+      "code": "FB 07",
+      "desc": "Button color red"
+    },
+    {
+      "value": "{HF}",
+      "code": "FB 10",
+      "desc": "Flip horizontally"
     },
     {
       "value":" ",

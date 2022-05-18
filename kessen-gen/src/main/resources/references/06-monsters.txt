@@ -78,7 +78,7 @@
 6000078=Talos  
 6000079=Scylla 
 6000080=Titan  
-6000081=Richie 
+6000081=Witch  
 6000082=Daemon 
 6000083=Lord   
 6000084=Ifrit  

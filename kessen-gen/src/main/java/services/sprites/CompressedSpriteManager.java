@@ -149,6 +149,29 @@ public class CompressedSpriteManager {
         }
     }
 
+    public static String MAP_OVERWORLD_OFFSET = "C4ED5";
+    public static int MAP_OVERWORLD_WIDTH = 160;
+    
+    public void decompressMapData(String s, int width) throws FileNotFoundException {
+        int start = Integer.parseInt(s, 16)+3;
+        Decompressor decompressor = new Decompressor(data, start);
+        decompressor.decompressData();
+        byte[] decompressedBytes = decompressor.getDecompressedBytes();
+        System.out.println("From "+Utils.toHexString(start-3,6)+" to "+Utils.toHexString(decompressor.getEnd(),6));
+        System.out.println("Header expected size "+decompressor.getHeader().getDecompressedLength());
+        System.out.println("Decompressed bytes : "+Utils.bytesToHex(decompressedBytes));
+        byte[] mapData = Arrays.copyOfRange(decompressedBytes, 4, decompressedBytes.length);
+        PrintWriter pw = new PrintWriter(new File("src/main/resources/gen/map-"+s+".txt"));
+        String regex = "(?<=\\G.{"+width*6+"})";
+        String[] split = Utils.bytesToHex(mapData).split(regex);
+        for (String s1 : split) {
+            pw.write(s1+"\n");
+            System.out.println(s1);
+        }
+        pw.close();
+        
+    }
+
     private void decompressStuff() throws IOException {
         String[] addresses = new String[]{
                 /*"D4BE4",

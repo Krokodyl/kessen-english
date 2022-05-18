@@ -15,7 +15,7 @@
 5000015=Specs  
 5000016=Key    
 5000017=Boots  
-5000018=Dwarf  
+5000018=Rat Kid
 5000019=Scuba  
 5000020=Bribe  
 5000021=Mirror 

@@ -42,7 +42,7 @@ public class Kessen {
         //fontImageReader.generateSpriteBattleCards();
         //fontImageReader.generateSpriteFreeTown();
         //fontImageReader.generateSpriteScoreScreen();
-        fontImageReader.generateSpriteSilence();
+        //fontImageReader.generateSpriteSilence();
         
         try {
             data = Files.readAllBytes(new File(config.getRomInput()).toPath());
@@ -50,6 +50,8 @@ public class Kessen {
             Logger.getLogger(Kessen.class.getName()).log(Level.SEVERE, null, ex);
         }
         data = DataWriter.fillDataWithPlaceHolders(data);
+
+        //new CompressedSpriteManager(data).decompressMapData(CompressedSpriteManager.MAP_OVERWORLD_OFFSET, CompressedSpriteManager.MAP_OVERWORLD_WIDTH);
         
         //new CompressedSpriteManager(data).decompressMapData("C4ED5", "110000");
         //new CompressedSpriteManager(data).compressMapData();
