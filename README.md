@@ -5,7 +5,7 @@ English translation for the SNES game Kessen! Dokapon Oukoku IV
 
 ## Rabble Tower
 
-![image 01](/screenshots/maps/Rabble Tower 1F.png)<br/>
+![image 01](/screenshots/maps/rabble-tower-1f.png)<br/>
 ![image 01](/screenshots/maps/Rabble Tower 2F.png)<br/>
 ![image 01](/screenshots/maps/Rabble Tower 3F.png)<br/>
 ![image 01](/screenshots/maps/Rabble Tower 4F.png)
