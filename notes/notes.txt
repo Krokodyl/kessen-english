@@ -776,6 +776,8 @@ $80/A81E E6 20       INC $20    [$00:0020]   A:1200 X:EC65 Y:0110 P:envmxdIzC
 xEC68	00 80 9F
 
 
+08 05 08 06 08 11 08 12
+
 ############### COMBAT SCREEN ###############
 OFFENSE
 
@@ -979,3 +981,21 @@ New address : x129500		A5:9500
 New code 
 x303AE		A0 A5 00 84 22 A0 00 95 84 20
 
+############### STATUS ###############
+					ICON	SPELL							CURE
+きょじゃく	Weak		Pill	ウリリィィ				Weaken		Salve
+おくびょう	Fear		Duck	ブルッチ(Burutchi)		Spook
+どく		Poison		Vial	どく					Poison		Remedy
+マヒ		Paralysis	Bolts	まひ(Mahi)			Paralyze	Serum
+		Cursed		Skull	Curse							Amulet
+		Sleep		----	すいみん							Music
+		Silence		----
+
+Tonic: Doubles attack, defense and speed for a week.
+
+Serum	Elixir	Tonic	Remedy	Potion	Salve
+
+
+############### SPRITE FINAL SCORE SCREEN ###############
+
+王座決定		おめでとう

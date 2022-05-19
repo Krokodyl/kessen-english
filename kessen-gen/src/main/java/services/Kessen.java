@@ -112,7 +112,7 @@ public class Kessen {
         }
 
         for (PointerTable table:tables) {
-            new TablePrinter().generateTranslationFile2(table, data, japanese, "src/main/resources/gen/Table "+table.getId()+".txt");
+            //new TablePrinter().generateTranslationFile2(table, data, japanese, "src/main/resources/gen/Table "+table.getId()+".txt");
         }
         
         

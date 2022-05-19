@@ -482,6 +482,18 @@
       "desc": "Address loading for the score screen sprite",
       "feature": "SCORE-SCREEN"
     },
+    {
+      "code": "A0 A5 00 84 22 A0 00 B0 84 20",
+      "offset": "2D228",
+      "desc": "Address loading for the final score screen sprite",
+      "feature": "FINAL-SCORE-SCREEN"
+    },
+    {
+      "code": "64 08 65 08 66 08 67 08 68 08 69 08 6A 08 6B 08 6C 08 6D 08 6E 08 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 3F 08 3D 08 3C 08 2E 08 72 08 73 08 00 00 74 08 75 08 76 08 77 08 78 08 79 08 7A 08 7B 08 7C 08 7D 08 7E 08 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "offset": "3A586",
+      "desc": "Final score screen data",
+      "feature": "FINAL-SCORE-SCREEN"
+    },
 
 
 
@@ -1039,6 +1051,26 @@
     {
       "value":"{BUT-Y2}",
       "code":"77"
+    },
+    {
+      "value":"{ST-WEAK}",
+      "code":"80"
+    },
+    {
+      "value":"{ST-FEAR}",
+      "code":"81"
+    },
+    {
+      "value":"{ST-POISON}",
+      "code":"82"
+    },
+    {
+      "value":"{ST-PARALYSIS}",
+      "code":"83"
+    },
+    {
+      "value":"{ST-CURSE}",
+      "code":"84"
     }
   ],
   "japanese": [

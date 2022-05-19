@@ -20,5 +20,5 @@
 4000020=Poison 
 4000021=Mix-up 
 4000022=Curse  
-4000023=Cold   
+4000023=Spook  
 4000024=Weaken 
