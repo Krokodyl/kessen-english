@@ -62,6 +62,33 @@ public class DataReader {
         }
         return table;
     }
+    
+    public static void generateCredits(String name) throws IOException {
+        BufferedReader br = new BufferedReader(
+                new InputStreamReader(
+                        Objects.requireNonNull(Translator.class.getClassLoader().getResourceAsStream(name)), StandardCharsets.UTF_8));
+        String line = br.readLine();
+        System.out.printf("{F0}");
+        int alt = 1;
+        while (line != null) {
+            line = line.trim();
+            int count = line.length() - line.replace("{", "").length();
+            int length = line.length() - count*4;
+            int gap = 30-length;
+            int left = gap/2;
+            int right = gap-left;
+            String suffix = "{NL}";
+            if (alt==3) {
+                int shift = 29-length-left;
+                suffix = "{BF "+Utils.toHexString(shift)+" FE}";
+                alt=0;
+            }
+            System.out.printf("%s",StringUtils.repeat(" ", left)+line+suffix);
+            line = br.readLine();
+            alt++;
+        }
+        System.out.printf("{EL}\n");
+    }
 
     public static void generateReferenceFile(PointerTable table, String name, String output) throws IOException {
         PrintWriter writer = new PrintWriter(output, "UTF-8");

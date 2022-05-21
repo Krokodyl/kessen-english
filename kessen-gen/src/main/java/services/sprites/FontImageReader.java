@@ -85,6 +85,32 @@ public class FontImageReader {
         compressedSpriteManager.compressFile(uncomp, Header.FREE_TOWN_SPRITES_HEADER, outputFile);
     }
 
+    public void generateSpriteTitleKessen() throws IOException {
+        generateSpriteDataFromImage(
+                "src/main/resources/images/title-kessen.png",
+                "src/main/resources/data/sprite-uncompressed.data",
+                new PaletteTitle(),
+                4
+        );
+        String uncomp = "src/main/resources/data/sprite-uncompressed.data";
+        String outputFile = "src/main/resources/data/output/12C000.data";
+        CompressedSpriteManager compressedSpriteManager = new CompressedSpriteManager(null);
+        compressedSpriteManager.compressFile(uncomp, Header.TITLE_KESSEN_SPRITE_HEADER, outputFile);
+    }
+
+    public void generateSpriteTitleDokapon() throws IOException {
+        generateSpriteDataFromImage(
+                "src/main/resources/images/title-dokapon.png",
+                "src/main/resources/data/sprite-uncompressed.data",
+                new PaletteTitle(),
+                4
+        );
+        String uncomp = "src/main/resources/data/sprite-uncompressed.data";
+        String outputFile = "src/main/resources/data/output/12D000.data";
+        CompressedSpriteManager compressedSpriteManager = new CompressedSpriteManager(null);
+        compressedSpriteManager.compressFile(uncomp, Header.TITLE_DOKAPON_SPRITE_HEADER, outputFile);
+    }
+
     public void generateSpriteScoreScreen() throws IOException {
         generateSpriteDataFromImage(
                 "src/main/resources/images/score-screen.png",

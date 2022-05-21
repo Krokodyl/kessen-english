@@ -498,13 +498,94 @@
 
 
     {
+      "code": "28 36 2e 3b 01 01 01 01 22 3e 37 2a 01 01 01 01 23 2a 36 38 3e 35 2a 34 12 38 34 38 38 38 38 38 14 37 30 35 32 3c 31 01 25 2e 3b 3c 32 38 37 01 13 38 37 2e 01 11 42 01 1a 3b 38 34 38 2d 42 35",
+      "offset": "11A000",
+      "desc": "Ymer    Suna    TamoulakCokoooooEnglish Version Done By Krokodyl",
+      "feature": "HIGH-SCORES"
+    },
+    {
+      "code": "00 A0 31 1D 32 1D 36 1D 08 A0 3F 1D 40 1D 44 1D 10 A0 4D 1D 4E 1D 52 1D 18 A0 5B 1D 5C 1D 60 1D 20 A0 69 1D 6A 1D 6E 1D 28 A0 77 1D 78 1D 7C 1D 30 A0 85 1D 86 1D 8A 1D 38 A0 93 1D 94 1D 98 1D",
+      "offset": "20331",
+      "desc": "Pointers to the hight scores names",
+      "feature": "HIGH-SCORES"
+    },
+
+    {
+      "code": "28 36 2e 3b",
+      "offset": "46E82",
+      "desc": "Player names in the demo",
+      "feature": "DEMO-NAMES"
+    },
+    {
+      "code": "22 3e 37 2a",
+      "offset": "46F53",
+      "desc": "Player names in the demo",
+      "feature": "DEMO-NAMES"
+    },
+    {
+      "code": "23 2a 36 38 3e 35 2a 34",
+      "offset": "47024",
+      "desc": "Player names in the demo",
+      "feature": "DEMO-NAMES"
+    },
+    {
+      "code": "12 38 34 38 38 38 38 38",
+      "offset": "470F5",
+      "desc": "Player names in the demo",
+      "feature": "DEMO-NAMES"
+    },
+
+
+    {
       "code": "00",
       "offset": "90C2E",
       "desc": "Silence sprite",
       "file": true,
       "feature": "SILENCE"
+    },
+
+
+    {
+      "code": "00",
+      "offset": "12C000",
+      "desc": "Title Kessen Sprite",
+      "file": true,
+      "feature": "TITLE-SCREEN"
+    },
+    {
+      "code": "A0 00 C0 84 20 A0 A5 00 84 22",
+      "offset": "2BFE2",
+      "desc": "Title Kessen Sprite Pointer",
+      "feature": "TITLE-SCREEN"
+    },
+
+    {
+      "code": "00",
+      "offset": "12D000",
+      "desc": "Title Dokapon Sprite",
+      "file": true,
+      "feature": "TITLE-SCREEN"
+    },
+    {
+      "code": "A0 00 D0 84 20 A0 A5 00 84 22",
+      "offset": "2C2D5",
+      "desc": "Title Dokapon Sprite Pointer",
+      "feature": "TITLE-SCREEN"
+    },
+    {
+      "code": "00",
+      "offset": "AC972",
+      "desc": "Title Dokapon Sprite Order",
+      "file": true,
+      "feature": "TITLE-SCREEN"
+    },
+    {
+      "code": "00",
+      "offset": "AD1B2",
+      "desc": "Pre Title Dokapon Sprite Order",
+      "file": true,
+      "feature": "TITLE-SCREEN"
     }
-    
   ],
   "input-patches": [
     {

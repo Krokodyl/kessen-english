@@ -17,7 +17,7 @@
 6000017=GoldBat
 6000018=DarkElf
 6000019=Hobgob 
-6000020=Gust   
+6000020=Undead 
 6000021=OrcLord
 6000022=Slayer 
 6000023=Ghoul  

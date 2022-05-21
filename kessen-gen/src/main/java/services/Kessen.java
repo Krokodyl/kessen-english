@@ -1,5 +1,6 @@
 package services;
 
+import bps.sections.Data;
 import characters.JapaneseChar;
 import entities.*;
 import enums.PaletteText;
@@ -43,6 +44,8 @@ public class Kessen {
         //fontImageReader.generateSpriteFreeTown();
         //fontImageReader.generateSpriteScoreScreen();
         //fontImageReader.generateSpriteSilence();
+        //fontImageReader.generateSpriteTitleKessen();
+        //fontImageReader.generateSpriteTitleDokapon();
         
         try {
             data = Files.readAllBytes(new File(config.getRomInput()).toPath());
@@ -51,7 +54,7 @@ public class Kessen {
         }
         data = DataWriter.fillDataWithPlaceHolders(data);
 
-        //new CompressedSpriteManager(data).decompressMapData(CompressedSpriteManager.MAP_OVERWORLD_OFFSET, CompressedSpriteManager.MAP_OVERWORLD_WIDTH);
+        new CompressedSpriteManager(data).decompressMapData(CompressedSpriteManager.MAP_OVERWORLD_OFFSET, CompressedSpriteManager.MAP_OVERWORLD_WIDTH);
         
         //new CompressedSpriteManager(data).decompressMapData("C4ED5", "110000");
         //new CompressedSpriteManager(data).compressMapData();
@@ -145,7 +148,7 @@ public class Kessen {
         }
         System.out.println();
 
-        String eng = "Attack  ";
+        /*String eng = "Attack  ";
         System.out.println("ENG="+eng);
         System.out.print("CODE="+translator.getCodesFromEnglish(eng));
         System.out.println();
@@ -155,7 +158,11 @@ public class Kessen {
         System.out.printf("ENG=[%s] CODE=[%s%n","Defend  ",translator.getCodesFromEnglish("Defend  "));
         System.out.printf("ENG=[%s] CODE=[%s%n","Escape  ",translator.getCodesFromEnglish("Escape  "));
         System.out.printf("ENG=[%s] CODE=[%s%n","Counter ",translator.getCodesFromEnglish("Counter "));
-        
+
+        printEnglishCodes(translator, "CPU");
+        printEnglishCodes(translator, "AHNo");
+        printEnglishCodes(translator, "TGE");
+        printEnglishCodes(translator, "Ymer    Suna    TamoulakCokoooooEnglish Version Done By Krokodyl");*/
 
         String prefix = "8";
         for (int k=1;k<=26+1;k++) {
@@ -168,8 +175,10 @@ public class Kessen {
         
 
 
-        DataReader.generateDualLetters("tables/dual-words.txt");
+        //DataReader.generateDualLetters("tables/dual-words.txt");
 
+        //DataReader.generateCredits("references/credits.txt");
+                
         System.out.printf("Missing translations: %s\n", translator.missingTranslations);
         
         System.out.println("Saving rom-output...");
@@ -193,6 +202,10 @@ public class Kessen {
         */
 
 
+    }
+    
+    public static void printEnglishCodes(Translator translator, String s){
+        System.out.printf("ENG=[%s] CODE=[%s%n]",s,translator.getCodesFromEnglish(s));
     }
 
 
