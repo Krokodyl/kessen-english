@@ -26,17 +26,17 @@ Waseda Mystery Club is one of the cultural circle activities that exist in Wased
 
 There is the TV commercial: [Japanese Commercial for 決戦!ドカポン王国Ⅳ](https://youtu.be/M7xI6WGgs_k)
 
-<img src="/tv/tv-01.png" alt="map" width="200"/><br/>
+<img src="/tv/tv-01.png" alt="map" width="400"/><br/>
 <i>Music by Acid Love</i><br/>
 
-<img src="/tv/tv-02.png" alt="map" width="200"/><br/>
+<img src="/tv/tv-02.png" alt="map" width="400"/><br/>
 <i>Dokapon Kingdom</i><br/>
 
-<img src="/tv/tv-03.png" alt="map" width="200"/><br/>
+<img src="/tv/tv-03.png" alt="map" width="400"/><br/>
 ス一パ一ファミコン  任天堂<br/>
 <i>Super Famicom   Nintendo</i>
 
-<img src="/tv/tv-04.png" alt="map" width="200"/><br/>
+<img src="/tv/tv-04.png" alt="map" width="400"/><br/>
 
 |         |            |
 | --- |:---|
@@ -47,7 +47,7 @@ There is the TV commercial: [Japanese Commercial for 決戦!ドカポン王国�
 
 決戦 (Kessen) means Decisive Fight / Playoff
 
-<img src="/tv/tv-05.png" alt="map" width="200"/><br/>
+<img src="/tv/tv-05.png" alt="map" width="400"/><br/>
 
 |         |            |
 | --- |:---|
