@@ -44,6 +44,8 @@ There is the TV commercial: [Japanese Commercial for 決戦!ドカポン王国�
 | ドカポン王国        | Dokapon Kingdom           |
 | ランド        | Land           |
 | 伝説の勇者たち        | Legendary Heroes           |
+| 12月10日発売        | Release on December 10           |
+
 
 決戦 (Kessen) means Decisive Fight / Playoff
 
