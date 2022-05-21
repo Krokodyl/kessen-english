@@ -3,7 +3,8 @@ English translation for the SNES game Kessen! Dokapon Oukoku IV
 
 # World map
 
-![image 01](/screenshots/maps/map.png)<br/>
+
+<img src="/screenshots/maps/map.png" alt="map" width="600"/>
 
 # Credits
 
@@ -42,7 +43,7 @@ There is the TV commercial: [Japanese Commercial for 決戦!ドカポン王国�
 | 決戦!        | Kessen!           |
 | ドカポン王国        | Dokapon Kingdom           |
 | ランド        | Land           |
-| ~伝説の勇者たち~        | ~Legendary Heroes~           |
+| 伝説の勇者たち        | Legendary Heroes           |
 
 決戦 (Kessen) means Decisive Fight / Playoff
 
