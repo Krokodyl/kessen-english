@@ -356,7 +356,7 @@ OFFSETDATA=0210FF
 MENUDATA=02 42 01 1E 06 00 
 DATA=F0 FD 80 08 01 FD 00 24 0C FD 00 24 01 FD 00 23 B8 01 FD 00 24 FE FD 80 08 01 FD 00 24 0C FD 00 24 01 FD 00 23 B8 01 FD 00 24 FF 
 JPN={FD 80 08} {FD 00 24}/{FD 00 24} {FD 00 23}% {FD 00 24}{NL}{FD 80 08} {FD 00 24}/{FD 00 24} {FD 00 23}% {FD 00 24}{EL}
-ENG=
+ENG={F0}{FD 80 08} {FD 00 24}/{FD 00 24} {FD 00 23}% {FD 00 24}{NL}{FD 80 08} {FD 00 24}/{FD 00 24} {FD 00 23}% {FD 00 24}{EL}
 
 OFFSET=02058F
 VALUE=912A
@@ -364,7 +364,7 @@ OFFSETDATA=02112A
 MENUDATA=02 42 01 1E 08 00 
 DATA=F0 FD 80 08 01 FD 00 24 0C FD 00 24 01 FD 00 23 B8 01 FD 00 24 FE FD 80 08 01 FD 00 24 0C FD 00 24 01 FD 00 23 B8 01 FD 00 24 FE FD 80 08 01 FD 00 24 0C FD 00 24 01 FD 00 23 B8 01 FD 00 24 FF 
 JPN={FD 80 08} {FD 00 24}/{FD 00 24} {FD 00 23}% {FD 00 24}{NL}{FD 80 08} {FD 00 24}/{FD 00 24} {FD 00 23}% {FD 00 24}{NL}{FD 80 08} {FD 00 24}/{FD 00 24} {FD 00 23}% {FD 00 24}{EL}
-ENG=
+ENG={F0}{FD 80 08} {FD 00 24}/{FD 00 24} {FD 00 23}% {FD 00 24}{NL}{FD 80 08} {FD 00 24}/{FD 00 24} {FD 00 23}% {FD 00 24}{NL}{FD 80 08} {FD 00 24}/{FD 00 24} {FD 00 23}% {FD 00 24}{EL}
 
 OFFSET=020599
 VALUE=969A
@@ -1344,7 +1344,7 @@ VALUE=A04E
 OFFSETDATA=02204E
 DATA=F0 FD 8C 08 79 01 FD A8 08 8C 01 6F 64 6B 6F FF 
 JPN={FD 8C 08}は {FD A8 08}を たおした{EL}
-ENG=
+ENG={F0}{FD 8C 08} defeats {FD A8 08}{EL}
 
 OFFSET=021951
 VALUE=A05E
@@ -1519,21 +1519,21 @@ VALUE=A248
 OFFSETDATA=022248
 DATA=F0 10 17 2E BA 61 9C 61 74 88 BA 10 17 78 F1 19 F0 BB 73 79 FE 01 01 01 01 F1 2B F0 72 78 F1 19 F0 78 1C 22 0D 1F 1C 79 01 07 F1 3B F0 BC FE BF 0F FE 10 17 2E BA F1 08 09 19 F0 79 01 05 F1 3B F0 BC FE 01 01 01 01 32 3D 1C 1F 0D 78 F1 04 F0 9F 01 F1 18 19 1A 1B FE F0 BF 0F FE 10 17 2E BA 32 3D 1C 1F 0D 78 61 74 61 F1 04 F0 9F 79 FE 01 01 01 01 60 86 6F 74 88 32 3D 1C 1F 0D 8C 01 85 A3 69 73 92 9F 66 88 FE BF 0F FE 10 17 2E BA 6F 9C 6B 01 BA F1 3C F0 BB 01 BA F1 2E F0 BB 01 BA F1 22 23 F0 BB 75 FE 01 01 01 01 79 61 88 69 73 79 9F 66 74 61 BC FE BF 0F FE 10 17 2E BA 6F 65 86 A1 69 75 73 7E 91 72 82 01 BA 10 11 22 30 BB 74 A0 8C FE 01 01 01 01 72 75 61 89 88 69 73 82 9F 66 74 61 BC FE FF 
 JPN=アクマ┌いだいなる┌アクの力┘とは{NL}    全ての力のステータスは 5倍!{NL}{BF 0F FE}アクマ┌移動力は 3倍!{NL}    モンスターの村で 体力回復{FE}{BF 0F FE}アクマ┌モンスターのいない村では{NL}    あらたなるモンスターを よぶことができる{NL}{BF 0F FE}アクマ┌ただし ┌店┘ ┌城┘ ┌教会┘に{NL}    はいることはできない!{NL}{BF 0F FE}アクマ┌たからばこにとまっても ┌アイテム┘などを{NL}    てにいれることもできない!{NL}{EL}
-ENG=
+ENG=Devil: The power of{NL}darkness: All stats ×5.{NL}{BF 0F FE}Devil: All move ×3.{NL}Healing in attacked towns.{NL}{BF 0F FE}Devil: In freed towns,{NL}you can summon monsters.{NL}{BF 0F FE}Devil: But you can't access{NL}castle, churches or shops.{NL}{BF 0F FE}Devil: You can't use items!{EL}
 
 OFFSET=021983
 VALUE=A32F
 OFFSETDATA=02232F
 DATA=F0 FD 8C 08 78 01 F1 0C 0D F0 6B 72 61 88 F1 04 F0 79 60 87 7E 6D 8D BC FF 
 JPN={FD 8C 08}の 統治している村はありません!{EL}
-ENG=
+ENG={F0}{FD 8C 08} has no towns!{EL}
 
 OFFSET=021985
 VALUE=A348
 OFFSETDATA=022348
 DATA=F0 FD 8C 08 79 01 10 11 22 30 79 F1 1E F0 91 72 61 7E 6D 8D BC FF 
 JPN={FD 8C 08}は アイテムは持っていません!{EL}
-ENG=
+ENG={F0}{FD 8C 08} has no items!{EL}
 
 OFFSET=021987
 VALUE=A35E
@@ -1659,14 +1659,14 @@ VALUE=A516
 OFFSETDATA=022516
 DATA=F1 20 36 F0 BA 61 7E 78 01 64 7E 63 78 F1 12 13 19 F0 74 86 FE 01 01 01 01 01 57 46 49 32 3D 1C 1F 0D 8C 01 6F 64 6C 69 73 92 9F 66 88 65 82 6B 89 76 FE BF 0F FE F1 20 36 F0 BA 6F 9C 6B 01 65 67 98 71 75 6F 64 6C 6F 81 75 79 FE 01 01 01 01 01 BA FB 01 6F 81 FB 00 BB 65 BA FB 01 7A 91 6A 71 FB 00 BB 8C F1 0F F0 91 72 FE BF 0F FE F1 20 36 F0 BA F1 12 13 F0 6C 88 78 98 8E BC FE 01 01 01 01 01 68 91 6B 72 01 57 46 49 32 3D 1C 1F 0D 78 F1 19 F0 8C FE 01 01 01 01 01 60 74 A0 88 9F 74 61 9B BC FF 
 JPN=王様┌いまの おまえの攻撃力なら{NL}     ビッグモンスターを たおすことができるかもしれぬ{NL}{BF 0F FE}王様┌ただし かくじつにたおすためには{NL}     ┌{CG}ため{CW}┘か┌{CG}ひっさつ{CW}┘を使って{NL}{BF 0F FE}王様┌攻撃するのじゃ!{NL}     けっして ビッグモンスターの力を{NL}     あなどるでないぞ!{EL}
-ENG=
+ENG={F0}King: With your current power{NL}you may beat the big monster.{NL}{BF 0F FE}King: But you should try to{NL}use {CG}Focus{CW} or {CG}Strike{CW} to do so.{NL}{BF 0F FE}King: Never underestimate the{NL}strength of the big monsters.{NL}{EL}
 
 OFFSET=0219AB
 VALUE=A5BB
 OFFSETDATA=0225BB
 DATA=F0 10 17 2E BA 8B 89 8B 89 75 01 6F 7E 6B 61 8C 62 88 65 BD FE FE FF 
 JPN=アクマ┌われわれに たましいをうるか?{NL}{NL}{EL}
-ENG={F0}Devil: Do you give up your{NL}soul?{NL}{EL}
+ENG={F0}Devil: Do you give up{NL}your soul?{NL}{EL}
 
 OFFSET=0219AD
 VALUE=A5D2
@@ -1722,7 +1722,7 @@ VALUE=A661
 OFFSETDATA=022661
 DATA=F0 FD 8C 08 78 82 70 82 78 8C 01 62 A1 62 69 73 92 9F 66 7E 6C FF 
 JPN={FD 8C 08}のもちものを うばうことができます{EL}
-ENG=
+ENG={F0}You can steal something{NL}from {FD 8C 08}.{EL}
 
 OFFSET=0219BD
 VALUE=A677
@@ -2282,14 +2282,14 @@ VALUE=AF35
 OFFSETDATA=022F35
 DATA=F0 FD 88 08 78 01 F1 12 13 19 F0 92 6A 92 91 6F FF 
 JPN={FD 88 08}の 攻撃力がさがった{EL}
-ENG=
+ENG={F0}{FD 88 08}'s attack has{NL}decreased.{EL}
 
 OFFSET=021A5D
 VALUE=AF46
 OFFSETDATA=022F46
 DATA=F0 FD 88 08 78 01 F1 16 17 19 F0 92 6A 92 91 6F FF 
 JPN={FD 88 08}の 防御力がさがった{EL}
-ENG=
+ENG={F0}{FD 88 08}'s defense has{NL}decreased.{EL}
 
 OFFSET=021A5F
 VALUE=AF57
@@ -2534,7 +2534,7 @@ VALUE=B3B2
 OFFSETDATA=0233B2
 DATA=F1 16 17 F0 92 8B 85 87 82 01 64 64 66 61 6C 62 98 8C 9C 6C 73 FE F1 04 F0 78 F1 32 33 F0 8C 01 62 A1 62 69 73 92 9F 66 7E 6C FE FF 
 JPN=防御がわよりも おおきいすうじをだすと{NL}村の収入を うばうことができます{NL}{EL}
-ENG={F0}If the attack is higher than{NL}the defense, you steal the{NL}town income.{EL}
+ENG={F0}If the attack is higher than{NL}the defense, you steal the{NL}town savings.{EL}
 
 OFFSET=021AA5
 VALUE=B3DE
@@ -2555,7 +2555,7 @@ VALUE=B406
 OFFSETDATA=023406
 DATA=F0 FD 8C 08 79 01 84 62 8B 67 6A 89 6F BC FF 
 JPN={FD 8C 08}は ゆうわくされた!{EL}
-ENG=
+ENG={F0}{FD 8C 08} is charmed!{EL}
 
 OFFSET=021AAB
 VALUE=B415
@@ -2590,7 +2590,7 @@ VALUE=B471
 OFFSETDATA=023471
 DATA=F0 6E 69 75 61 67 7F 70 98 8F 8D 8C 01 7F 71 68 7E 6B 6F BC FE F1 08 09 F0 6B 7E 6C 65 01 BD FF 
 JPN=そこにいくみちじゅんを みつけました!{NL}移動しますか ?{EL}
-ENG=
+ENG={F0}I found a way!{NL}Move there?{EL}
 
 OFFSET=021AB5
 VALUE=B491
@@ -2618,7 +2618,7 @@ VALUE=B4CE
 OFFSETDATA=0234CE
 DATA=F0 FD 8C 08 79 01 61 6B 75 01 6A 89 72 6B 7E 91 6F BC FF 
 JPN={FD 8C 08}は いしに されてしまった!{EL}
-ENG=
+ENG={F0}{FD 8C 08} is petrified!{EL}
 
 OFFSET=021ABD
 VALUE=B4E1
@@ -2709,35 +2709,35 @@ VALUE=B696
 OFFSETDATA=023696
 DATA=F1 20 36 F0 BA 6B 65 6B 01 74 75 82 64 66 74 65 91 6F 85 62 98 8E BC FE FE FF 
 JPN=王様┌しかし なにもおきなかったようじゃ!{NL}{NL}{EL}
-ENG=
+ENG={F0}King: Nothing happened!{NL}{NL}{EL}
 
 OFFSET=021AD7
 VALUE=B6B0
 OFFSETDATA=0236B0
 DATA=F1 20 36 F0 BA 6F 91 BC 01 6F 91 BC 01 6F 91 BC 01 6F 61 7C 8D 98 8E BC BC BC FE 01 01 01 01 01 65 61 7D 62 6A 89 72 61 6F 6C A4 72 78 F1 04 F0 75 FE 01 01 01 01 01 32 3D 1C 1F 0D 92 60 86 8B 89 6F 9B BC FF 
 JPN=王様┌たっ! たっ! たっ! たいへんじゃ!!!{NL}     かいほうされていたすべての村に{NL}     モンスターがあらわれたぞ!{EL}
-ENG=
+ENG={F0}King: Monsters have appeared{NL}in all the towns!{NL}{EL}
 
 OFFSET=0236F5
 VALUE=B881
 OFFSETDATA=023881
 DATA=F1 20 36 F0 BA 57 46 49 32 3D 1C 1F 0D 92 FE 01 01 01 01 01 7B 6B 93 74 98 8F 82 8D 8C 73 74 63 6F 9B B6 B6 B6 FE FF 
 JPN=王様┌ビッグモンスターが{NL}     ふしぎなじゅもんをとなえたぞ・・・{NL}{EL}
-ENG=
+ENG={F0}King: A big monster casts a{NL}strange spell...{NL}{EL}
 
 OFFSET=0236F7
 VALUE=B8A8
 OFFSETDATA=0238A8
 DATA=F1 20 36 F0 BA 55 15 5F 3D 92 01 83 7F 75 71 71 7E 89 72 6B 7E 91 6F 9B BC FE FE FF 
 JPN=王様┌ドカポンが やみにつつまれてしまったぞ!{NL}{NL}{EL}
-ENG=
+ENG={F0}King: Dokapon is plunged{NL}in darkness!{NL}{EL}
 
 OFFSET=0236F9
 VALUE=B8C4
 OFFSETDATA=0238C4
 DATA=F1 20 36 F0 BA 55 15 5F 3D 75 01 7A 65 87 92 82 A0 91 6F 9B BC FE FE FF 
 JPN=王様┌ドカポンに ひかりがもどったぞ!{NL}{NL}{EL}
-ENG=
+ENG={F0}King: The light has returned!{NL}{NL}{EL}
 
 OFFSET=0236FB
 VALUE=B8DC
@@ -2765,14 +2765,14 @@ VALUE=B976
 OFFSETDATA=023976
 DATA=F0 47 46 21 BA FD 8C 08 BC 01 7E 6F 6D 6F 74 FE 01 01 01 01 83 91 73 BA FD 8A 07 BB 92 01 65 8D 6D 61 6B 6F 9A BC FE FF 
 JPN=ガッツ┌{FD 8C 08}! またせたな{NL}    やっと┌{FD 8A 07}┘が かんせいしたぜ!{NL}{EL}
-ENG=
+ENG={F0}Gutz: {FD 8C 08}!{NL}Your {FD 8A 07} is ready!{NL}{EL}
 
 OFFSET=023703
 VALUE=B99E
 OFFSETDATA=02399E
 DATA=F0 47 46 21 BA 7E 6F 01 66 65 61 92 60 91 6F 86 01 60 64 62 9A BC FE 01 01 01 01 60 A1 85 BC FE FF 
 JPN=ガッツ┌また きかいがあったら あおうぜ!{NL}    あばよ!{NL}{EL}
-ENG=
+ENG={F0}Gutz: See you soon!{NL}Bye.{NL}{EL}
 
 OFFSET=023705
 VALUE=B9BF
@@ -2793,7 +2793,7 @@ VALUE=BA63
 OFFSETDATA=023A63
 DATA=F0 61 7E 78 98 6B 8D 9F FE BA 3B 24 BB BA 7B 69 62 78 1F 27 BB BA 23 0D 39 24 61 8B BB FE 6C A4 72 6B 90 62 81 71 6B 7E 6B 6F BC FF 
 JPN=いまのじしんで{NL}┌ワナ┘┌ふこうのタネ┘┌トーレナいわ┘{NL}すべてしょうめつしました!{EL}
-ENG={F0}All the active Traps, Seeds{NL}and Boulders have been{NL}removed.{EL}
+ENG={F0}All the active Traps, Discord{NL}and Boulders have been{NL}removed.{EL}
 
 OFFSET=02370B
 VALUE=BA8F
@@ -2821,14 +2821,14 @@ VALUE=BB2A
 OFFSETDATA=023B2A
 DATA=F0 67 86 83 7F 78 74 65 9F 01 F1 0A 0B F0 8C 71 65 62 69 73 79 9F 66 7E 6D 8D BC FE FE FF 
 JPN=くらやみのなかで 魔法をつかうことはできません!{NL}{NL}{EL}
-ENG=
+ENG={F0}You can't use magic in the{NL}dark!{NL}{EL}
 
 OFFSET=023713
 VALUE=BB48
 OFFSETDATA=023B48
 DATA=F0 67 86 83 7F 78 74 65 9F 01 10 11 22 30 8C F1 0F F0 62 69 73 79 9F 66 7E 6D 8D BC FE FE FF 
 JPN=くらやみのなかで アイテムを使うことはできません!{NL}{NL}{EL}
-ENG=
+ENG={F0}You can't use items in the{NL}dark!{NL}{EL}
 
 OFFSET=023715
 VALUE=BB67
@@ -2842,7 +2842,7 @@ VALUE=BBD1
 OFFSETDATA=023BD1
 DATA=F1 20 36 F0 BA 69 89 65 86 82 01 64 F1 1F F0 60 71 81 75 01 6D 61 8C 9C 6C 92 61 61 FE FE FF 
 JPN=王様┌これからも お金あつめに せいをだすがいい{NL}{NL}{EL}
-ENG={F0}King: From now on, the town{NL}will earn you money.{NL}{EL}
+ENG={F0}King: Do your best to earn{NL}more money.{NL}{EL}
 
 OFFSET=023719
 VALUE=BBF0
@@ -2919,7 +2919,7 @@ VALUE=BE3A
 OFFSETDATA=023E3A
 DATA=F0 10 17 2E BA 2B 46 2B 46 2B 46 2B 46 B6 B6 B6 01 33 2F 78 6D 65 61 7C 85 62 69 6E BC FE 01 01 01 01 9C 61 A3 72 69 99 91 72 61 88 85 62 9C 74 FE BF 0F FE 10 17 2E BA 64 7E 63 78 01 61 7E F1 1E F0 91 72 61 88 FE 01 01 01 01 BA 10 11 22 30 BB 01 BA F1 0A 0B F0 BB 01 BA F1 04 F0 BB FE BF 0F FE 10 17 2E BA 6C A4 72 01 8B 89 8B 89 75 85 69 6D A1 FE 01 01 01 01 64 7E 63 75 01 61 9C 61 74 88 BA 10 17 78 F1 19 F0 BB 8C 6A 99 68 85 62 FE BF 0F FE 10 17 2E BA 64 7E 63 79 01 61 9C 61 74 88 BA 10 17 78 F1 19 F0 BB 8C FE 01 01 01 01 6B 91 72 61 88 65 01 BD FE FF 
 JPN=アクマ┌フッフッフッフッ・・・ ヤミのせかいへようこそ!{NL}    だいぶてこずっているようだな{NL}{BF 0F FE}アクマ┌おまえの いま持っている{NL}    ┌アイテム┘ ┌魔法┘ ┌村┘{NL}{BF 0F FE}アクマ┌すべて われわれによこせば{NL}    おまえに いだいなる┌アクの力┘をさずけよう{NL}{BF 0F FE}アクマ┌おまえは いだいなる┌アクの力┘を{NL}    しっているか ?{NL}{EL}
-ENG={F0}Devil: Welcome to the Dark{NL}World! You seem to be{NL}struggling.{BF 11 FE}Devil: I see you possess{NL}items, towns and magic.{NL}{BF 0F FE}Devil: Give it all to me and{NL}I'll grant you a great power.{NL}{BF 0F FE}Devil: Do you want the power{NL}of darkness?{EL}
+ENG={F0}Devil: Welcome to the Dark{NL}World! You seem to be{NL}struggling.{BF 11 FE}Devil: I see you possess{NL}items, towns and magic.{NL}{BF 0F FE}Devil: Give it all to me and{NL}I'll grant you a great power.{NL}{BF 0F FE}Devil: Do you know the{NL}power of darkness?{EL}
 
 OFFSET=02372F
 VALUE=BEF4
@@ -2947,42 +2947,42 @@ VALUE=BF5F
 OFFSETDATA=023F5F
 DATA=F0 54 57 38 79 01 79 61 88 69 73 92 9F 66 7E 6D 8D BC FF 
 JPN=デビルは はいることができません!{EL}
-ENG=
+ENG={F0}Devil can't enter!{EL}
 
 OFFSET=023737
 VALUE=BF72
 OFFSETDATA=023F72
 DATA=F1 04 39 F0 BA 6F A2 78 F1 39 F0 01 69 78 FB 01 75 82 71 FB 00 8C FE 01 01 01 01 01 FD 83 04 F1 04 F0 7E 9F 01 73 A0 68 72 67 89 7E 6D 8D 65 01 BD FE FF 
 JPN=村人┌たびの人 この{CG}にもつ{CW}を{NL}     {FD 83 04}村まで とどけてくれませんか ?{NL}{EL}
-ENG=
+ENG={F0}Villager: Traveler, can{NL}you take this package{NL}to {FD 83 04}?{EL}
 
 OFFSET=023739
 VALUE=BFA5
 OFFSETDATA=023FA5
 DATA=F0 FD 8C 08 79 01 FB 01 75 82 71 FB 00 8C 60 99 65 91 6F FE F1 04 39 F0 BA 9F 79 01 64 77 92 61 6B 7E 6C FE 01 01 01 01 01 64 89 61 79 01 78 70 7D A0 B6 B6 B6 FF 
 JPN={FD 8C 08}は {CG}にもつ{CW}をあずかった{NL}村人┌では おねがいします{NL}     おれいは のちほど・・・{EL}
-ENG=
+ENG={F0}{FD 8C 08} receives the package.{NL}Villager: Thank you.{EL}
 
 OFFSET=02373B
 VALUE=BFDB
 OFFSETDATA=023FDB
 DATA=F1 04 39 F0 BA 6E 62 9F 6C 65 B6 B6 B6 FE 01 01 01 01 01 64 7A 66 73 81 6B 72 01 82 62 6B 8B 68 60 87 7E 6D 8D 9F 6B 6F FE FF 
 JPN=村人┌そうですか・・・{NL}     おひきとめして もうしわけありませんでした{NL}{EL}
-ENG=
+ENG={F0}Villager: Really?{NL}Sorry for bothering you.{NL}{EL}
 
 OFFSET=02373D
 VALUE=C005
 OFFSETDATA=024005
 DATA=F1 04 39 F0 BA FD 8C 08 6A 8D FE 01 01 01 01 01 FB 01 75 82 71 FB 00 8C 73 A0 68 72 67 9C 6A 91 72 FE BF 0F FE F1 04 39 F0 BA 60 87 92 73 62 96 97 61 7E 6B 6F FE 01 01 01 01 01 64 89 61 75 01 FD 08 48 4B 0D 38 55 6A 6B 60 95 7E 6B 90 62 FE BF 0F FF 
 JPN=村人┌{FD 8C 08}さん{NL}     {CG}にもつ{CW}をとどけてくださって{NL}{BF 0F FE}村人┌ありがとうございました{NL}     おれいに {FD 08 48}ゴールドさしあげましょう{NL}{BF 0F FF}
-ENG=
+ENG={F0}Thank you {FD 8C 08} for{NL}delivering this package.{NL}Here's {FD 08 48} gold.{EL}
 
 OFFSET=02373F
 VALUE=C058
 OFFSETDATA=024058
 DATA=F0 8A 62 98 8D BA 6F A2 78 F1 39 F0 01 60 8B 89 74 4D 4D 11 75 FE 01 01 01 01 01 FD 08 48 4B 0D 38 55 01 81 94 8D 9F 67 9C 6A 86 8D 65 01 BD FE FF 
 JPN=ろうじん┌たびの人 あわれなジジイに{NL}     {FD 08 48}ゴールド めぐんでくださらんか ?{NL}{EL}
-ENG={F0}Old man: Traveller!{NL}Can you hand {FD 08 48} gold{NL}to an old man?{EL}
+ENG={F0}Old man: Traveler!{NL}Can you hand {FD 08 48} gold{NL}to an old man?{EL}
 
 OFFSET=023741
 VALUE=C089
@@ -3031,14 +3031,14 @@ VALUE=C1CB
 OFFSETDATA=0241CB
 DATA=F0 47 46 21 BA 3B 37 11 46 B6 B6 B6 FE 01 01 01 01 6B 91 A6 61 6B 70 7E 91 6F 9A B6 B6 B6 FE FF 
 JPN=ガッツ┌ワリイッ・・・{NL}    しっぱいしちまったぜ・・・{NL}{EL}
-ENG=
+ENG={F0}Gutz: My bad...{NL}I failed.{NL}{EL}
 
 OFFSET=02374F
 VALUE=C1EB
 OFFSETDATA=0241EB
 DATA=F0 47 46 21 BA F1 1F F0 92 6F 87 77 63 74 B6 B6 B6 FE 01 01 01 01 97 8D 77 8D 9C 92 01 69 78 79 74 6B 79 FE 01 01 01 01 74 65 91 6F 69 73 75 6B 72 67 89 B6 B6 B6 FF 
 JPN=ガッツ┌金がたりねえな・・・{NL}    ざんねんだが このはなしは{NL}    なかったことにしてくれ・・・{EL}
-ENG=
+ENG={F0}Gutz: You don't have enough{NL}gold. Sorry but I can't work{NL}for you...{EL}
 
 OFFSET=023751
 VALUE=C222
@@ -3136,7 +3136,7 @@ VALUE=C866
 OFFSETDATA=024866
 DATA=F0 FD 88 08 79 01 65 74 6B A1 87 92 73 68 6F FF 
 JPN={FD 88 08}は かなしばりがとけた{EL}
-ENG=
+ENG={F0}{FD 88 08} is no longer tied up.{EL}
 
 OFFSET=02376D
 VALUE=C876
@@ -3164,7 +3164,7 @@ VALUE=C8AC
 OFFSETDATA=0248AC
 DATA=F0 FD 88 08 79 01 F1 0A 0B F0 8C 7B 62 98 86 89 6F FF 
 JPN={FD 88 08}は 魔法をふうじられた{EL}
-ENG=
+ENG={F0}{FD 88 08}'s magic is sealed.{EL}
 
 OFFSET=023775
 VALUE=C8BE
@@ -3206,21 +3206,21 @@ VALUE=C9AA
 OFFSETDATA=0249AA
 DATA=F0 FD 8C 08 79 01 7E 66 71 65 89 6F FF 
 JPN={FD 8C 08}は まきつかれた{EL}
-ENG=
+ENG={F0}{FD 8C 08} is squeezed.{EL}
 
 OFFSET=023781
 VALUE=C9B7
 OFFSETDATA=0249B7
 DATA=F0 FD 88 08 79 01 F1 19 F0 9E 67 9F 01 7B 87 7D A0 61 6F BC FF 
 JPN={FD 88 08}は 力づくで ふりほどいた!{EL}
-ENG=
+ENG={F0}{FD 88 08} is no longer{NL}squeezed.{EL}
 
 OFFSET=023783
 VALUE=C9CC
 OFFSETDATA=0249CC
 DATA=F0 FD 88 08 79 01 7E 66 71 65 89 72 01 62 96 68 74 61 FF 
 JPN={FD 88 08}は まきつかれて うごけない{EL}
-ENG=
+ENG={F0}{FD 88 08} 1can't move.{EL}
 
 OFFSET=023785
 VALUE=C9DF
@@ -3269,7 +3269,7 @@ VALUE=CA92
 OFFSETDATA=024A92
 DATA=F0 FD 88 08 79 01 61 6B 75 6A 89 72 61 72 01 62 96 68 74 61 FF 
 JPN={FD 88 08}は いしにされていて うごけない{EL}
-ENG=
+ENG={F0}{FD 88 08} is petrified and{NL}can't move.{EL}
 
 OFFSET=023793
 VALUE=CAA7
@@ -3297,7 +3297,7 @@ VALUE=CAEA
 OFFSETDATA=024AEA
 DATA=F0 FD 88 08 79 01 F1 12 13 0A 0B F0 8C 7B 62 98 86 89 6F FF 
 JPN={FD 88 08}は 攻撃魔法をふうじられた{EL}
-ENG={F0}{FD 88 08}'s magic is sealed.{EL}
+ENG={F0}{FD 88 08}'s attack magic is{NL}sealed.{EL}
 
 OFFSET=02379B
 VALUE=CAFE
@@ -3353,7 +3353,7 @@ VALUE=CBC8
 OFFSETDATA=024BC8
 DATA=F0 FD 88 08 79 01 F1 12 13 F0 8C 85 68 6F FF 
 JPN={FD 88 08}は 攻撃をよけた{EL}
-ENG=
+ENG={F0}{FD 88 08} dodged.{EL}
 
 OFFSET=0237AB
 VALUE=CBD7
@@ -3381,7 +3381,7 @@ VALUE=CC12
 OFFSETDATA=024C12
 DATA=F0 FD 8C 08 78 01 F1 0A 0B F0 92 01 77 69 6E 93 62 A1 8B 89 6F FF 
 JPN={FD 8C 08}の 魔法が ねこそぎうばわれた{EL}
-ENG=
+ENG={F0}{FD 8C 08}'s magic was stolen.{EL}
 
 OFFSET=0237B3
 VALUE=CC28
@@ -3500,7 +3500,7 @@ VALUE=CF87
 OFFSETDATA=024F87
 DATA=F0 2F 46 20 0D BA 10 36 46 BC 64 F1 1F F0 92 6F 87 74 61 85 62 9F 6C 77 FE 01 01 01 01 01 7E 6F 66 65 61 92 60 87 7E 6B 6F 86 01 64 77 92 61 6B 7E 6C FE FF 
 JPN=ミッチー┌アラッ!お金がたりないようですね{NL}     またきかいがありましたら おねがいします{NL}{EL}
-ENG=
+ENG={F0}Mitch: You don't have enough{NL}money. Maybe next time.{NL}{EL}
 
 OFFSET=0237D5
 VALUE=CFBB
@@ -3535,14 +3535,14 @@ VALUE=D184
 OFFSETDATA=025184
 DATA=F1 20 36 F0 BA 6F 91 BC 01 6F 91 BC 01 6F 91 BC 01 6F 61 7C 8D 98 8E BC FE 01 01 01 01 01 FB 02 79 83 87 78 A2 90 62 66 FB 00 9F 01 55 15 5F 3D 98 8F 62 92 5B 25 46 17 98 8E BC FE BF 0F FE F1 20 36 F0 BA F1 04 F0 8C F1 0C 0D F0 6B 72 61 88 82 78 79 FE 01 01 01 01 01 66 8F 62 6A 61 78 6F 81 75 01 F1 04 F0 75 66 7B 8C 6C 88 78 98 8E FE BF 0F FF 
 JPN=王様┌たっ! たっ! たっ! たいへんじゃ!{NL}     {CR}はやりのびょうき{CW}で ドカポンじゅうがパニックじゃ!{NL}{BF 0F FE}王様┌村を統治しているものは{NL}     きゅうさいのために 村にきふをするのじゃ{NL}{BF 0F FF}
-ENG=
+ENG={F0}King: Oh dear!{NL}A {CR}plague{CW} strikes Dokapon!{NL}{BF 0F FE}King: All the town rulers have{NL}to help fund a cure.{NL}{BF 0F FF}
 
 OFFSET=0237DF
 VALUE=D1F7
 OFFSETDATA=0251F7
 DATA=F1 20 36 F0 BA 3B 46 29 46 29 B6 B6 B6 BC BC BC FE 01 01 01 01 01 85 78 74 65 01 8B 88 61 69 73 A1 65 87 9F 79 74 61 85 62 98 8E BC FE BF 0F FE F1 20 36 F0 BA 7D 62 6A 67 01 7D 62 6A 67 01 FB 01 9C 61 7D 62 6A 67 FB 00 98 8E 9B BC FE 01 01 01 01 01 F1 04 F0 8C F1 0C 0D F0 6B 72 61 88 7F 8D 74 75 FE 01 01 01 01 01 87 8D 98 6B 8F 62 75 8F 62 98 8E BC BC FF 
 JPN=王様┌ワッハッハ・・・!!!{NL}     よのなか わるいことばかりではないようじゃ!{NL}{BF 0F FE}王様┌ほうさく ほうさく {CG}だいほうさく{CW}じゃぞ!{NL}     村を統治しているみんなに{NL}     りんじしゅうにゅうじゃ!!{EL}
-ENG=
+ENG={F0}King: Good news everyone!{NL}We had an {CG}abundant harvest{CW}!{NL}{BF 0F FE}King: Extra income for all the{NL}freed towns.{NL}{EL}
 
 OFFSET=0237E1
 VALUE=D26E
@@ -3584,7 +3584,7 @@ VALUE=D46A
 OFFSETDATA=02546A
 DATA=F0 FD AA 08 79 01 A3 8D 6B 8D 6B 72 F1 12 13 F0 8C 01 6B 65 68 72 66 6F FF 
 JPN={FD AA 08}は ぶんしんして攻撃を しかけてきた{EL}
-ENG=
+ENG={F0}{FD AA 08} uses Clone.{EL}
 
 OFFSET=0237ED
 VALUE=D483
@@ -3682,14 +3682,14 @@ VALUE=D98C
 OFFSETDATA=02598C
 DATA=F0 FD 88 08 79 01 FD 08 48 4B 0D 38 55 72 75 61 89 6F FE 95 8D 97 61 78 F1 26 1E 1F F0 01 FD 08 59 4B 0D 38 55 FE BF 0F FF 
 JPN={FD 88 08}は {FD 08 48}ゴールドてにいれた{NL}げんざいの所持金 {FD 08 59}ゴールド{NL}{BF 0F FF}
-ENG=
+ENG={F0}{FD 88 08} gets {FD 08 48} gold.{NL}They now have {FD 08 59} gold.{NL}{BF 0F FF}
 
 OFFSET=023809
 VALUE=D9B5
 OFFSETDATA=0259B5
 DATA=F0 FD 88 08 79 01 FD 08 48 4B 0D 38 55 66 7B 6B 6F FE 95 8D 97 61 78 F1 26 1E 1F F0 FD 08 59 4B 0D 38 55 FE BF 0F FF 
 JPN={FD 88 08}は {FD 08 48}ゴールドきふした{NL}げんざいの所持金{FD 08 59}ゴールド{NL}{BF 0F FF}
-ENG=
+ENG={F0}{FD 88 08} gives {FD 08 48} gold.{NL}They now have {FD 08 59} gold.{NL}{BF 0F FF}
 
 OFFSET=02380B
 VALUE=D9DC
@@ -4494,14 +4494,14 @@ VALUE=ECC3
 OFFSETDATA=026CC3
 DATA=F1 0E F0 78 5D 39 11 33 0D 78 F1 04 F0 75 6B 65 68 72 64 67 73 01 F1 06 F0 1F 0D 3D 9F FE F1 04 F0 78 39 59 38 92 03 75 74 88 BA 1F 27 BB FF 
 JPN=他のプレイヤーの村にしかけておくと 数ターンで{NL}村のレベルが1になる┌タネ┘{EL}
-ENG={F0}When planted in a town, this{NL}sorrow seed takes it down to{NL}level 1.{EL}
+ENG={F0}The seeds of discord take a{NL}town down to level 1 after{NL}some time.{EL}
 
 OFFSET=026827
 VALUE=ECF2
 OFFSETDATA=026CF2
 DATA=F0 7B 69 62 78 1F 27 8C 01 6B 90 62 81 71 6A 6D 88 BA 6D 61 74 88 7F 99 BB FF 
 JPN=ふこうのタネを しょうめつさせる┌せいなるみず┘{EL}
-ENG={F0}Prevents a seed from growing.{EL}
+ENG={F0}Removes all the seeds of{NL}discord.{EL}
 
 OFFSET=026829
 VALUE=ED0C

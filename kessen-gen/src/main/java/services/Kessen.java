@@ -54,7 +54,7 @@ public class Kessen {
         }
         data = DataWriter.fillDataWithPlaceHolders(data);
 
-        new CompressedSpriteManager(data).decompressMapData(CompressedSpriteManager.MAP_OVERWORLD_OFFSET, CompressedSpriteManager.MAP_OVERWORLD_WIDTH);
+        //new CompressedSpriteManager(data).decompressMapData(CompressedSpriteManager.MAP_OVERWORLD_OFFSET, CompressedSpriteManager.MAP_OVERWORLD_WIDTH);
         
         //new CompressedSpriteManager(data).decompressMapData("C4ED5", "110000");
         //new CompressedSpriteManager(data).compressMapData();
@@ -139,7 +139,7 @@ public class Kessen {
             if (!ip.isDebug()) ip.writePatch(data);
         }*/
 
-        String jpn = "マホキカン";
+        String jpn = "しらべてみます";
         System.out.println("JPN="+jpn);
         System.out.print("CODE=");
         for (char c : jpn.toCharArray()) {

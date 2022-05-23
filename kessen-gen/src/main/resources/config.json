@@ -1152,6 +1152,10 @@
     {
       "value":"{ST-CURSE}",
       "code":"84"
+    },
+    {
+      "value":"{PACKAGE}",
+      "code":"85 86"
     }
   ],
   "japanese": [

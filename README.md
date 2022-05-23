@@ -6,6 +6,12 @@ English translation for the SNES game Kessen! Dokapon Oukoku IV
 
 <img src="/screenshots/maps/map.png" alt="map" width="600"/>
 
+# Translations
+
+| Type | Japanese | English | Comment
+| ---- | -------- | --- | ---
+| Item | ジロキチ (Jirokichi ) | Rat Kid | The Japanese name is a reference to Nakamura Jirokichi (仲村次郎吉, 1797–1831), a Japanese thief and folk hero who lived in Edo (present-day Tokyo) during the Edo period. <br/>Jirokichi's nickname Nezumi Kozō (鼠小僧) roughly means "Rat Kid". 
+
 # Credits
 
 There is a hidden Easter egg in the game.

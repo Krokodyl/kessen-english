@@ -37,7 +37,7 @@
 6000037=Unicorn
 6000038=Ariosto
 6000039=Siren  
-6000040=Iguana 
+6000040=Gecko  
 6000041=Horror 
 6000042=Medusa 
 6000043=Lamia  

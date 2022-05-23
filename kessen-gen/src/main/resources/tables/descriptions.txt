@@ -22,3 +22,7 @@ A000001     f5c3
 A000005     f651
 A000007     f6a7
 A000009     f6e6
+
+
+Seal = Seal the magic attack
+Seal+ = Seal attack & defense magic

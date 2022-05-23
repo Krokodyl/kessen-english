@@ -7,7 +7,7 @@
 9000007=Sleep  
 9000008=Curse  
 9000009=Fire+++
-9000010=Thunder
+9000010=Bolt   
 9000011=Aurora 
 9000012=Banish 
 9000013=Poison 
@@ -24,7 +24,7 @@
 9000024=Rage   
 9000025=Burn   
 9000026=Soak   
-9000027=9000027
+9000027=Squeeze
 9000028=Bind   
 9000029=Sap    
 9000030=Enflame
@@ -34,7 +34,7 @@
 9000034=Execute
 9000035=Atomize
 9000036=Inferno
-9000037=9000037
+9000037=Thunder
 9000038=Twister
 9000039=Fire++ 
 9000040=Rob    
