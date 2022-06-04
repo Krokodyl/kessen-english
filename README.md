@@ -96,7 +96,7 @@ There is the TV commercial: [Japanese Commercial for 決戦!ドカポン王国�
 
 # Enemy list
 
-| ID | NAME  | HP | AT | DF | SP | MA | XP | GOLD | Attack<br/>Magic | Defense<br/>Magic | <div style="width:210px">Image</div> |
+| ID | NAME  | HP | AT | DF | SP | MA | XP | GOLD | Attack<br/>Magic | Defense<br/>Magic | <img width=200/>Image |
 | --- | ---  | --- | --- | --- | --- | --- | --- | --- | --- | --- | -------------------------- |
 | 1 | Kobold  | 9 | 2 | 2 | 2 | 2 | 5 | 10 | - | - | <img src="/screenshots/monsters/png/001.png" alt="map" width="300%"/> |
 | 2 | Corpse  | 18 | 3 | 2 | 2 | 1 | 6 | 20 | - | - | <img src="/screenshots/monsters/png/002.png" alt="map" width="300%"/> |
