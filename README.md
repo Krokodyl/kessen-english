@@ -3,8 +3,8 @@ English translation for the SNES game Kessen! Dokapon Oukoku IV
 
 # World map
 
-
-<img src="/screenshots/maps/map.png" alt="map" width="600"/>
+<img src="/screenshots/maps/map.png" alt="map" width="600"/><br/>
+<img src="/screenshots/maps/map16.png" alt="map" width="600"/><br/>
 
 # Translations
 
@@ -209,3 +209,6 @@ There is the TV commercial: [Japanese Commercial for 決戦!ドカポン王国�
 | 109 | Raijin  | 572 | 210 | 112 | 160 | 44 | 7100 | 75 | [Thunder] | - | <img src="/screenshots/monsters/png/109.png" alt="map" width="300%"/> |
 | 110 | Fujin   | 500 | 176 | 103 | 200 | 42 | 5489 | 44 | [Twister] | - | <img src="/screenshots/monsters/png/110.png" alt="map" width="300%"/> |
 | 111 | Sky Dragon | 500 | 230 | 133 | 117 | 47 | 7420 | 80 | [Thunder, Twister] | [Repel++] | <img src="/screenshots/monsters/png/111.png" alt="map" width="300%"/> |
+
+The monsters : Vampire, Lady Vampire, Sea killer, Iron Jaws, Succubus, Kraken, Scylla, Dracula are actually not used in game.<br/>
+They can only appear by modifying memory during the game execution.
