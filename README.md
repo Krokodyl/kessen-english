@@ -3,8 +3,8 @@ English translation for the SNES game Kessen! Dokapon Oukoku IV
 
 # World map
 
-<img src="/screenshots/maps/map.png" alt="map" width="600"/><br/>
-<img src="/screenshots/maps/map16.png" alt="map" width="600"/><br/>
+<img src="/screenshots/maps/map.png" alt="map" width="400"/><br/>
+<img src="https://raw.githubusercontent.com/Krokodyl/kessen-english/main/screenshots/maps/map16.png" alt="map" width="900"/><br/>
 
 # Translations
 
