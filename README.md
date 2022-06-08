@@ -254,8 +254,8 @@ When this happens, you can't use the Look mode, use items or magic.<br/>
 
 The visibility range is reduced based on the Magic stat of the active player.<br/>
 
-Magic 1 grants the lowest range.
-<img src="/screenshots/secrets/darkness-01.png" alt="map" width="50%"/>
+Magic 1 grants the lowest range.<br/>
+<img src="/screenshots/secrets/darkness-01.png" alt="map" width="25%"/>
 
-Magic 80 or higher grants the best range.
-<img src="/screenshots/secrets/darkness-02.png" alt="map" width="50%"/>
+Magic 80 or higher grants the best range.<br/>
+<img src="/screenshots/secrets/darkness-02.png" alt="map" width="25%"/>
