@@ -252,10 +252,8 @@ The stores can be easily spotted with the Look mode.
 One of the special effects of the boss is plunging Dokapon in darkness.<br/>
 When this happens, you can't use the Look mode, use items or magic.<br/>
 
-The visibility range is reduced based on the Magic stat of the active player.<br/>
+The visibility range is based on the Magic stat of the active player.<br/>
 
-Magic 1 grants the lowest range.<br/>
-<img src="/screenshots/secrets/darkness-01.png" alt="map" width="25%"/>
-
-Magic 80 or higher grants the best range.<br/>
-<img src="/screenshots/secrets/darkness-02.png" alt="map" width="25%"/>
+| Magic 1 | Magic 80 and higher |
+| --- | --- |
+| <img src="/screenshots/secrets/darkness-01.png" alt="map" /> | <img src="/screenshots/secrets/darkness-02.png" alt="map"/> |
