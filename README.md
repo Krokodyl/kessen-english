@@ -11,6 +11,8 @@ English translation for the SNES game Kessen! Dokapon Oukoku IV
 | ---- | -------- | --- | ---
 | Item | ジロキチ (Jirokichi ) | Rat Kid | The Japanese name is a reference to Nakamura Jirokichi (仲村次郎吉, 1797–1831), a Japanese thief and folk hero who lived in Edo (present-day Tokyo) during the Edo period. <br/>Jirokichi's nickname Nezumi Kozō (鼠小僧) roughly means "Rat Kid".
 | Item | まほうのくすり (魔法) | Tonic | Mahōnokusuri means Magical Medicine. It triples the attack, defense and speed for a duration of 2 to 8 days. The drawback: When the effect expires, HP is set to 1.
+| NPC | ジャンキー (Janky) | Roche | The NPC that plays Roshambo is called Janky as the game rock-paper-scissors is called Janken (ジャンけん) in Japanese.
+
 
 ## Town names
 
@@ -179,6 +181,32 @@ They can only appear by modifying memory during the game execution (all with the
 
 # Tips & Tricks
 
+## End of game
+
+At the end of the game, 4 special prizes are awarded.
+
+* The player who rules the most towns.
+* The player who defeated the most big monsters.
+* The player with the highest level.
+* The player who died the most.
+
+Each award grants a prize of 1200 + 1200 x (number of weeks elapsed) in gold.<br/>
+
+In case of a tie, nobody gets the award.<br/>
+
+Any Dokapon Orb kept till the end, we'll be exchanged for 10000 x (number of weeks elapsed) gold.<br/>
+As the orb sells for 490000 during the game, it seems only worth keeping if the game lasts 50 weeks or longer.<br/>
+
+## 100 deaths
+
+If you die 100 times, Princess Penny finds you so pitiful that she grants you 59630000 gold.<br/>
+Furthermore the death counter rolls over from 99 to 0.
+
+## Rock-paper-scissors
+
+One of the random encounter is a character that plays roshambo.<br/>
+If you lose, they take half of your money. If you win, nothing happens unless your are in debt. In which case, your debt gets paid off.
+
 ## Secret stores
 
 There are two secret stores on the map.<br/>
@@ -261,3 +289,31 @@ There is the TV commercial: [Japanese Commercial for 決戦!ドカポン王国�
 | 警告        | Warning           |
 | 友人をなくさないよう        | Don't lose your friends           |
 | 注意しましょう.        | Be careful.           |
+
+# Debug Menu
+
+The game data contains indication of a debug mode that must have been used during the beta testing.<br/>
+There's a reference to マリオクラブ (Mario Club) which was a third party team specialized in debugging and monitoring Nintendo games. It has become an official Nintendo subsidiary in 2009 under the name Mario Club Co., Ltd.
+The menu seems to allow the player to teleport to different places, trigger encounters and specific events.<br/>
+Including a sound test to listen to the sound effects and BGMs.<br/>
+
+| Japanese | English
+| --- | --- |
+| ノーマル・モード<br/>デバッグ・モード | Normal mode<br/>Debug mode |
+| サンプル<br/>マリオクラブ すいせんソフト !!<br/>  12がつ はつばいよてい | Sample<br/>Mario Club<br/>Recommended game<br/>Release Dec 12 |
+| へいや<br/>さばく<br/>もり<br/>ぬま<br/>どくぬま<br/>いわば<br/>うみ<br/>どうくつ<br/>かいてい1<br/>とう1かい<br/>とう2かい<br/>かいてい2<br/>コロシアム | Plain <br/>Desert<br/>Forest<br/>Swamp <br/>Marsh <br/>Quarry<br/>Sea   <br/>Cave  <br/>Sea 1F<br/>Tower1<br/>Tower2<br/>Sea 2F<br/>Arena|
+| ジャンキー<br/>こじき<br/>おんせん<br/>バトルロイヤル<br/>にもつ<br/>武器{FE}ジャンキー<br/>ジャンキー<br/>ジャンキー<br/>えきびょう<br/>ほうさく<br/>かんばつ<br/>ストライキ | Roche   <br/>Beggar  <br/>Onsen   <br/>Arena   <br/>Package <br/>Weapon  <br/>Roche1  <br/>Roche2  <br/>Roche3  <br/>Plague  <br/>Harvest <br/>Drought <br/>Strike |
+| サウンド<br/>イベント<br/>せんとう | Sound<br/>Event<br/>Fight |
+| Xー{FD 00 23} Yー{FD 00 23} {FD 00 11}たいりく | X-{FD 00 23} Y-{FD 00 23} {FD 00 11}Land |
+| ミュージック<br/>こうかおん | Music<br/>Sound |
+
+After disassembling the rom with DiztinGUIsh, I found the code that loads the menu but not where that code is called from.<br/>
+I don't know if there is a way to trigger the debug menu from the game.<br/>
+
+To whomever it matters, the code is located at the address 85B70A (x2B70A).<br/>
+
+<img src="/screenshots/secrets/debug.png" alt="debug" width="600"/><br/>
+
+| Debug prompt | Debug Menu
+| --- | --- |
+| OFFSET=021AC7<br/>VALUE=B585<br/>OFFSETDATA=023585<br/>DATA=F0 32 0D 55 8C 01 6D 8D 6F 67 6B 72 67 9C 6A 61 BD FF<br/>JPN=モードを せんたくしてください?{EL}<br/>ENG={F0}Please select a mode.{EL} | OFFSET=020477<br/>VALUE=8FC0<br/>OFFSETDATA=020FC0<br/>MENUDATA=02 26 02 0A 06 00<br/>DATA=F0 28 0D 2E 38 B6 32 0D 55 FE 54 56 46 49 B6 32 0D 55 FF<br/>JPN=ノーマル・モード{NL}デバッグ・モード{EL}<br/>ENG={F0}Normal{NL}Debug{EL}<br/>
