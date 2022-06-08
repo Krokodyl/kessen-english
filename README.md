@@ -3,13 +3,29 @@ English translation for the SNES game Kessen! Dokapon Oukoku IV
 
 # World map
 
-<img src="https://raw.githubusercontent.com/Krokodyl/kessen-english/main/screenshots/maps/map16.png" alt="map" width="400"/>&nbsp;<img src="/screenshots/maps/map.png" alt="map" width="400"/><br/>
+<img src="https://raw.githubusercontent.com/Krokodyl/kessen-english/main/screenshots/maps/map16.png" alt="map" width="600"/>
 
 # Translations
 
 | Type | Japanese | English | Comment
 | ---- | -------- | --- | ---
-| Item | ジロキチ (Jirokichi ) | Rat Kid | The Japanese name is a reference to Nakamura Jirokichi (仲村次郎吉, 1797–1831), a Japanese thief and folk hero who lived in Edo (present-day Tokyo) during the Edo period. <br/>Jirokichi's nickname Nezumi Kozō (鼠小僧) roughly means "Rat Kid". 
+| Item | ジロキチ (Jirokichi ) | Rat Kid | The Japanese name is a reference to Nakamura Jirokichi (仲村次郎吉, 1797–1831), a Japanese thief and folk hero who lived in Edo (present-day Tokyo) during the Edo period. <br/>Jirokichi's nickname Nezumi Kozō (鼠小僧) roughly means "Rat Kid".
+| Item | まほうのくすり (魔法) | Tonic | Mahōnokusuri means Magical Medicine. It triples the attack, defense and speed for a duration of 2 to 8 days. The drawback: When the effect expires, HP is set to 1.
+
+## Town names
+
+The original town names are actual Japanese names mixed up. Such as ホッカ (Hokka) for 北海道 (Hokkaido), クフマシ (Kufumashi) for 福島 (Fukushima), サマイタ (Samita) for Saitama (埼玉) etc.<br/>
+Since the menus only allow 4 characters for each town (6 for the churches) , I couldn't use all the original names.<br/>
+So I took the creative liberty to use common Japanese words (4 characters or shorter) for the towns:
+
+Neko, Bara, Kaze, Sato, Nawa, Kono, Hebi, Yoko, Sora, Yama<br/>
+Rika, Yuki, Kumo, Jido, Wani, Taka, Kori, Saki, Kusa, Mado<br/>
+Kobe, Hana, Kino, Naku, Yoru, Koso, Miru, Kasa, Haru, Demo<br/>
+Nado, Mada, Kita, Doro, Hita, Gama, Niwa, Basu, Nara, Tobu<br/>
+Naga, Mugi, Dake, Kawa, Hiru, Kami, Momo, Suji, Tori, Mizu.<br/>
+
+The churches are named:<br/>
+Kokoro, Midori, Yugata, Nezumi, Suzume, Kinoko, Hotaru
 
 # Credits
 
@@ -209,5 +225,24 @@ There is the TV commercial: [Japanese Commercial for 決戦!ドカポン王国�
 | 110 | Fujin   | 500 | 176 | 103 | 200 | 42 | 5489 | 44 | [Twister] | - | <img src="/screenshots/monsters/png/110.png" alt="map" width="300%"/> |
 | 111 | Sky Dragon | 500 | 230 | 133 | 117 | 47 | 7420 | 80 | [Thunder, Twister] | [Repel++] | <img src="/screenshots/monsters/png/111.png" alt="map" width="300%"/> |
 
-The monsters : Vampire, Lady Vampire, Sea killer, Iron Jaws, Succubus, Kraken, Scylla, Dracula are actually not used in game.<br/>
-They can only appear by modifying memory during the game execution.
+The monsters : Vampire, Lady Vampire, Sea killer, Iron Jaws, Succubus, Kraken, Scylla, Dracula are actually not used in game (they don't have their own sprite).<br/>
+They can only appear by modifying memory during the game execution (all with the Death sprite).
+
+# Tips & Tricks
+
+## Secret stores
+
+There are two secret stores on the map.<br/>
+The first one is near Yoru (located west of the magic circle). It's hidden right to the left of Yoru and accessible by going down from the road.
+
+<img src="/screenshots/secrets/stores-01.png" alt="map" width="200%"/>
+
+The second one is on the Rabble Tower island (located south of the magic circle). It's hidden in the west of the island and accessible by going right from the road.
+
+<img src="/screenshots/secrets/stores-02.png" alt="map" width="200%"/>
+
+Here's the items in the stores.
+
+<img src="/screenshots/secrets/stores-03.png" alt="map" width="200%"/>
+
+The stores can be spotted with the Look mode.
