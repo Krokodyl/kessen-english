@@ -111,7 +111,7 @@ There is the TV commercial: [Japanese Commercial for 決戦!ドカポン王国�
 
 # Enemy list
 
-| ID | NAME  | HP | AT | DF | SP | MA | XP | GOLD | Attack<br/>Magic | Defense<br/>Magic | <img width=200/>Image |
+| ID | NAME  | HP | AT | DF | SP | MA | XP | GOLD | Attack<br/>Magic | Defense<br/>Magic | <img width=300/>Image |
 | --- | ---  | --- | --- | --- | --- | --- | --- | --- | --- | --- | -------------------------- |
 | 1 | Kobold  | 9 | 2 | 2 | 2 | 2 | 5 | 10 | - | - | <img src="/screenshots/monsters/png/001.png" alt="map" width="300%"/> |
 | 2 | Corpse  | 18 | 3 | 2 | 2 | 1 | 6 | 20 | - | - | <img src="/screenshots/monsters/png/002.png" alt="map" width="300%"/> |
@@ -233,16 +233,29 @@ They can only appear by modifying memory during the game execution (all with the
 ## Secret stores
 
 There are two secret stores on the map.<br/>
-The first one is near Yoru (located west of the magic circle). It's hidden right to the left of Yoru and accessible by going down from the road.
+The first one is near Yoru (located west of the magic circle).<br/>It's hidden right to the left of Yoru and accessible by going down from the road.
 
-<img src="/screenshots/secrets/stores-01.png" alt="map" width="100%"/>
+<img src="/screenshots/secrets/stores-01.png" alt="map" width="50%"/>
 
-The second one is on the Rabble Tower island (located south of the magic circle). It's hidden in the west of the island and accessible by going right from the road.
+The second one is on the Rabble Tower island (located south of the magic circle).<br/>It's hidden in the west of the island and accessible by going right from the road.
 
-<img src="/screenshots/secrets/stores-02.png" alt="map" width="100%"/>
+<img src="/screenshots/secrets/stores-02.png" alt="map" width="50%"/>
 
 Here's the items in the stores.
 
-<img src="/screenshots/secrets/stores-03.png" alt="map" width="100%"/>
+<img src="/screenshots/secrets/stores-03.png" alt="map" width="25%"/>
 
-The stores can be spotted with the Look mode.
+The stores can be easily spotted with the Look mode.
+
+## Darkness
+
+One of the special effects of the boss is plunging Dokapon in darkness.<br/>
+When this happens, you can't use the Look mode, use items or magic.<br/>
+
+The visibility range is reduced based on the Magic stat of the active player.<br/>
+
+Magic 1 grants the lowest range.
+<img src="/screenshots/secrets/darkness-01.png" alt="map" width="50%"/>
+
+Magic 80 or higher grants the best range.
+<img src="/screenshots/secrets/darkness-02.png" alt="map" width="50%"/>
