@@ -235,14 +235,14 @@ They can only appear by modifying memory during the game execution (all with the
 There are two secret stores on the map.<br/>
 The first one is near Yoru (located west of the magic circle). It's hidden right to the left of Yoru and accessible by going down from the road.
 
-<img src="/screenshots/secrets/stores-01.png" alt="map" width="200%"/>
+<img src="/screenshots/secrets/stores-01.png" alt="map" width="100%"/>
 
 The second one is on the Rabble Tower island (located south of the magic circle). It's hidden in the west of the island and accessible by going right from the road.
 
-<img src="/screenshots/secrets/stores-02.png" alt="map" width="200%"/>
+<img src="/screenshots/secrets/stores-02.png" alt="map" width="100%"/>
 
 Here's the items in the stores.
 
-<img src="/screenshots/secrets/stores-03.png" alt="map" width="200%"/>
+<img src="/screenshots/secrets/stores-03.png" alt="map" width="100%"/>
 
 The stores can be spotted with the Look mode.
