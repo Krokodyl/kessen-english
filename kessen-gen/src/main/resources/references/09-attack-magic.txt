@@ -2,11 +2,11 @@
 9000002=Clone  
 9000003=Drain  
 9000004=Swap   
-9000005=Fire   
-9000006=Fire+  
+9000005=Melt   
+9000006=Blast  
 9000007=Sleep  
 9000008=Curse  
-9000009=Fire+++
+9000009=Blaze  
 9000010=Bolt   
 9000011=Aurora 
 9000012=Banish 
@@ -18,7 +18,7 @@
 9000018=War Cry
 9000019=Clone  
 9000020=Carnage
-9000021=Slash  
+9000021=Slay   
 9000022=Petrify
 9000023=Morph  
 9000024=Rage   
@@ -36,5 +36,5 @@
 9000036=Inferno
 9000037=Thunder
 9000038=Twister
-9000039=Fire++ 
+9000039=Scorch 
 9000040=Rob    
