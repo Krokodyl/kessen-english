@@ -88,7 +88,7 @@ Kokoro, Midori, Yugata, Nezumi, Suzume, Kinoko, Hotaru
 Screenshot<img width="300px"/> | Comment
 ------------ | -------------
 ![image 01](/screenshots/english/100.png) | Human players can pick any of 4 characters. Unlike the other Dokapon games, it's only for the visual, it has no impact on the gameplay. 
-![image 01](/screenshots/english/101.png)![image 01](/screenshots/english/102.png)![image 01](/screenshots/english/103.png)![image 01](/screenshots/english/104.png) | The CPU difficulty can be chosen by selecting a different appearance.<br/>The AI can always be changed during the game although it will not change the appearance selected during the game set-up.
+<img src="/screenshots/english/101.png" alt="cpu" /><img src="/screenshots/english/102.png" alt="cpu" /><br/><img src="/screenshots/english/103.png" alt="cpu" /><img src="/screenshots/english/104.png" alt="cpu" /> | The CPU difficulty can be chosen by selecting a different appearance.<br/>The AI can always be changed during the game although it will not change the appearance selected during the game set-up.
 
 When holding the Select button right before the AI turn, it switches the control for this player to Human.<br/>
 It can be useful to know when you accidentally (or purposefully) set all the players to CPU.
