@@ -11,7 +11,7 @@ This is the very first game in the Dokapon game series (the IV in the title refe
 
 Patch file v1.0 is available here : [Kessen! Dokapon Oukoku IV - English v1.0.zip](/patch/Kessen!%20Dokapon%20Oukoku%20IV%20-%20English%20v1.0.zip)
 
-Also available on romhacking.net 
+Also available on romhacking.net (link here once uploaded)
 
 
 It applies to the following ROM :
