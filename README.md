@@ -40,7 +40,7 @@ Japanese | English
 
 Screenshot | Comment
 ------------ | -------------
-![image 01](/screenshots/english/09.png) | Added the ailment icons to the items that cures it.<br/>Remedy, Serum, Amulet and Salve respectively cures Poison, Paralysis, Curse and Weakness.
+<img src="/screenshots/english/09.png" alt="09" width="200%"/> | Added the ailment icons to the items that cures it.<br/>Remedy, Serum, Amulet and Salve respectively cures Poison, Paralysis, Curse and Weakness.
 ![image 01](/screenshots/english/10.png) | Added a gear icon to differentiate weapons, shields and armors.
 ![image 01](/screenshots/english/11.png) | Added a package icon to the item you get from a special encounter. In Japanese, the item has just the name of the delivery town. 
 ![image 01](/screenshots/english/05.png) | Changed the button icons to allow one more character in the command name. (7 instead of 6)
