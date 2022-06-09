@@ -38,7 +38,7 @@ Japanese | English
 
 ## QoL Improvements
 
-Screenshot | Comment
+Screenshot<img src="" alt="" width="200%"/> | Comment
 ------------ | -------------
 <img src="/screenshots/english/09.png" alt="09" width="200%"/> | Added the ailment icons to the items that cures it.<br/>Remedy, Serum, Amulet and Salve respectively cures Poison, Paralysis, Curse and Weakness.
 ![image 01](/screenshots/english/10.png) | Added a gear icon to differentiate weapons, shields and armors.
