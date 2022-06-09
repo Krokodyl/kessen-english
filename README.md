@@ -38,9 +38,9 @@ Japanese | English
 
 ## QoL Improvements
 
-Screenshot<img src="" alt="" width="200%"/> | Comment
+Screenshot<img width=200/> | Comment
 ------------ | -------------
-<img src="/screenshots/english/09.png" alt="09" width="200%"/> | Added the ailment icons to the items that cures it.<br/>Remedy, Serum, Amulet and Salve respectively cures Poison, Paralysis, Curse and Weakness.
+![image 01](/screenshots/english/09.png) | Added the ailment icons to the items that cures it.<br/>Remedy, Serum, Amulet and Salve respectively cures Poison, Paralysis, Curse and Weakness.
 ![image 01](/screenshots/english/10.png) | Added a gear icon to differentiate weapons, shields and armors.
 ![image 01](/screenshots/english/11.png) | Added a package icon to the item you get from a special encounter. In Japanese, the item has just the name of the delivery town. 
 ![image 01](/screenshots/english/05.png) | Changed the button icons to allow one more character in the command name. (7 instead of 6)
@@ -77,6 +77,145 @@ Naga, Mugi, Dake, Kawa, Hiru, Kami, Momo, Suji, Tori, Mizu.<br/>
 
 The churches are named:<br/>
 Kokoro, Midori, Yugata, Nezumi, Suzume, Kinoko, Hotaru
+
+# Tips & Tricks
+
+## End of game
+
+At the end of the game, 4 special prizes are awarded.
+
+* The player who rules the most towns.
+* The player who defeated the most big monsters.
+* The player with the highest level.
+* The player who died the most.
+
+Each award grants a prize of 1200 + 1200 x (number of weeks elapsed) in gold.<br/>
+
+In case of a tie, nobody gets the award.<br/>
+
+Any Dokapon Orb kept till the end will be exchanged for 10000 x (number of weeks elapsed) gold.<br/>
+As the orb sells for 490000 during the game, it seems only worth keeping if the game lasts 50 weeks or longer.<br/>
+
+## 100 deaths
+
+If you die 100 times, Princess Penny finds you so pitiful that she grants you 59630000 gold.<br/>
+Furthermore the death counter rolls over from 99 to 0.
+
+## Rock-paper-scissors
+
+One of the random encounter is a character that plays roshambo.<br/>
+If you lose, they take half of your money. If you win, nothing happens unless your are in debt. In which case, your debt gets paid off.
+
+## Secret stores
+
+There are two secret stores on the map.<br/>
+The first one is near Yoru (located west of the magic circle).<br/>It's hidden right to the left of Yoru and accessible by going down from the road.
+
+<img src="/screenshots/secrets/stores-01.png" alt="map" width="50%"/>
+
+The second one is on the Rabble Tower island (located south of the magic circle).<br/>It's hidden in the west of the island and accessible by going right from the road.
+
+<img src="/screenshots/secrets/stores-02.png" alt="map" width="50%"/>
+
+Here's the items in the stores.
+
+<img src="/screenshots/secrets/stores-03.png" alt="map" width="25%"/>
+
+The stores can be easily spotted with the Look mode.
+
+## Darkness
+
+One of the special effects of the boss is plunging Dokapon in darkness.<br/>
+When this happens, you can't use the Look mode, use items or magic.<br/>
+
+The visibility range is based on the Magic stat of the active player.<br/>
+
+| Magic 1 | Magic 80 and higher |
+| --- | --- |
+| <img src="/screenshots/secrets/darkness-01.png" alt="map" /> | <img src="/screenshots/secrets/darkness-02.png" alt="map"/> |
+
+
+# Credits
+
+There is a hidden Easter egg in the game.
+In the east of the map, near the town of ヒョー (Hyo in Japanese, Haru in the English version), there is a red chest.
+
+<img src="/screenshots/secrets/credits.png" alt="map" />
+
+If you look at the rock next to that chest, you will see the credit roll.
+
+Mentioned in the credits is the music used in the commercial for the game.
+
+The band is ACID LOVE (アシッド・ラヴ = Ashiddo Ravu).<br/>
+The song is My Little Star (Release on December 1st 1993)
+
+There is the full song : [Acid Love - My Little Star](https://www.youtube.com/watch?v=USAQl0hJQa4)
+
+Also mentioned in the credit is the Waseda Mystery Club (わせだ ミステリー クラブ)<br>
+Waseda Mystery Club is one of the cultural circle activities that exist in Waseda University (Tokyo).
+
+# TV Commercial
+
+There is the TV commercial: [Japanese Commercial for 決戦!ドカポン王国Ⅳ](https://youtu.be/M7xI6WGgs_k)
+
+<img src="/tv/tv-01.png" alt="map" width="400"/><br/>
+<i>Music by Acid Love</i><br/>
+
+<img src="/tv/tv-02.png" alt="map" width="400"/><br/>
+<i>Dokapon Kingdom</i><br/>
+
+<img src="/tv/tv-03.png" alt="map" width="400"/><br/>
+ス一パ一ファミコン 任天堂<br/>
+<i>Super Famicom Nintendo</i>
+
+<img src="/tv/tv-04.png" alt="map" width="400"/><br/>
+
+| | |
+| --- |:---|
+| 決戦! | Kessen! |
+| ドカポン王国 | Dokapon Kingdom |
+| ランド | Land |
+| 伝説の勇者たち | Legendary Heroes |
+| 12月10日発売 | Release on December 10 |
+
+
+決戦 (Kessen) means Decisive Fight / Playoff
+
+<img src="/tv/tv-05.png" alt="map" width="400"/><br/>
+
+| | |
+| --- |:---|
+| 警告 | Warning |
+| 友人をなくさないよう | Don't lose your friends |
+| 注意しましょう. | Be careful. |
+
+# Debug Menu
+
+The game data contains indication of a debug mode that must have been used during the beta testing.<br/>
+There's a reference to マリオクラブ (Mario Club) which was a third party team specialized in debugging and monitoring Nintendo games. It has become an official Nintendo subsidiary in 2009 under the name Mario Club Co., Ltd.<br/>
+The menu seems to allow the player to teleport to different places, trigger encounters and specific events.<br/>
+Including a sound test to listen to the sound effects and BGMs.<br/>
+
+| Japanese | English
+| --- | --- |
+| ノーマル・モード<br/>デバッグ・モード | Normal mode<br/>Debug mode |
+| サンプル<br/>マリオクラブ すいせんソフト !!<br/> 12がつ はつばいよてい | Sample<br/>Mario Club<br/>Recommended game<br/>Release Dec 12 |
+| へいや<br/>さばく<br/>もり<br/>ぬま<br/>どくぬま<br/>いわば<br/>うみ<br/>どうくつ<br/>かいてい1<br/>とう1かい<br/>とう2かい<br/>かいてい2<br/>コロシアム | Plain <br/>Desert<br/>Forest<br/>Swamp <br/>Marsh <br/>Quarry<br/>Sea <br/>Cave <br/>Sea 1F<br/>Tower1<br/>Tower2<br/>Sea 2F<br/>Arena|
+| ジャンキー<br/>こじき<br/>おんせん<br/>バトルロイヤル<br/>にもつ<br/>武器{FE}ジャンキー<br/>ジャンキー<br/>ジャンキー<br/>えきびょう<br/>ほうさく<br/>かんばつ<br/>ストライキ | Roche <br/>Beggar <br/>Onsen <br/>Arena <br/>Package <br/>Weapon <br/>Roche1 <br/>Roche2 <br/>Roche3 <br/>Plague <br/>Harvest <br/>Drought <br/>Strike |
+| サウンド<br/>イベント<br/>せんとう | Sound<br/>Event<br/>Fight |
+| Xー{FD 00 23} Yー{FD 00 23} {FD 00 11}たいりく | X-{FD 00 23} Y-{FD 00 23} {FD 00 11}Land |
+| ミュージック<br/>こうかおん | Music<br/>Sound |
+
+After disassembling the rom with DiztinGUIsh, I found the code that loads the menu but not where that code is called from.<br/>
+I don't know if there is a way to trigger the debug menu from the game.<br/>
+
+To whomever it matters, the code is located at the address 85B70A (x2B70A).<br/>
+
+<img src="/screenshots/secrets/debug.png" alt="debug" width="600"/><br/>
+
+| Debug prompt | Debug Menu
+| --- | --- |
+| OFFSET=021AC7<br/>VALUE=B585<br/>OFFSETDATA=023585<br/>DATA=F0 32 0D 55 8C 01 6D 8D 6F 67 6B 72 67 9C 6A 61 BD FF<br/>JPN=モードを せんたくしてください?{EL}<br/>ENG={F0}Please select a mode.{EL} | OFFSET=020477<br/>VALUE=8FC0<br/>OFFSETDATA=020FC0<br/>MENUDATA=02 26 02 0A 06 00<br/>DATA=F0 28 0D 2E 38 B6 32 0D 55 FE 54 56 46 49 B6 32 0D 55 FF<br/>JPN=ノーマル・モード{NL}デバッグ・モード{EL}<br/>ENG={F0}Normal{NL}Debug{EL}<br/>
 
 # World map (English patch)
 
@@ -231,142 +370,3 @@ Kokoro, Midori, Yugata, Nezumi, Suzume, Kinoko, Hotaru
 
 The monsters : Vampire, Lady Vampire, Sea killer, Iron Jaws, Succubus, Kraken, Scylla, Dracula are actually not used in game (they don't have their own sprite).<br/>
 They can only appear by modifying memory during the game execution (all with the Death sprite).
-
-# Tips & Tricks
-
-## End of game
-
-At the end of the game, 4 special prizes are awarded.
-
-* The player who rules the most towns.
-* The player who defeated the most big monsters.
-* The player with the highest level.
-* The player who died the most.
-
-Each award grants a prize of 1200 + 1200 x (number of weeks elapsed) in gold.<br/>
-
-In case of a tie, nobody gets the award.<br/>
-
-Any Dokapon Orb kept till the end, we'll be exchanged for 10000 x (number of weeks elapsed) gold.<br/>
-As the orb sells for 490000 during the game, it seems only worth keeping if the game lasts 50 weeks or longer.<br/>
-
-## 100 deaths
-
-If you die 100 times, Princess Penny finds you so pitiful that she grants you 59630000 gold.<br/>
-Furthermore the death counter rolls over from 99 to 0.
-
-## Rock-paper-scissors
-
-One of the random encounter is a character that plays roshambo.<br/>
-If you lose, they take half of your money. If you win, nothing happens unless your are in debt. In which case, your debt gets paid off.
-
-## Secret stores
-
-There are two secret stores on the map.<br/>
-The first one is near Yoru (located west of the magic circle).<br/>It's hidden right to the left of Yoru and accessible by going down from the road.
-
-<img src="/screenshots/secrets/stores-01.png" alt="map" width="50%"/>
-
-The second one is on the Rabble Tower island (located south of the magic circle).<br/>It's hidden in the west of the island and accessible by going right from the road.
-
-<img src="/screenshots/secrets/stores-02.png" alt="map" width="50%"/>
-
-Here's the items in the stores.
-
-<img src="/screenshots/secrets/stores-03.png" alt="map" width="25%"/>
-
-The stores can be easily spotted with the Look mode.
-
-## Darkness
-
-One of the special effects of the boss is plunging Dokapon in darkness.<br/>
-When this happens, you can't use the Look mode, use items or magic.<br/>
-
-The visibility range is based on the Magic stat of the active player.<br/>
-
-| Magic 1 | Magic 80 and higher |
-| --- | --- |
-| <img src="/screenshots/secrets/darkness-01.png" alt="map" /> | <img src="/screenshots/secrets/darkness-02.png" alt="map"/> |
-
-
-# Credits
-
-There is a hidden Easter egg in the game.
-In the east of the map, near the town of ヒョー (Hyo in Japanese, Haru in the English version), there is a red chest.
-
-<img src="/screenshots/secrets/credits.png" alt="map" />
-
-If you look at the rock next to that chest, you will see the credit roll.
-
-Mentioned in the credits is the music used in the commercial for the game.
-
-The band is ACID LOVE (アシッド・ラヴ = Ashiddo Ravu).<br/>
-The song is My Little Star (Release on December 1st 1993)
-
-There is the full song : [Acid Love - My Little Star](https://www.youtube.com/watch?v=USAQl0hJQa4)
-
-Also mentioned in the credit is the Waseda Mystery Club (わせだ ミステリー クラブ)<br>
-Waseda Mystery Club is one of the cultural circle activities that exist in Waseda University (Tokyo).
-
-# TV Commercial
-
-There is the TV commercial: [Japanese Commercial for 決戦!ドカポン王国Ⅳ](https://youtu.be/M7xI6WGgs_k)
-
-<img src="/tv/tv-01.png" alt="map" width="400"/><br/>
-<i>Music by Acid Love</i><br/>
-
-<img src="/tv/tv-02.png" alt="map" width="400"/><br/>
-<i>Dokapon Kingdom</i><br/>
-
-<img src="/tv/tv-03.png" alt="map" width="400"/><br/>
-ス一パ一ファミコン 任天堂<br/>
-<i>Super Famicom Nintendo</i>
-
-<img src="/tv/tv-04.png" alt="map" width="400"/><br/>
-
-| | |
-| --- |:---|
-| 決戦! | Kessen! |
-| ドカポン王国 | Dokapon Kingdom |
-| ランド | Land |
-| 伝説の勇者たち | Legendary Heroes |
-| 12月10日発売 | Release on December 10 |
-
-
-決戦 (Kessen) means Decisive Fight / Playoff
-
-<img src="/tv/tv-05.png" alt="map" width="400"/><br/>
-
-| | |
-| --- |:---|
-| 警告 | Warning |
-| 友人をなくさないよう | Don't lose your friends |
-| 注意しましょう. | Be careful. |
-
-# Debug Menu
-
-The game data contains indication of a debug mode that must have been used during the beta testing.<br/>
-There's a reference to マリオクラブ (Mario Club) which was a third party team specialized in debugging and monitoring Nintendo games. It has become an official Nintendo subsidiary in 2009 under the name Mario Club Co., Ltd.<br/>
-The menu seems to allow the player to teleport to different places, trigger encounters and specific events.<br/>
-Including a sound test to listen to the sound effects and BGMs.<br/>
-
-| Japanese | English
-| --- | --- |
-| ノーマル・モード<br/>デバッグ・モード | Normal mode<br/>Debug mode |
-| サンプル<br/>マリオクラブ すいせんソフト !!<br/> 12がつ はつばいよてい | Sample<br/>Mario Club<br/>Recommended game<br/>Release Dec 12 |
-| へいや<br/>さばく<br/>もり<br/>ぬま<br/>どくぬま<br/>いわば<br/>うみ<br/>どうくつ<br/>かいてい1<br/>とう1かい<br/>とう2かい<br/>かいてい2<br/>コロシアム | Plain <br/>Desert<br/>Forest<br/>Swamp <br/>Marsh <br/>Quarry<br/>Sea <br/>Cave <br/>Sea 1F<br/>Tower1<br/>Tower2<br/>Sea 2F<br/>Arena|
-| ジャンキー<br/>こじき<br/>おんせん<br/>バトルロイヤル<br/>にもつ<br/>武器{FE}ジャンキー<br/>ジャンキー<br/>ジャンキー<br/>えきびょう<br/>ほうさく<br/>かんばつ<br/>ストライキ | Roche <br/>Beggar <br/>Onsen <br/>Arena <br/>Package <br/>Weapon <br/>Roche1 <br/>Roche2 <br/>Roche3 <br/>Plague <br/>Harvest <br/>Drought <br/>Strike |
-| サウンド<br/>イベント<br/>せんとう | Sound<br/>Event<br/>Fight |
-| Xー{FD 00 23} Yー{FD 00 23} {FD 00 11}たいりく | X-{FD 00 23} Y-{FD 00 23} {FD 00 11}Land |
-| ミュージック<br/>こうかおん | Music<br/>Sound |
-
-After disassembling the rom with DiztinGUIsh, I found the code that loads the menu but not where that code is called from.<br/>
-I don't know if there is a way to trigger the debug menu from the game.<br/>
-
-To whomever it matters, the code is located at the address 85B70A (x2B70A).<br/>
-
-<img src="/screenshots/secrets/debug.png" alt="debug" width="600"/><br/>
-
-| Debug prompt | Debug Menu
-| --- | --- |
-| OFFSET=021AC7<br/>VALUE=B585<br/>OFFSETDATA=023585<br/>DATA=F0 32 0D 55 8C 01 6D 8D 6F 67 6B 72 67 9C 6A 61 BD FF<br/>JPN=モードを せんたくしてください?{EL}<br/>ENG={F0}Please select a mode.{EL} | OFFSET=020477<br/>VALUE=8FC0<br/>OFFSETDATA=020FC0<br/>MENUDATA=02 26 02 0A 06 00<br/>DATA=F0 28 0D 2E 38 B6 32 0D 55 FE 54 56 46 49 B6 32 0D 55 FF<br/>JPN=ノーマル・モード{NL}デバッグ・モード{EL}<br/>ENG={F0}Normal{NL}Debug{EL}<br/>
