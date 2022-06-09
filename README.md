@@ -1,4 +1,4 @@
-# kessen-english
+# Kessen! Dokapon Kingdom IV - English
 
 English translation for the SNES game Kessen! Dokapon Oukoku IV - Densetsu no Yuusha-tachi.<br/>
 The Japanese title (決戦! ドカポン王国 (ランド) IV ~伝説の勇者たち~) roughly translates to "Decisive Battle! Dokapon Kingdoms IV: Legendary Heroes".<br/>
@@ -51,7 +51,7 @@ Screenshot<img width="300px"/> | Comment
 # Known bugs
 
 Not fixed:
-- [] No bug reported yet.
+* No bug reported yet.
 
 Fixed:
 - [x] In the Rabble Tower 3F and 4F, the battle commands Escape and Counter are misspelled. (Only a visual issue) (Fix: the animated clouds in the back were overriding the text data)
