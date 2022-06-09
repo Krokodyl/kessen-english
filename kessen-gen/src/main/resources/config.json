@@ -1,7 +1,7 @@
 {
   "config": {
     "rom-input" : "../roms/Kessen! Dokapon Oukoku IV - Densetsu no Yuusha-tachi (Japan) - extended.sfc",
-    "rom-output" : "../roms/Kessen! English.sfc",
+    "rom-output" : "../roms/test/Kessen! Dokapon Oukoku IV - English.sfc",
     "bps-patch-output": "../roms/Kessen! English.bps",
     "file.jap" : "tables/table-japanese.txt",
     "file.latin" : "tables/table-latin.txt",
