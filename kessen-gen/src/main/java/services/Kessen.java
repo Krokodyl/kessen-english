@@ -46,6 +46,7 @@ public class Kessen {
         //fontImageReader.generateSpriteSilence();
         //fontImageReader.generateSpriteTitleKessen();
         //fontImageReader.generateSpriteTitleDokapon();
+        //fontImageReader.generateSpriteClasses();
         
         try {
             data = Files.readAllBytes(new File(config.getRomInput()).toPath());
@@ -54,7 +55,9 @@ public class Kessen {
         }
         data = DataWriter.fillDataWithPlaceHolders(data);
 
-        //new CompressedSpriteManager(data).decompressMapData(CompressedSpriteManager.MAP_OVERWORLD_OFFSET, CompressedSpriteManager.MAP_OVERWORLD_WIDTH);
+        //MonsterLoader.loadMonsters(data);
+        //MonsterLoader.addTransparency();
+
         
         //new CompressedSpriteManager(data).decompressMapData("C4ED5", "110000");
         //new CompressedSpriteManager(data).compressMapData();
@@ -67,6 +70,9 @@ public class Kessen {
         //DataReader.analyzeTownNames("tables/towns.txt");
         
         DataWriter.writeCodePatches(JsonLoader.loadCodePatches(), data, false);
+
+        //new CompressedSpriteManager(data).decompressMapData(CompressedSpriteManager.MAP_OVERWORLD_OFFSET_EN, CompressedSpriteManager.MAP_OVERWORLD_WIDTH);
+        //new CompressedSpriteManager(data).decompressMapData16bits(CompressedSpriteManager.MAP_OVERWORLD_OFFSET_EN, CompressedSpriteManager.MAP_OVERWORLD_WIDTH);
 
         List<JapaneseChar> japaneseChars = JsonLoader.loadJapanese();
         Dictionnary japanese = new Dictionnary(japaneseChars);
@@ -171,8 +177,8 @@ public class Kessen {
         }
         System.out.println();
 
-        
-        
+
+
 
 
         //DataReader.generateDualLetters("tables/dual-words.txt");

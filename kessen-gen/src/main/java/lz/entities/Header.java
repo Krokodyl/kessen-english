@@ -30,6 +30,11 @@ public class Header {
             (byte) Integer.parseInt("10", 16),
             (byte) Integer.parseInt("06", 16),
             false);
+    public static Header CLASSES_SPRITES_HEADER = new Header(
+            (byte) Integer.parseInt("00", 16),
+            (byte) Integer.parseInt("1C", 16),
+            (byte) Integer.parseInt("05", 16),
+            false);
     public static Header FREE_TOWN_SPRITES_HEADER = new Header(
             (byte) Integer.parseInt("00", 16),
             (byte) Integer.parseInt("20", 16),

@@ -15,7 +15,10 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -153,7 +156,80 @@ public class CompressedSpriteManager {
     }
 
     public static String MAP_OVERWORLD_OFFSET = "C4ED5";
+    public static String MAP_OVERWORLD_OFFSET_EN = "110000";
     public static int MAP_OVERWORLD_WIDTH = 160;
+
+    public void decompressMapData16bits(String s, int width) throws IOException {
+        
+        int start = Integer.parseInt(s, 16)+3;
+        Decompressor decompressor = new Decompressor(data, start);
+        decompressor.decompressData();
+        byte[] decompressedBytes = decompressor.getDecompressedBytes();
+        byte[] mapData = Arrays.copyOfRange(decompressedBytes, 4, decompressedBytes.length);
+        String regex = "(?<=\\G.{"+width*6+"})";
+        String[] split = Utils.bytesToHex(mapData).split(regex);
+
+        BufferedImage gameImage = ImageIO.read(new File("src/main/resources/images/tiles16bits/game-map.png"));
+
+        BufferedImage image = new BufferedImage(MAP_OVERWORLD_WIDTH * 16, split.length * 16, BufferedImage.TYPE_INT_RGB);
+        
+        List<String> codeUsed = new ArrayList<>();
+        int lineIndex = 0;
+        for (String s1 : split) {
+
+            String[] split1 = s1.split("(?<=\\G.{6})");
+            int colIndex = 0;
+            for (String s2 : split1) {
+                if (codeUsed.contains(s2)) {
+                    //pw.write("      ");
+                }
+                else {
+                    codeUsed.add(s2);
+                    //writeSubImage(gameImage, colIndex*16, lineIndex*16, 16, 16, "src/main/resources/images/tiles16bits/"+s2+".png");
+                    //pw.write(s2);
+                }
+                File file = new File("src/main/resources/images/tiles16bits/" + s2 + ".png");
+                if (!file.exists()) {
+                    file = new File("src/main/resources/images/tiles16bits/00 00.png");
+                }
+                BufferedImage tile = ImageIO.read(file);
+                
+                addImage(image, tile, 1, colIndex * 16, lineIndex * 16);
+                colIndex++;
+            }
+            //pw.write("\n");
+
+            //System.out.println(s1);
+            lineIndex++;
+        }
+        //pw.close();
+        ImageIO.write(image, "png", new File("src/main/resources/gen/map16.png"));
+        
+        //
+        
+    }
+    
+    public void writeSubImage(BufferedImage image, int x,int y, int w,int h, String file) throws IOException {
+        BufferedImage subimage = image.getSubimage(x, y, w, h);
+        ImageIO.write(subimage, "png", new File(file));
+    }
+    
+    public void loadTiles() {
+        Map<String, BufferedImage> imageMap = new HashMap<>();
+        Path path = null;
+        try {
+            path = Paths.get("D:\\git\\kessen-english\\screenshots\\monsters");
+            Files.list(path).forEach(
+                    file -> {
+                        if (file.toFile().isFile()) {
+
+                        }
+                    }
+            );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
     public void decompressMapData(String s, int width) throws IOException {
         int start = Integer.parseInt(s, 16)+3;
@@ -678,6 +754,19 @@ public class CompressedSpriteManager {
 
     private void decompressStuff() throws IOException {
         String[] addresses = new String[]{
+
+                "3393D",
+                "65d4c",
+                "61344",
+                "6340e",
+                "a4678",
+                "a50fe",
+                "a5a42",
+                "a6614",
+                "96c98",
+                "48000",
+                "3b15a"
+                
                 /*"D4BE4",
                 "16D58F",
                 "16EA3F",*/
@@ -697,7 +786,7 @@ public class CompressedSpriteManager {
                 "100FC4",
                 "101755"*/
 
-                "AD772"
+                /*"AD772"*/
 
                 //"175C9E"
                 //"140AD5"
@@ -718,7 +807,7 @@ public class CompressedSpriteManager {
             System.out.println("From "+Utils.toHexString(start-3,6)+" to "+Utils.toHexString(decompressor.getEnd(),6));
             System.out.println("Header expected size "+decompressor.getHeader().getDecompressedLength());
             System.out.println("Decompressed bytes : "+Utils.bytesToHex(decompressedBytes));
-            if (decompressor.getHeader().getDecompressedLength()==53764)
+            /*if (decompressor.getHeader().getDecompressedLength()==53764)
             {
                 byte[] mapData = Arrays.copyOfRange(decompressedBytes, 4, decompressedBytes.length);
                 PrintWriter pw = new PrintWriter(new File("src/main/resources/gen/map.txt"));
@@ -751,7 +840,7 @@ public class CompressedSpriteManager {
                     "src/main/resources/gen/"+s+".data"
             )) {
                 fos.write(decompressedBytes);
-            }
+            }*/
         }
     }
     

@@ -5,8 +5,7 @@ import entities.Config;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -64,15 +63,41 @@ public class Utils {
     }
 
     public static void main(String[] args) throws IOException {
-        String name = "D:\\git\\kessen-english\\roms\\Kessen! Dokapon Oukoku IV - Densetsu no Yuusha-tachi (Japan) - extended-trace.log";
-        String output = "D:\\git\\kessen-english\\roms\\b.log";
+        String name = "D:\\Docs\\Dokapon\\Geiger's Snes9x\\Logs\\Kessen! English0000.log";
+        String output = "D:\\git\\kessen-english\\simple-run-load-game.log";
         PrintWriter writer = new PrintWriter(output, "UTF-8");
         BufferedReader br = new BufferedReader(new FileReader(name));
         String line = br.readLine();
+        Map<String, Integer> repeat = new HashMap<>();
         while(line!=null) {
-            line = line.substring(0,line.length()-16);
-            writer.println(line);
-            writer.flush();
+            if (line.length()>8) {
+                String prefix = line.substring(0, 8);
+                if (!repeat.containsKey(prefix)) {
+                    repeat.put(prefix,1);
+                } else {
+                    repeat.put(prefix, repeat.get(prefix)+1);
+                }
+            }
+            line = br.readLine();
+        }
+        br = new BufferedReader(new FileReader(name));
+        line = br.readLine();
+        while(line!=null) {
+            if (line.length()>8) {
+                String prefix = line.substring(0, 8);
+                if (!repeat.containsKey(prefix)) {
+                    writer.println(line);
+                    writer.flush();
+                } else {
+                    if (repeat.get(prefix)<=1) {
+                        writer.println(line);
+                        writer.flush();
+                    }
+                }
+            } else {
+                writer.println(line);
+                writer.flush();
+            }
             line = br.readLine();
         }
         writer.close();

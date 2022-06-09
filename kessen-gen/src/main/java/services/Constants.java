@@ -39,4 +39,13 @@ public class Constants {
     public static String TRANSLATION_KEY_MENUDATA = "MENUDATA";
     public static String TRANSLATION_KEY_VALUE = "VALUE";
 
+    public static int MONSTER_STATS_INDEX_ATTACK = 0;
+    public static int MONSTER_STATS_INDEX_DEFENSE = 2;
+    public static int MONSTER_STATS_INDEX_SPEED = 4;
+    public static int MONSTER_STATS_INDEX_MAGIC = 6;
+    public static int MONSTER_STATS_INDEX_HP = 8;
+    public static int MONSTER_STATS_INDEX_M_ATTACK = 11;
+    public static int MONSTER_STATS_INDEX_M_DEFENSE = 13;
+    public static int MONSTER_STATS_INDEX_XP = 15;
+    public static int MONSTER_STATS_INDEX_GOLD = 17;
 }

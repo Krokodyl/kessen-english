@@ -23,7 +23,7 @@ import static services.Utils.toHexString;
 
 public class DataReader {
 
-    public static boolean verbose = true;
+    public static boolean verbose = false;
 
     public static PointerTable readTableFromTranslationFile(PointerTable table, String name) throws IOException {
         System.out.println("Reading table from translation File : "+name);
@@ -138,20 +138,62 @@ public class DataReader {
         PointerData p = new PointerData();
         String line = br.readLine();
         String jpn = "";
-        String eng = "";
         List<String> chars = new ArrayList<>();
+        List<Integer> skip = new ArrayList<>();
+        skip.add(Integer.parseInt("AC",16));
+        skip.add(Integer.parseInt("BE",16));
+        skip.add(Integer.parseInt("BF",16));
+        skip.add(Integer.parseInt("C0",16));
+        skip.add(Integer.parseInt("C1",16));
+        skip.add(Integer.parseInt("C2",16));
+        skip.add(Integer.parseInt("C3",16));
+        skip.add(Integer.parseInt("C4",16));
+        skip.add(Integer.parseInt("C5",16));
+        skip.add(Integer.parseInt("C6",16));
+        skip.add(Integer.parseInt("C7",16));
+        skip.add(Integer.parseInt("CA",16));
+        skip.add(Integer.parseInt("CB",16));
+        skip.add(Integer.parseInt("F8",16));
+        skip.add(Integer.parseInt("F9",16));
+        skip.add(Integer.parseInt("FA",16));
+        skip.add(Integer.parseInt("FB",16));
+        skip.add(Integer.parseInt("FE",16));
+        skip.add(Integer.parseInt("FF",16));
+        Map<String, Integer> mapPairValue = new LinkedHashMap<>();
+        Map<String, String> names = new HashMap<>();
+        int value = Integer.parseInt("90",16);
         while (line != null) {
             if (!line.isEmpty()) {
-                String[] split = line.split("(?<=\\G.{8})");
+                //line = line.toUpperCase();
+                String eng = "";
+                String[] split = line.split("(?<=\\G.{7})");
                 String left = split[0];
                 String right = split[1];
                 for (int k=0;k<left.length();k++) {
-                    String s = left.charAt(k)+right.charAt(k)+"";
-                    if (!chars.contains(s)) chars.add(s); 
+                    String s = left.charAt(k)+""+right.charAt(k)+"";
+                    if (s.trim().isEmpty()) eng+=" ";
+                    else eng += "{DL-"+s+"}";
+                    if (!s.trim().isEmpty() && mapPairValue.get(s)==null) {
+                        mapPairValue.put(s, value++);
+                    }
+                    while (skip.contains(value)) value++;
+                    //if (!chars.contains(s)) chars.add(s); 
                 }
+                System.out.println(line+"\t"+eng);
             }
             line = br.readLine();
         }
+        for (Map.Entry<String, Integer> e : mapPairValue.entrySet()) {
+            //System.out.println(e.getKey()+"\t"+Utils.toHexString(e.getValue()));
+            String json = String.format(",\n" +
+                    "    {\n" +
+                    "      \"value\":\"%s\",\n" +
+                    "      \"code\":\"%s\"\n" +
+                    "    }", "{DL-"+e.getKey()+"}", Utils.toHexString(e.getValue()));
+            System.out.print(json);
+        }
+
+
         System.out.println("Double chars : "+chars.size());
     }
 

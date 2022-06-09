@@ -54,6 +54,19 @@ public class FontImageReader {
         compressedSpriteManager.compressCopyFile(uncomp, Header.BATTLE_CARDS_SPRITES_HEADER, outputFile);
     }
 
+    public void generateSpriteClasses() throws IOException {
+        generateSpriteDataFromImage(
+                "src/main/resources/images/classes.png",
+                "src/main/resources/data/sprite-uncompressed.data",
+                new PaletteClasses(),
+                4
+        );
+        String uncomp = "src/main/resources/data/sprite-uncompressed.data";
+        String outputFile = "src/main/resources/data/output/12E000.data";
+        CompressedSpriteManager compressedSpriteManager = new CompressedSpriteManager(null);
+        compressedSpriteManager.compressFile(uncomp, Header.CLASSES_SPRITES_HEADER, outputFile);
+    }
+
     public void generateSpriteTownSigns() throws IOException {
         generateSpriteDataFromImage(
                 "src/main/resources/images/town-signs.png",

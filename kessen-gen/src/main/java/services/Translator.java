@@ -45,6 +45,7 @@ public class Translator {
                         Objects.requireNonNull(Translator.class.getClassLoader().getResourceAsStream(name)), StandardCharsets.UTF_8));
         String line = br.readLine();
         Translation t = new Translation();
+        String jpn = "";
         while (line != null) {
             if (line.contains(Constants.TRANSLATION_KEY_VALUE_SEPARATOR)) {
                 String[] split = line.split(Constants.TRANSLATION_KEY_VALUE_SEPARATOR);
@@ -68,6 +69,9 @@ public class Translator {
                             t.setTranslation("");
                         }
                     }
+                    if (split[0].equals(Constants.TRANSLATION_KEY_JPN)) {
+                        jpn = split[1];
+                    }
                 }
             } else {
                 if (t.getTranslation() != null && !t.getTranslation().trim().isEmpty()) {
@@ -83,7 +87,7 @@ public class Translator {
                     translations.add(t);
                 }
                 else {
-                    System.out.println("MISSING TRANSLATIONS : "+Integer.toHexString(t.getOffset()));
+                    System.out.println("MISSING TRANSLATIONS : "+Integer.toHexString(t.getOffset())+"  "+jpn);
                 }
                 t = new Translation();
             }
