@@ -1,17 +1,62 @@
 # kessen-english
-English translation for the SNES game Kessen! Dokapon Oukoku IV
 
-# World map
+English translation for the SNES game Kessen! Dokapon Oukoku IV - Densetsu no Yuusha-tachi.<br/>
+The Japanese title (決戦! ドカポン王国 (ランド) IV ~伝説の勇者たち~) roughly translates to "Decisive Battle! Dokapon Kingdoms IV: Legendary Heroes".<br/>
+This is the very first game in the Dokapon game series (the IV in the title refers to the possibility of supporting up to 4 players).<br/>
 
-<img src="https://raw.githubusercontent.com/Krokodyl/kessen-english/main/screenshots/maps/map16.png" alt="map" width="600"/>
+
+# English Patch
+
+#### June 2022 - First release 1.0 below.
+
+Patch file v1.0 is available here : [Kessen! Dokapon Oukoku IV - English v1.0.zip](/patch/Kessen!%20Dokapon%20Oukoku%20IV%20-%20English%20v1.0.zip)
+
+Also available on romhacking.net 
+
+
+It applies to the following ROM :
+File: Kessen! Dokapon Oukoku IV - Densetsu no Yuusha-tachi (Japan)
+No-Intro: Super Nintendo Entertainment System (v. 20210222-050638)
+File/ROM SHA-1: 45C4DE22174F01135628D8B61EFF0DE672BC7D30
+File/ROM CRC32: 9BA1F895
+
+Japanese rom size : 1.0 Mb (1 048 576 bytes)
+Patched rom size : 2.0 Mb (2 097 152 bytes)
+
+# Screenshots
+
+Japanese | English
+------------ | -------------
+![image 01](/screenshots/japanese/01.png) | ![image 01](/screenshots/english/01.png)
+![image 01](/screenshots/japanese/02.png) | ![image 01](/screenshots/english/02.png)
+![image 01](/screenshots/japanese/03.png) | ![image 01](/screenshots/english/03.png)
+![image 01](/screenshots/japanese/04.png) | ![image 01](/screenshots/english/04.png)
+![image 01](/screenshots/japanese/05.png) | ![image 01](/screenshots/english/05.png)
+![image 01](/screenshots/japanese/06.png) | ![image 01](/screenshots/english/06.png)
+![image 01](/screenshots/japanese/07.png) | ![image 01](/screenshots/english/07.png)
+![image 01](/screenshots/japanese/08.png) | ![image 01](/screenshots/english/08.png)
+
+## QoL Improvements
+
+Screenshot | Comment
+------------ | -------------
+![image 01](/screenshots/english/09.png) | Added the ailment icons to the items that cures it.<br/>Remedy, Serum, Amulet and Salve respectively cures Poison, Paralysis, Curse and Weakness.
+![image 01](/screenshots/english/10.png) | Added a gear icon to differentiate weapons, shields and armors.
+
+# Known bugs
+
+
+- [ ] In the Rabble Tower 3F and 4F, the battle commands Escape and Counter are misspelled. (Only a visual issue)
+
 
 # Translations
 
 | Type | Japanese | English | Comment
 | ---- | -------- | --- | ---
+| Title | 決戦 (Kessen) | Kessen | 決戦 (Kessen) means Decisive Fight / Playoff. I kept the term Kessen on the title screen as "Decisive Fight" takes too much space and "Play off" sounds weird. It also help with the SEO as most people still refers to the game as Kessen Dokapon Kingdom.
 | Item | ジロキチ (Jirokichi ) | Rat Kid | The Japanese name is a reference to Nakamura Jirokichi (仲村次郎吉, 1797–1831), a Japanese thief and folk hero who lived in Edo (present-day Tokyo) during the Edo period. <br/>Jirokichi's nickname Nezumi Kozō (鼠小僧) roughly means "Rat Kid".
 | Item | まほうのくすり (魔法) | Tonic | Mahōnokusuri means Magical Medicine. It triples the attack, defense and speed for a duration of 2 to 8 days. The drawback: When the effect expires, HP is set to 1.
-| NPC | ジャンキー (Janky) | Roche | The NPC that plays Roshambo is called Janky as the game rock-paper-scissors is called Janken (ジャンけん) in Japanese.
+| NPC | ジャンキー (Janky) | Roche | The NPC that plays Roshambo is called Janky as the game rock-paper-scissors is called Janken (ジャンけん) in Japanese. The name Roche (or Roché in some other games) comes from Roshambo (sometimes spelt Rochambeau, immigrants do get the job done).
 
 
 ## Town names
@@ -28,6 +73,10 @@ Naga, Mugi, Dake, Kawa, Hiru, Kami, Momo, Suji, Tori, Mizu.<br/>
 
 The churches are named:<br/>
 Kokoro, Midori, Yugata, Nezumi, Suzume, Kinoko, Hotaru
+
+# World map (English patch)
+
+<img src="https://raw.githubusercontent.com/Krokodyl/kessen-english/main/screenshots/maps/map16.png" alt="map" width="600"/>
 
 # Dungeon maps
 
@@ -293,7 +342,7 @@ There is the TV commercial: [Japanese Commercial for 決戦!ドカポン王国�
 # Debug Menu
 
 The game data contains indication of a debug mode that must have been used during the beta testing.<br/>
-There's a reference to マリオクラブ (Mario Club) which was a third party team specialized in debugging and monitoring Nintendo games. It has become an official Nintendo subsidiary in 2009 under the name Mario Club Co., Ltd.
+There's a reference to マリオクラブ (Mario Club) which was a third party team specialized in debugging and monitoring Nintendo games. It has become an official Nintendo subsidiary in 2009 under the name Mario Club Co., Ltd.<br/>
 The menu seems to allow the player to teleport to different places, trigger encounters and specific events.<br/>
 Including a sound test to listen to the sound effects and BGMs.<br/>
 
