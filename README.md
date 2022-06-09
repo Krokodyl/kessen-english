@@ -35,6 +35,9 @@ Japanese | English
 ![image 01](/screenshots/japanese/06.png) | ![image 01](/screenshots/english/06.png)
 ![image 01](/screenshots/japanese/07.png) | ![image 01](/screenshots/english/07.png)
 ![image 01](/screenshots/japanese/08.png) | ![image 01](/screenshots/english/08.png)
+![image 01](/screenshots/japanese/12.png) | ![image 01](/screenshots/english/12.png)
+![image 01](/screenshots/japanese/13.png) | ![image 01](/screenshots/english/13.png)
+![image 01](/screenshots/japanese/14.png) | ![image 01](/screenshots/english/14.png)
 
 ## QoL Improvements
 
@@ -67,7 +70,7 @@ Fixed:
 
 The original town names are actual Japanese names mixed up. Such as ホッカ (Hokka) for 北海道 (Hokkaido), クフマシ (Kufumashi) for 福島 (Fukushima), サマイタ (Samita) for Saitama (埼玉) etc.<br/>
 Since the menus only allow 4 characters for each town (6 for the churches), I couldn't use all the original names.<br/>
-So I took the creative liberty to use common Japanese words (4 characters or shorter) for the towns:
+So I took the creative liberty to use common Japanese words (4 characters long) for the towns:
 
 Neko, Bara, Kaze, Sato, Nawa, Kono, Hebi, Yoko, Sora, Yama<br/>
 Rika, Yuki, Kumo, Jido, Wani, Taka, Kori, Saki, Kusa, Mado<br/>
@@ -79,6 +82,16 @@ The churches are named:<br/>
 Kokoro, Midori, Yugata, Nezumi, Suzume, Kinoko, Hotaru
 
 # Tips & Tricks
+
+## Characters & CPU
+
+Screenshot<img width="300px"/> | Comment
+------------ | -------------
+![image 01](/screenshots/english/100.png) | Human players can pick any of 4 characters. Unlike the other Dokapon games, it's only for the visual, it has no impact on the gameplay. 
+![image 01](/screenshots/english/101.png)![image 01](/screenshots/english/102.png)![image 01](/screenshots/english/103.png)![image 01](/screenshots/english/104.png) | The CPU difficulty can be chosen by selecting a different appearance.<br/>The AI can always be changed during the game although it will not change the appearance selected during the game set-up.
+
+When holding the Select button right before the AI turn, it switches the control for this player to Human.<br/>
+It can be useful to know when you accidentally (or purposefully) set all the players to CPU.
 
 ## End of game
 
@@ -133,6 +146,12 @@ The visibility range is based on the Magic stat of the active player.<br/>
 | Magic 1 | Magic 80 and higher |
 | --- | --- |
 | <img src="/screenshots/secrets/darkness-01.png" alt="map" /> | <img src="/screenshots/secrets/darkness-02.png" alt="map"/> |
+
+## Magic
+
+Offensive magic and defensive magic used in battle are tied to your equipment.<br/>
+If you change weapon, you lose your current attack magic.<br/>
+If you change shield, you lose your current defense magic.<br/>
 
 
 # Credits
