@@ -235,23 +235,27 @@
     {
       "code": "8B C2 10 E2 20 A9 A0 48 AB C2 30 AF 50 00 00 C9 01 00 F0 08 B9 30 81 29 FF 00 AB 6B B9 80 81 29 FF 00 AB 6B",
       "offset": "100100",
-      "desc": "Loading class names"
+      "desc": "Loading class names",
+      "feature": "CLASS-NAMES"
     },
     {
       "code": "15 32 30 31 3d 2e 3b 01 01 01 01 01 01 1c 2a 30 2e 01 01 01 01 01 01 01 11 2a 3b 2d 01 01 01 01 01 01 01 01 1a 37 32 30 31 3d 01 01 01 01 01 01",
       "offset": "100130",
-      "desc": "Class names for human"
+      "desc": "Class names for human",
+      "feature": "CLASS-NAMES"
     },
     {
       "code": "15 32 30 31 3d 2e 3b 01 14 2a 3c 42 01 01 01 1c 2a 30 2e 01 01 01 1d 38 3b 36 2a 35 11 2a 3b 2d 01 01 01 17 2a 3b 2d 01 01 01 1a 37 32 30 31 3d 01 12 3b 2a 43 42 01 01",
       "offset": "100180",
-      "desc": "Class names for computer"
+      "desc": "Class names for computer",
+      "feature": "CLASS-NAMES"
     },
     {
-      "code": "10 01 10 03 2C 01 2C 03",
+      "code": "10 02 10 04 2C 02 2C 04",
       "eng": "10 02 12 04 2C 02 2C 04",
       "offset": "2AD24",
-      "desc": "Class name positions"
+      "desc": "Class name positions",
+      "feature": "CLASS-NAMES"
     },
     {
       "code": "A0 01 01 94 68 A0 12 1f 94 6A A0 24 0d",
@@ -425,6 +429,12 @@
     },
 
 
+    {
+      "code": "AD 8B 1D 18 69 50 00 8D 8B 1D AD 8F 1D 18 69 40 00 8D 8F 1D AD 93 1D 18 69 30 00 8D 93 1D AD 97 1D 18 69 20 00 8D 97 1D 9C 8D 1D 9C 91 1D 9C 95 1D 9C 99 1D E2 20 A9 42 8D AF 31 A9 0F 8D B0 31 A9 7E 8D B1 31 8B 4B AB A5 00 C2 20 29 FF 00 0A AA BC 52 C9 A2 00 00 B9 00 00 29 7F 00 F0 10 BD 8C 1D",
+      "offset": "2C8A7",
+      "desc": "Shift the memory for the clouds in the background of the fights in Rabble Tower",
+      "feature": "BATTLE"
+    },
 
     {
       "code": "00",
@@ -585,6 +595,22 @@
       "desc": "Pre Title Dokapon Sprite Order",
       "file": true,
       "feature": "TITLE-SCREEN"
+    },
+
+
+
+    {
+      "code": "00",
+      "offset": "12E000",
+      "desc": "Compressed data for the classes screen sprites",
+      "file": true,
+      "feature": "CLASSES-SPRITES"
+    },
+    {
+      "code": "A0 A5 00 84 22 A0 00 E0 84 20",
+      "offset": "2A9FF",
+      "desc": "Address loading for the classes screen sprites.",
+      "feature": "CLASSES-SPRITES"
     }
   ],
   "input-patches": [
@@ -1156,6 +1182,370 @@
     {
       "value":"{PACKAGE}",
       "code":"85 86"
+    },
+    {
+      "value":"{DL-JS}",
+      "code":"90"
+    },
+    {
+      "value":"{DL-el}",
+      "code":"91"
+    },
+    {
+      "value":"{DL-wi}",
+      "code":"92"
+    },
+    {
+      "value":"{DL-em}",
+      "code":"93"
+    },
+    {
+      "value":"{DL-le}",
+      "code":"94"
+    },
+    {
+      "value":"{DL-ZD}",
+      "code":"95"
+    },
+    {
+      "value":"{DL-or}",
+      "code":"96"
+    },
+    {
+      "value":"{DL-ma}",
+      "code":"97"
+    },
+    {
+      "value":"{DL-bg}",
+      "code":"98"
+    },
+    {
+      "value":"{DL-io}",
+      "code":"99"
+    },
+    {
+      "value":"{DL-en}",
+      "code":"9A"
+    },
+    {
+      "value":"{DL-AS}",
+      "code":"9B"
+    },
+    {
+      "value":"{DL-ql}",
+      "code":"9C"
+    },
+    {
+      "value":"{DL-ui}",
+      "code":"9D"
+    },
+    {
+      "value":"{DL-am}",
+      "code":"9E"
+    },
+    {
+      "value":"{DL- e}",
+      "code":"9F"
+    },
+    {
+      "value":"{DL-SD}",
+      "code":"A0"
+    },
+    {
+      "value":"{DL-er}",
+      "code":"A1"
+    },
+    {
+      "value":"{DL-aa}",
+      "code":"A2"
+    },
+    {
+      "value":"{DL- g}",
+      "code":"A3"
+    },
+    {
+      "value":"{DL- o}",
+      "code":"A4"
+    },
+    {
+      "value":"{DL- n}",
+      "code":"A5"
+    },
+    {
+      "value":"{DL-ED}",
+      "code":"A6"
+    },
+    {
+      "value":"{DL-ar}",
+      "code":"A7"
+    },
+    {
+      "value":"{DL-ra}",
+      "code":"A8"
+    },
+    {
+      "value":"{DL-tg}",
+      "code":"A9"
+    },
+    {
+      "value":"{DL-ho}",
+      "code":"AA"
+    },
+    {
+      "value":"{DL-BS}",
+      "code":"AB"
+    },
+    {
+      "value":"{DL-ll}",
+      "code":"AD"
+    },
+    {
+      "value":"{DL-ai}",
+      "code":"AE"
+    },
+    {
+      "value":"{DL-cm}",
+      "code":"AF"
+    },
+    {
+      "value":"{DL-ke}",
+      "code":"B0"
+    },
+    {
+      "value":"{DL-kr}",
+      "code":"B1"
+    },
+    {
+      "value":"{DL-ya}",
+      "code":"B2"
+    },
+    {
+      "value":"{DL-KC}",
+      "code":"B3"
+    },
+    {
+      "value":"{DL-ih}",
+      "code":"B4"
+    },
+    {
+      "value":"{DL-ni}",
+      "code":"B5"
+    },
+    {
+      "value":"{DL-gm}",
+      "code":"B6"
+    },
+    {
+      "value":"{DL- r}",
+      "code":"B7"
+    },
+    {
+      "value":"{DL- a}",
+      "code":"B8"
+    },
+    {
+      "value":"{DL-KK}",
+      "code":"B9"
+    },
+    {
+      "value":"{DL-nb}",
+      "code":"BA"
+    },
+    {
+      "value":"{DL-go}",
+      "code":"BB"
+    },
+    {
+      "value":"{DL- l}",
+      "code":"BC"
+    },
+    {
+      "value":"{DL- d}",
+      "code":"BD"
+    },
+    {
+      "value":"{DL-GS}",
+      "code":"C8"
+    },
+    {
+      "value":"{DL-rc}",
+      "code":"C9"
+    },
+    {
+      "value":"{DL-eo}",
+      "code":"CC"
+    },
+    {
+      "value":"{DL-tp}",
+      "code":"CD"
+    },
+    {
+      "value":"{DL- i}",
+      "code":"CE"
+    },
+    {
+      "value":"{DL-LV}",
+      "code":"CF"
+    },
+    {
+      "value":"{DL-dm}",
+      "code":"D0"
+    },
+    {
+      "value":"{DL-yp}",
+      "code":"D1"
+    },
+    {
+      "value":"{DL-WE}",
+      "code":"D2"
+    },
+    {
+      "value":"{DL-ea}",
+      "code":"D3"
+    },
+    {
+      "value":"{DL-at}",
+      "code":"D4"
+    },
+    {
+      "value":"{DL-pe}",
+      "code":"D5"
+    },
+    {
+      "value":"{DL-n }",
+      "code":"D6"
+    },
+    {
+      "value":"{DL-ME}",
+      "code":"D7"
+    },
+    {
+      "value":"{DL-gt}",
+      "code":"D8"
+    },
+    {
+      "value":"{DL-ie}",
+      "code":"D9"
+    },
+    {
+      "value":"{DL-cr}",
+      "code":"DA"
+    },
+    {
+      "value":"{DL-GC}",
+      "code":"DB"
+    },
+    {
+      "value":"{DL-oh}",
+      "code":"DC"
+    },
+    {
+      "value":"{DL-ba}",
+      "code":"DD"
+    },
+    {
+      "value":"{DL-lm}",
+      "code":"DE"
+    },
+    {
+      "value":"{DL-ip}",
+      "code":"DF"
+    },
+    {
+      "value":"{DL-SK}",
+      "code":"E0"
+    },
+    {
+      "value":"{DL-ei}",
+      "code":"E1"
+    },
+    {
+      "value":"{DL-al}",
+      "code":"E2"
+    },
+    {
+      "value":"{DL-DW}",
+      "code":"E3"
+    },
+    {
+      "value":"{DL-su}",
+      "code":"E4"
+    },
+    {
+      "value":"{DL-rd}",
+      "code":"E5"
+    },
+    {
+      "value":"{DL-te}",
+      "code":"E6"
+    },
+    {
+      "value":"{DL-SL}",
+      "code":"E7"
+    },
+    {
+      "value":"{DL-nz}",
+      "code":"E8"
+    },
+    {
+      "value":"{DL-da}",
+      "code":"E9"
+    },
+    {
+      "value":"{DL-DK}",
+      "code":"EA"
+    },
+    {
+      "value":"{DL-rn}",
+      "code":"EB"
+    },
+    {
+      "value":"{DL-kg}",
+      "code":"EC"
+    },
+    {
+      "value":"{DL-BC}",
+      "code":"ED"
+    },
+    {
+      "value":"{DL-ua}",
+      "code":"EE"
+    },
+    {
+      "value":"{DL-ew}",
+      "code":"EF"
+    },
+    {
+      "value":"{DL-IL}",
+      "code":"F0"
+    },
+    {
+      "value":"{DL-ci}",
+      "code":"F1"
+    },
+    {
+      "value":"{DL-ez}",
+      "code":"F2"
+    },
+    {
+      "value":"{DL-BF}",
+      "code":"F3"
+    },
+    {
+      "value":"{DL-la}",
+      "code":"F4"
+    },
+    {
+      "value":"{DL-on}",
+      "code":"F5"
+    },
+    {
+      "value":"{DL-og}",
+      "code":"F6"
+    },
+    {
+      "value":"{DL-d }",
+      "code":"F7"
     }
   ],
   "japanese": [
