@@ -11,7 +11,7 @@ This is the very first game in the Dokapon game series (the IV in the title refe
 
 Patch file v1.0 is available here : [Kessen! Dokapon Oukoku IV - English v1.0.zip](/patch/Kessen!%20Dokapon%20Oukoku%20IV%20-%20English%20v1.0.zip)
 
-Also available on romhacking.net (link here once uploaded)
+Also available on romhacking.net : https://www.romhacking.net/translations/6573/
 
 
 It applies to the following ROM :<br/>
@@ -20,7 +20,7 @@ No-Intro: Super Nintendo Entertainment System (v. 20210222-050638)<br/>
 File/ROM SHA-1: 45C4DE22174F01135628D8B61EFF0DE672BC7D30<br/>
 File/ROM CRC32: 9BA1F895<br/>
 
-Japanese rom size : 1.0 Mb (1 048 576 bytes)
+Japanese rom size : 1.0 Mb (1 048 576 bytes)<br/>
 Patched rom size : 2.0 Mb (2 097 152 bytes)
 
 # Screenshots
