@@ -175,7 +175,7 @@ Waseda Mystery Club is one of the cultural circle activities that exist in Wased
 
 # TV Commercial
 
-There is the TV commercial: [Japanese Commercial for 決戦!ドカポン王国Ⅳ](https://youtu.be/M7xI6WGgs_k)
+There is the TV commercial: [Japanese Commercial for 決戦!ドカポン王国Ⅳ](https://www.youtube.com/watch?v=Ez7RhhrDAv8)
 
 <img src="/tv/tv-01.png" alt="map" width="400"/><br/>
 <i>Music by Acid Love</i><br/>
